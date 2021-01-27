@@ -1,97 +1,91 @@
 @extends('layout_index.master')
 @section('content')
-    <div id="tg-wrapper" class="tg-wrapper tg-haslayout">
-        <!--************************************
+<div id="tg-wrapper" class="tg-wrapper tg-haslayout">
+    <!--************************************
             Main Start
           *************************************-->
-        <main id="tg-main" class="tg-main tg-haslayout">
-            <!--************************************
+    <main id="tg-main" class="tg-main tg-haslayout">
+        <!--************************************
              Coming Soon Start
            *************************************-->
-            <div class="tg-comingsoonholder">
+        <div class="tg-comingsoonholder">
 
-                <div class="tg-comingsooncontent">
-                    <div class="tg-comingsoonhead">
-                        <h2 style="color: rgb(72, 167, 77)">Đăng Ký tài khoản</h2>
-                        <form class="tg-formtheme tg-formnewsletter">
+            <div class="tg-comingsooncontent">
+                <div class="tg-comingsoonhead">
+                    <h2 style="color: rgb(72, 167, 77)">Đăng Ký tài khoản</h2>
+                    <form action="{{url('signup')}}" method="post" class="tg-formtheme tg-formnewsletter">
+                        @csrf
+                        @if(Session::has('thongbao'))
+                        <div class="alert alert-success">{{Session::get('thongbao')}} </div>
+                        @endif
+                        <div class="form-group">
+                            <label><b>Họ và tên :</b></label>
+                            <input type="text" name="fullname" class="form-control" placeholder="Họ Tên . . . . . ">
+                            @error('fullname')
+                            <p style="color:red">{{ $message }}</p>
+                            @enderror
+                            <br><br>
+                            <label><b>Email</b></label>
+                            <input type="email" name="username" class="form-control" placeholder="Email . . . . . ">
 
-                            <div class="form-group">
-                                <label><b>Họ và tên :</b></label>
-                                <input type="text" name="fullname" class="form-control @error('fullname') isvalid @enderror"
-                                    placeholder="Họ Tên . . . . . ">
-                                @error('fullname')
-                                    <div style="color:red; margin-top: -30px">{{ $message }}</div>
-                                @enderror
-                                <br><br>
-                                <label><b>Email</b></label>
-                                <input type="email" name="username"
-                                    class="form-control @error('username') isvalid @enderror"
-                                    placeholder="Email . . . . . ">
+                            @error('username')
+                            <p style="color:red">{{ $message }}</p>
+                            @enderror
+                            <br><br>
+                            <label><b>Mật Khẩu:</b></label>
+                            <input type="Password" name="password" class="form-control"  placeholder="Password . . . . . ">
 
-                                @error('username')
-                                    <div style="color:red; margin-top: -30px">{{ $message }}</div>
-                                @enderror
-                                <br><br>
-                                <label><b>Mật Khẩu:</b></label>
-                                <input type="Password" name="password"
-                                    class="form-control @error('password') isvalid @enderror"
-                                    placeholder="Password . . . . . ">
+                            @error('password')
+                            <p style="color:red">{{ $message }}</p>
+                            @enderror
+                            <br><br>
+                            <label><b>Xác nhận lại mật khẩu :</b></label>
+                            <input type="Password" name="re_password" class="form-control" placeholder="Xác nhận password . . . . . ">
 
-                                @error('password')
-                                    <div style="color:red; margin-top: -30px">{{ $message }}</div>
-                                @enderror
-                                <br><br>
-								<label><b>Xác nhận lại mật khẩu :</b></label>
-                                <input type="Password" name="re_password"
-                                    class="form-control @error('re_password') isvalid @enderror"
-                                    placeholder="Xác nhận password . . . . . ">
+                            @error('re_password')
+                            <p style="color:red">{{ $message }}</p>
+                            @enderror
 
-                                @error('re_password')
-                                    <div style="color:red; margin-top: -30px">{{ $message }}</div>
-                                @enderror
+                            <br><br>
+                            <label><b> Địa chỉ :</b></label>
+                            <input type="text" name="address" class="form-control" placeholder="Địa chỉ . . . . .">
 
-								<br><br>
-								<label><b> Địa chỉ :</b></label>
-                                <input type="text" name="address" class="form-control @error('address') isvalid @enderror"
-                                    placeholder="Địa chỉ . . . . .">
+                            @error('address')
+                            <p style="color:red">{{ $message }}</p>
+                            @enderror
+                            <br><br>
+                            <label><b>Số điện thoại</b></label>
+                            <input type="text" name="phone" class="form-control" placeholder="Điện thoại . . . . . ">
 
-                                @error('address')
-                                    <div style="color:red; margin-top: -30px">{{ $message }}</div>
-                                @enderror
-								<br><br>
-								<label><b>Số điện thoại</b></label>
-                                <input type="text" name="phone" class="form-control @error('phone') isvalid @enderror"
-                                    placeholder="Điện thoại . . . . . ">
+                            @error('phone')
+                            <p style="color:red">{{ $message }}</p>
+                            @enderror
+                            <br><br>
+                            <div style="margin-left:130px" class=" tg-btns">
 
-                                @error('phone')
-                                    <div style="color:red; margin-top: -30px">{{ $message }}</div>
-                                @enderror
-                                <br><br>
-                                <div style="margin-left:130px" class=" tg-btns">
+                                <button class="tg-btn"> <b> Đăng Nhập </b></button>
 
-                                    <a class="tg-btn" href="javascript:void(0);"> <b> Đăng Nhập </b></a>
-                                   
-                                </div>
+                            </div>
 
-								<p><b>Đã có tài khoản /</b> <a href="{{ route('login') }}">Đăng Nhập Tại Đây</a></p>
-                        </form>
+                            <p style="margin-top:50px"><b>Đã có tài khoản /</b> <a href="{{ route('login') }}">Đăng Nhập Tại Đây</a></p>
+                    </form>
 
-                    </div>
                 </div>
+            </div>
 
-                <!--************************************
+            <!--************************************
              Coming Soon End
            *************************************-->
-        </main>
-        <!--************************************
+    </main>
+    <!--************************************
             Main End
           *************************************-->
-        <!--************************************
+    <!--************************************
 
 
           *************************************-->
-    </div>
-    <!--************************************
+</div>
+<!--************************************
            Wrapper End
          *************************************-->
 @endsection

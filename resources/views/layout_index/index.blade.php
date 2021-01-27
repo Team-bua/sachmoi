@@ -31,15 +31,12 @@
 										<div class="tg-postbookcontent">
 											<div class="tg-themetagbox"><span class="tg-themetag">sale</span></div>
 											<div class="tg-booktitle">
-												<h3 style=" width: 150px;
-												overflow: hidden;
-												white-space: nowrap;
-												text-overflow: ellipsis;"><a href="javascript:void(0);">{{ $pro->name }}</a></h3>
+												<h3><a href="javascript:void(0);">{{ $pro->name }}</a></h3>
 											</div>
 											<span class="tg-bookwriter"><a href="javascript:void(0);">{{$pro->productCompany->name}}</a></span>
 											<span class="tg-bookprice">
 												  @if($pro->promotion_price == 0)
-												<ins style="margin-bottom: 18px">{{number_format($pro->unit_price,0,"",",")}} VNĐ</ins>
+												<ins style="margin-bottom: 20px">{{number_format($pro->unit_price,0,"",",")}} VNĐ</ins>
 												@else
 												<del>{{number_format($pro->unit_price,0,"",",")}} VNĐ </del>
 												<ins>&nbsp;&nbsp;{{number_format($pro->promotion_price,0,"",",")}} VNĐ</ins>

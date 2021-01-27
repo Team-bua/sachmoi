@@ -76,7 +76,6 @@ class PageController extends Controller
     {
         $content = $this->repository->getContent();
         $content_detail = $this->repository->getContentDetail($id);
-
         return view('layout_index.page.news-detail', compact('content_detail', 'content'));
     }
     // tin tức

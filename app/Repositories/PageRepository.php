@@ -441,7 +441,7 @@ class PageRepository
     // tin tức
     public function getContent()
     {
-        return News::where('status', 1)->get();
+        return News::where('status', 1)->paginate(6);
     }
 
     public function getContentDetail($id)
@@ -453,4 +453,5 @@ class PageRepository
     {
         return News::orderBy('id', 'desc')->where('status', 1)->first();
     }
+
 }

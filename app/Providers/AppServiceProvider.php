@@ -29,7 +29,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        view()->composer('layout_index.header', function ($view) {
+        view()->composer(['layout_index.header','layout_index.page.news'], function ($view) {
             $types = ProductType::all();
             $product_n = [];
             $types_id = [];

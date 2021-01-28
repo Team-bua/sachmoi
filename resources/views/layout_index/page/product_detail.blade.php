@@ -231,7 +231,7 @@
 												</div>
 												<ul class="tg-productinfo">
 													<li><span>Tác Giả:</span><span>{{ $product_detail->publisher  }}</span></li>
-													<li><span>Nhà Phát Hành:</span><span>{{ $product_detail->publisher  }}</span></li>
+													<li><span>Phát Hành:</span><span>{{ $product_detail->publisher  }}</span></li>
 													<li><span>Định Dạng:</span><span>{{ $product_detail->format }}</span></li>
 													<li><span>Ngày Phát Hành:</span><span>{{ $product_detail->releasedate }}</span></li>
 													<li><span>Ngôn Ngữ:</span><span>{{ $product_detail->language }}</span></li>
@@ -445,7 +445,7 @@
 								</div>
 								<div class="tg-widgetcontent">
 									<ul>
-										@for($i = 0; $i < count($product_n); $i++) <li><a href="{{ route('product_type', $types_id[$i]) }}"><span>{{ $types_name[$i] }}:</span><span>({{ $product_n[$i] }})</span></a>
+										@for($i = 0; $i < count($product_n); $i++) <li><a href="{{ route('product_type', $types_id[$i]) }}"><span>{{ $types_name[$i] }} </span><span>({{ $product_n[$i] }})</span></a>
 											</li>
 											@endfor
 

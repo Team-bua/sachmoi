@@ -61,7 +61,7 @@
                             <strong class="tg-logo"><a href="{{ route('index') }}"><img src="" alt="company name here"></a></strong>
                             <div  class="tg-wishlistandcart">
                                 <div class="dropdown tg-themedropdown tg-minicartdropdown">
-                                    <a  href="javascript:void(0);" id="tg-minicart" class="tg-btn" margin-top:11px   aria-haspopup="true" aria-expanded="false">
+                                    <a  href="{{ route('cart') }}" id="tg-minicart" class="tg-btn" aria-haspopup="true" aria-expanded="false">
                                         <span style=" margin-left:28px;margin-top:11px "class="tg-themebadge quntity"> @if (Session::has('cart'))
                                             {{ Session('cart')->totalQty }}
                                             @else 0 @endif

@@ -43,7 +43,7 @@
 										</ul>
 										<div class="tg-themetagbox"><span class="tg-themetag">featured</span></div>
 										<div class="tg-posttitle">
-											<h3><a href="javascript:void(0);">Where The Wild Things Are</a></h3>
+											<h3>{{$con->name}}</a></h3>
 										</div>
 										<div class="tg-description" style="text-align: justify; font-size: 13px">
 										{!! $con->content !!}

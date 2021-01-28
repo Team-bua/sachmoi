@@ -369,6 +369,11 @@ class PageRepository
     public function postCheckout(Request $request)
     {
         $cart = Session::get('cart');
+        $image_products = [];
+        $name_products = [];
+        $quantity_products = [];
+        $price = [];
+        $id_account = Auth::user()->id;
 
         $bill = new Bill();
         $bill->id_user = Auth::user()->id;
@@ -384,27 +389,32 @@ class PageRepository
 
         foreach ($cart->items as $key => $value) {
             $bill_detail = new BillDetail();
+
+            $i = Product::where('id', $key)
+                            ->value('image');
+            $n = Product::where('id', $key)
+                            ->value('name');
+            $q = $value['qty'];
+            $p = $value['price'];
+            $image_products[] = $i;
+            $name_products[] = $n;
+            $quantity_products[] = $q;
+            $price[] = $p;
+
             $bill_detail->id_bill = $bill->id;
             $bill_detail->id_product = $key;
             $bill_detail->quantity = $value['qty'];
-            $bill_detail->unit_price = ($value['price'] / $value['qty']);
+            $bill_detail->unit_price = ($value['price'] / $value['qty']);           
             $bill_detail->save();
         }
-        $details = [
-            'title' => 'Xin Chào',
-            'body' => 'Ngon lắm',
-            'url' => 'http://localhost:8000/index',
-        ];
-        $body = [
-            'title' => 'vip pro'
-        ];
-        Mail::to(Auth::user()->username)->send(new \App\Mail\TestMail($details, $body));
+        Mail::to(Auth::user()->email)->send(new \App\Mail\TestMail($image_products, $name_products, $quantity_products, $price, $id_account));
         Session::forget('cart');
     }
 
     public function createUser(Request $request)
     {
         $user = new User();
+        $user_name = $request->input('username');
         $user->full_name = $request->input('fullname');
         $user->username = $request->input('username');
         $user->email = $request->input('username');
@@ -412,6 +422,9 @@ class PageRepository
         $user->phone = $request->input('phone');
         $user->address = $request->input('address');
         $user->save();
+        $id = User::where('username', $user_name)
+                    ->value('id');               
+        Mail::to($user_name)->send(new \App\Mail\RegisterEmail($id));   
     }
 
     public function getInfo($id)

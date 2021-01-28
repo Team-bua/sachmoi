@@ -158,6 +158,7 @@ class ProductRepository
         if($imgdetail == []){
             $imgdetail = $product->imagedetail;
         }
+        $product->imagedetail = $imgdetail;
         if($pdf ==""){
             $pdf=$product->link;
         }

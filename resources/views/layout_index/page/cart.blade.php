@@ -1,114 +1,153 @@
 @extends('layout_index.master')
 @section('content')
-	<!--************************************
-				Inner Banner Start
-		*************************************-->
-		<div class="tg-innerbanner tg-haslayout tg-parallax tg-bginnerbanner" data-z-index="-100" data-appear-top-offset="600" data-parallax="scroll" data-image-src="images/parallax/bgparallax-07.jpg">
-			<div class="container">
-				<div class="row">
-					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-						<div class="tg-innerbannercontent">
-							<h1>Contact Us</h1>
-							<ol class="tg-breadcrumb">
-								<li><a href="javascript:void(0);">home</a></li>
-								<li class="tg-active">Contact Us</li>
-							</ol>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<!--************************************
-				Inner Banner End
-		*************************************-->
-		<!--************************************
-				Main Start
-		*************************************-->
-		<main id="tg-main" class="tg-main tg-haslayout">
-			<!--************************************
-					Contact Us Start
-			*************************************-->
-			<div class="tg-sectionspace tg-haslayout">
-				<div class="container">
-					<div class="row">
-						<div class="tg-contactus">
-							<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-								<div class="tg-sectionhead">
-									<h2><span>Say Hello!</span>Get In Touch With Us</h2>
+@if(Session::has('cart'))
+<section class="static about-sec">
+	<div class="container">
+	<h2>Đơn hàng </h2>
+		@if($errors->any())
+		<div id="error" style="color: red">{{$errors->first()}}</div>
+		@endif
+		<table id="cart" class="table table-hover table-condensed" style="margin-bottom: 2em;">
+			<thead>
+				<tr>
+					<th style="width:40%">Tên sản phẩm</th>
+					<th style="width:15%">Giá tiền</th>
+					<th style="width:10%">Số lượng</th>
+					<th style="width:20%; text-align:center">Thành tiền</th>
+					<th style="width:10%">Thao tác</th>
+				</tr>
+			</thead>
+			<tbody>
+				<form>
+					<input type="hidden" name="_token" id="_token" value="{{ csrf_token() }}" />
+					@if(Session::has('cart'))
+					@foreach($product_cart as $pro)
+					<tr>
+						<td data-th="Product">
+							<div class="row">
+								<div class="col-sm-3 hidden-xs"><img style="width:150px; height:80px" src="{{asset('images/product/'.$pro['item']['image'])}}" alt="..." class="img-responsive" /></div>
+								<div class="col-sm-9">
+									<h4 class="nomargin">{{$pro['item']['name']}}</h4>
+									<p></p>
 								</div>
 							</div>
-							<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-								<div id="tg-locationmap" class="tg-locationmap tg-map"></div>
-							</div>
-							<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-								<form class="tg-formtheme tg-formcontactus">
-									<fieldset>
-										<div class="form-group">
-											<input type="text" name="first-name" class="form-control" placeholder="First Name*">
-										</div>
-										<div class="form-group">
-											<input type="text" name="last-name" class="form-control" placeholder="Last Name*">
-										</div>
-										<div class="form-group">
-											<input type="email" name="email" class="form-control" placeholder="Last Name*">
-										</div>
-										<div class="form-group">
-											<input type="text" name="subject" class="form-control" placeholder="Subject (optional)">
-										</div>
-										<div class="form-group tg-hastextarea">
-											<textarea placeholder="Comment"></textarea>
-										</div>
-										<div class="form-group">
-											<button type="submit" class="tg-btn tg-active">Submit</button>
-										</div>
-									</fieldset>
-								</form>
-								<div class="tg-contactdetail">
-									<div class="tg-sectionhead">
-										<h2>Get In Touch With Us</h2>
-									</div>
-									<ul class="tg-contactinfo">
-										<li>
-											<i class="icon-apartment"></i>
-											<address>Suit # 07, Rose world Building, Street # 02, AT246T Manchester</address>
-										</li>
-										<li>
-											<i class="icon-phone-handset"></i>
-											<span>
-												<em>0800 12345 - 678 - 89</em>
-												<em>+4 1234 - 4567 - 67</em>
-											</span>
-										</li>
-										<li>
-											<i class="icon-clock"></i>
-											<span>Serving 7 Days A Week From 9am - 5pm</span>
-										</li>
-										<li>
-											<i class="icon-envelope"></i>
-											<span>
-												<em><a href="mailto:support@domain.com">support@domain.com</a></em>
-												<em><a href="mailto:info@domain.com">info@domain.com</a></em>
-											</span>
-										</li>
-									</ul>
-									<ul class="tg-socialicons">
-										<li class="tg-facebook"><a href="javascript:void(0);"><i class="fa fa-facebook"></i></a></li>
-										<li class="tg-twitter"><a href="javascript:void(0);"><i class="fa fa-twitter"></i></a></li>
-										<li class="tg-linkedin"><a href="javascript:void(0);"><i class="fa fa-linkedin"></i></a></li>
-										<li class="tg-googleplus"><a href="javascript:void(0);"><i class="fa fa-google-plus"></i></a></li>
-										<li class="tg-rss"><a href="javascript:void(0);"><i class="fa fa-rss"></i></a></li>
-									</ul>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<!--************************************
-					Contact Us End
-			*************************************-->
-		</main>
-		<!--************************************
-				Main End
-		*************************************-->
+						</td>
+						<td data-th="Price"><span>@if($pro['item']['promotion_price']==0){{number_format($pro['item']['unit_price'])}} @else {{number_format($pro['item']['promotion_price'])}} @endif VNĐ </span></td>
+						<td data-th="Quantity" class="product_quantity">
+							<input type="number" class="form-control text-center" id="qty-{{$pro['item']['id']}}" onchange="changeQuantity(this)" min="1" value="{{$pro['qty']}}">
+						</td>
+						<td style="text-align:center" id="total-{{$pro['item']['id']}}">@if($pro['item']['promotion_price']==0){{number_format($pro['item']['unit_price']*$pro['qty'])}} @else {{number_format($pro['item']['promotion_price']*$pro['qty'])}} @endif VNĐ</td>
+						<td class="actions">
+							<button class="btn btn-danger btn-sm" data-url="{{route('delcart',$pro['item']['id'])}}"><i class="fa fa-trash"></i></button>
+						</td>
+					</tr>
+					@endforeach
+					@endif
+				</form>
+			</tbody>
+			<tfoot>
+				<tr>
+					<td colspan="3" class="hidden-xs"></td>
+					<td colspan="2"><strong id="totalPrice">Tổng tiền :@if(Session::has('cart')) {{number_format($cart->totalPrice)}} @else 0 @endif VNĐ</strong></td>
+				</tr>
+				<tr>
+					<td colspan="3" class="hidden-xs"></td>
+					<td colspan="2"><a href="@if(Auth::check()) {{route('checkout')}} @else {{route('login')}} @endif" class="btn btn-success btn-block">Thanh Toán <i class="fa fa-angle-right"></i></a></td>
+				</tr>
+			</tfoot>
+		</table>
+
+	</div>
+</section>
+@else
+<section class="static about-sec">
+	<div class="container">
+	<h1>Giỏ hàng trống !</h1>
+	</div>
+</section>
+@endif
 @endsection
+@section('script')
+<script>
+	$(document).on('click', '.btn-sm', DelCart);
+
+	function DelCart(e) {
+		e.preventDefault();
+		let urlRequest = $(this).data('url');
+		let that = $(this);
+		Swal.fire({
+			title: 'Xóa sản phẩm',
+			text: "Bạn có muốn xóa không!",
+			icon: 'warning',
+			showCancelButton: true,
+			confirmButtonColor: '#3085d6',
+			cancelButtonColor: '#d33',
+			confirmButtonText: 'Có, muốn xóa!',
+			cancelButtonText: 'Không xóa',
+		}).then((result) => {
+			if (result.isConfirmed) {
+				$.ajax({
+					url: urlRequest,
+					type: 'GET',
+					success: function(data) {
+						if (data.code == 200) {
+							$('#totalPrice').html('Tổng tiền : ' + Number(data['cart']['totalPrice']).toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,') + ' VNĐ');
+							$('.quntity').html(data['cart']['totalQty']);
+							that.parent().parent().remove();
+							Swal.fire(
+								'Đã xóa!',
+								'Xóa thành công.',
+								'success'
+							)
+						}
+						$('#error').html('');
+					}
+				});
+			}
+		});
+	}
+
+	function changeQuantity(inputQuantity) {
+		let [x, id] = inputQuantity.id.split('-');
+		let _token = document.getElementById('_token');
+		let qty = inputQuantity.value;
+		requestCart("{{route('cart')}}", JSON.stringify({
+			'_token': _token.value,
+			'id': id,
+			'quantity': inputQuantity.value
+		}), function(data) {
+			data = JSON.parse(data);
+			if (qty > 0) {
+				$('#total-' + data['id']).html(Number(data['cart']['items'][data['id']]['price']).toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,') + ' VNĐ');
+				$('#totalPrice').html('Tổng tiền : ' + Number(data['cart']['totalPrice']).toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,') + ' VNĐ');
+				$('.quntity').html(data['cart']['totalQty']);
+			} else {
+				Swal.fire({
+					icon: 'error',
+					title: 'Số lượng phải lớn hơn 0',
+					showConfirmButton: false,
+					timer: 1500
+				})
+				inputQuantity.value = data['cart']['items'][data['id']]['qty'];
+			}
+		});
+	}
+
+	//
+	function requestCart(url = "", para = "", callbackSuccess = function() {}, callbackError = function(err) {
+		console.log(err)
+	}) {
+		let xmlHttp = new XMLHttpRequest();
+		xmlHttp.onreadystatechange = function() {
+			if (this.readyState == 4 && this.status == 200) {
+				callbackSuccess(this.responseText);
+			} else if (this.readyState == 4 && this.status == 500) {
+				callbackError(this.responseText);
+			}
+		}
+		xmlHttp.open("POST", url, true);
+		xmlHttp.setRequestHeader("Content-type", "application/json");
+		xmlHttp.send(para);
+	}
+</script>
+@stop

@@ -268,6 +268,8 @@
       })
     })
   </script>
+  @yield('script')
+  @yield('speak')
   </body>
 
 </html>

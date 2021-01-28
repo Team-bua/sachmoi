@@ -47,7 +47,7 @@
 													<label>Sắp xếp:</label>
 													<span class="tg-select">
 														<select id="sort_by" name="sort_by">
-															<option value="{{Request::url()}}?sort_by=none"> --Mặc định</option>
+															<option value="{{Request::url()}}?sort_by=none"> --Mặc định--</option>
 															<option value="{{Request::url()}}?sort_by=giam_dan"> Giá giảm dần</option>
 															<option value="{{Request::url()}}?sort_by=tang_dan">Giá tăng dần</option>
 															<option value="{{Request::url()}}?sort_by=duoi_70">Dưới 70,000 VNĐ</option>

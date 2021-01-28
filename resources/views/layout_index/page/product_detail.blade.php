@@ -6,122 +6,123 @@
 		border: 2px solid #EF5050;
 		resize: none;
 	}
+
 	/*--------------------------------rating------------------------------------*/
 
-.rating-card {
-    padding: 10px;
-    background-color: #F5F5F5;
-    width: 70%;
-    border-radius: 10px;
-    text-align: center;
-    margin: 0 auto;
-    margin-top: 30px;
-    box-shadow: 2px 2px 18px -2px #337AB7;
-}
+	.rating-card {
+		padding: 10px;
+		background-color: #F5F5F5;
+		width: 70%;
+		border-radius: 10px;
+		text-align: center;
+		margin: 0 auto;
+		margin-top: 30px;
+		box-shadow: 2px 2px 18px -2px #337AB7;
+	}
 
-.fa-star,
-.fa-star-o {
-    color: orange;
-}
+	.fa-star,
+	.fa-star-o {
+		color: orange;
+	}
 
-.rating-card h1 {
-    color: #337AB7;
-    margin-bottom: 30px;
-}
+	.rating-card h1 {
+		color: #337AB7;
+		margin-bottom: 30px;
+	}
 
-.rating {
-    width: 50%;
-    float: left;
-}
+	.rating {
+		width: 50%;
+		float: left;
+	}
 
-.rating p {
-    margin-top: 10px;
-    font-size: 20px;
-}
+	.rating p {
+		margin-top: 10px;
+		font-size: 20px;
+	}
 
-.rating h2 {
-    margin: 0px;
-    font-size: 60px;
-    font-weight: normal;
-}
+	.rating h2 {
+		margin: 0px;
+		font-size: 60px;
+		font-weight: normal;
+	}
 
-.rating-process {
-    width: 50%;
-    text-align: left;
-    float: left;
-}
+	.rating-process {
+		width: 50%;
+		text-align: left;
+		float: left;
+	}
 
-.rating-right-part {
-    margin-bottom: 3px;
-}
+	.rating-right-part {
+		margin-bottom: 3px;
+	}
 
-.rating-right-part p {
-    margin: 0px;
-}
+	.rating-right-part p {
+		margin: 0px;
+	}
 
-.progress,
-.progress-2,
-.progress-3,
-.progress-4,
-.progress-5 {
-    background: #c2c2c2;
-    border-radius: 13px;
-    height: 18px;
-    width: 70%;
-    padding: 1px;
-    margin: -21px 0px 0px 30px;
-    display: block;
-}
+	.progress,
+	.progress-2,
+	.progress-3,
+	.progress-4,
+	.progress-5 {
+		background: #c2c2c2;
+		border-radius: 13px;
+		height: 18px;
+		width: 70%;
+		padding: 1px;
+		margin: -21px 0px 0px 30px;
+		display: block;
+	}
 
-@media (min-width:320px) and (max-width:640px) {
-    .rating {
-        width: 100%;
-    }
-    .rating-process {
-        width: 100%;
-    }
-}
+	@media (min-width:320px) and (max-width:640px) {
+		.rating {
+			width: 100%;
+		}
+
+		.rating-process {
+			width: 100%;
+		}
+	}
 
 
-/*--------------------------------rating------------------------------------*/
+	/*--------------------------------rating------------------------------------*/
 
-.rating1 {
-    display: flex;
-    flex-direction: row-reverse;
-    justify-content: center;
-}
+	.rating1 {
+		display: flex;
+		flex-direction: row-reverse;
+		justify-content: center;
+	}
 
-.rating1>input {
-    display: none
-}
+	.rating1>input {
+		display: none
+	}
 
-.rating1>label {
-    position: relative;
-    width: 1em;
-    font-size: 50px;
-    color: #FFD600;
-    cursor: pointer
-}
+	.rating1>label {
+		position: relative;
+		width: 1em;
+		font-size: 50px;
+		color: #FFD600;
+		cursor: pointer
+	}
 
-.rating1>label::before {
-    content: "\2605";
-    position: absolute;
-    opacity: 0
-}
+	.rating1>label::before {
+		content: "\2605";
+		position: absolute;
+		opacity: 0
+	}
 
-.rating1>label:hover:before,
-.rating1>label:hover~label:before {
-    opacity: 1 !important
-}
+	.rating1>label:hover:before,
+	.rating1>label:hover~label:before {
+		opacity: 1 !important
+	}
 
-.rating1>input:checked~label:before {
-    opacity: 1
-}
+	.rating1>input:checked~label:before {
+		opacity: 1
+	}
 
-.rating1:hover>input:checked~label:before {
-    opacity: 0.4
-}
-
+	.rating1:hover>input:checked~label:before {
+		opacity: 0.4
+	}
 </style>
 <!--************************************
 				Inner Banner Start
@@ -171,7 +172,7 @@
 													<ins>{{ number_format($product_detail->promotion_price, 0, '', ',') }}VNĐ</ins>
 													@endif
 												</span>
-												<a class="tg-btn tg-active tg-btn-lg" href="javascript:void(0);" onclick="AddCart('{{ $product_detail->id }}')">Giỏ hàng</a>
+												<button class="tg-btn tg-active tg-btn-lg" onclick="AddCart('{{ $product_detail->id }}')">Giỏ hàng</button>
 												<a class="tg-btnaddtowishlist" href="{{ route('Read', $product_detail->id) }}">
 													<span>Đọc Online</span>
 												</a>
@@ -211,8 +212,8 @@
 												</div>
 												<div class="tg-description">
 													<textarea class="area" type="text" rows="25" cols="62" id="text" disabled style="height: 200px;">
-                {!! $product_detail->description !!}
-            </textarea>
+               						 				{!! $product_detail->description !!}
+            										</textarea>
 													<br>
 													<br>
 													<div class="col-md-4">
@@ -249,107 +250,107 @@
 												<div role="tabpanel" class="tg-tab-pane tab-pane active" id="description">
 													<div class="tg-description">
 														<div id="tab-specification" class="tab-content">
-                    @if(Auth::check())
-                    <form action="{{route('rating',$product_detail->id)}}" method="post">
-                        @csrf
-                        @method('put')
-                        <div class="cpt_product_description ">
-                            <div class="rating-card">
-                                <div class="rating">
-                                    <p><i class="fa fa-user" aria-hidden="true"></i> {{count($rating['count_ra'])}} Đánh Giá</p>
-                                </div>
-                                <div class="rating-process">
-                                    <div class="rating-right-part">
-                                        5<i aria-hidden="true" class="fa fa-star"></i>
-                                        Có {{$rating['ra_5']}} đánh giá
-                                    </div>
-                                    <div class="rating-right-part">
-                                        4<i aria-hidden="true" class="fa fa-star"></i>
-                                        Có {{$rating['ra_4']}} đánh giá
+															@if(Auth::check())
+															<form action="{{route('rating',$product_detail->id)}}" method="post">
+																@csrf
+																@method('put')
+																<div class="cpt_product_description ">
+																	<div class="rating-card">
+																		<div class="rating">
+																			<p><i class="fa fa-user" aria-hidden="true"></i> {{count($rating['count_ra'])}} Đánh Giá</p>
+																		</div>
+																		<div class="rating-process">
+																			<div class="rating-right-part">
+																				5<i aria-hidden="true" class="fa fa-star"></i>
+																				Có {{$rating['ra_5']}} đánh giá
+																			</div>
+																			<div class="rating-right-part">
+																				4<i aria-hidden="true" class="fa fa-star"></i>
+																				Có {{$rating['ra_4']}} đánh giá
 
-                                    </div>
-                                    <div class="rating-right-part">
-                                        3<i aria-hidden="true" class="fa fa-star"></i>
-                                        Có {{$rating['ra_3']}} đánh giá
+																			</div>
+																			<div class="rating-right-part">
+																				3<i aria-hidden="true" class="fa fa-star"></i>
+																				Có {{$rating['ra_3']}} đánh giá
 
-                                    </div>
-                                    <div class="rating-right-part">
-                                        2<i aria-hidden="true" class="fa fa-star"></i>
-                                        Có {{$rating['ra_2']}} đánh giá
+																			</div>
+																			<div class="rating-right-part">
+																				2<i aria-hidden="true" class="fa fa-star"></i>
+																				Có {{$rating['ra_2']}} đánh giá
 
-                                    </div>
-                                    <div class="rating-right-part">
-                                        1<i aria-hidden="true" class="fa fa-star"></i>
-                                        Có {{$rating['ra_1']}} đánh giá
+																			</div>
+																			<div class="rating-right-part">
+																				1<i aria-hidden="true" class="fa fa-star"></i>
+																				Có {{$rating['ra_1']}} đánh giá
 
-                                    </div>
-                                </div>
-                                <div style="clear:both;"></div>
-                            </div>
-                        </div>
-                        <div class="rating1">
-                            <input type="radio" name="rating" value="5" id="5">
-                            <label for="5">☆</label>
-                            <input type="radio" name="rating" value="4" id="4">
-                            <label for="4">☆</label>
-                            <input type="radio" name="rating" value="3" id="3">
-                            <label for="3">☆</label>
-                            <input type="radio" name="rating" value="2" id="2">
-                            <label for="2">☆</label>
-                            <input type="radio" name="rating" value="1" id="1">
-                            <label for="1">☆</label>
-                        </div>
-                        <center>
-                            <div class="input-group mb-2">
-                                <div class="input-group-prepend">
-                                    <div class="input-group-text"><i class="fa fa-comment text-info"></i></div>
-                                </div>
-                                <textarea style="resize: none;" rows="3" cols="50" class="form-control" placeholder="Nội dung đánh giá . . . . ." name="body" required></textarea>
-                            </div>
-                        </center>
-                        <br>
-                        <div class="text-center">
-                            <input type="submit" value="Gửi" class="btn btn-info btn-block">
-                        </div>
-                    </form>
-                    @else
-                    <div class="cpt_product_description ">
-                        <div class="rating-card">
-                            <div class="rating">
-                                <p><i class="fa fa-user" aria-hidden="true"></i> {{count($rating['count_ra'])}} Đánh Giá</p>
-                            </div>
-                            <div class="rating-process">
-                                <div class="rating-right-part">
-                                    5<i aria-hidden="true" class="fa fa-star"></i>
-                                    Có {{$rating['ra_5']}} đánh giá
-                                </div>
-                                <div class="rating-right-part">
-                                    4<i aria-hidden="true" class="fa fa-star"></i>
-                                    Có {{$rating['ra_4']}} đánh giá
+																			</div>
+																		</div>
+																		<div style="clear:both;"></div>
+																	</div>
+																</div>
+																<div class="rating1">
+																	<input type="radio" name="rating" value="5" id="5">
+																	<label for="5">☆</label>
+																	<input type="radio" name="rating" value="4" id="4">
+																	<label for="4">☆</label>
+																	<input type="radio" name="rating" value="3" id="3">
+																	<label for="3">☆</label>
+																	<input type="radio" name="rating" value="2" id="2">
+																	<label for="2">☆</label>
+																	<input type="radio" name="rating" value="1" id="1">
+																	<label for="1">☆</label>
+																</div>
+																<center>
+																	<div class="input-group mb-2">
+																		<div class="input-group-prepend">
+																			<div class="input-group-text"><i class="fa fa-comment text-info"></i></div>
+																		</div>
+																		<textarea style="resize: none;" rows="3" cols="50" class="form-control" placeholder="Nội dung đánh giá . . . . ." name="body" required></textarea>
+																	</div>
+																</center>
+																<br>
+																<div class="text-center">
+																	<input type="submit" value="Gửi" class="btn btn-info btn-block">
+																</div>
+															</form>
+															@else
+															<div class="cpt_product_description ">
+																<div class="rating-card">
+																	<div class="rating">
+																		<p><i class="fa fa-user" aria-hidden="true"></i> {{count($rating['count_ra'])}} Đánh Giá</p>
+																	</div>
+																	<div class="rating-process">
+																		<div class="rating-right-part">
+																			5<i aria-hidden="true" class="fa fa-star"></i>
+																			Có {{$rating['ra_5']}} đánh giá
+																		</div>
+																		<div class="rating-right-part">
+																			4<i aria-hidden="true" class="fa fa-star"></i>
+																			Có {{$rating['ra_4']}} đánh giá
 
-                                </div>
-                                <div class="rating-right-part">
-                                    3<i aria-hidden="true" class="fa fa-star"></i>
-                                    Có {{$rating['ra_3']}} đánh giá
+																		</div>
+																		<div class="rating-right-part">
+																			3<i aria-hidden="true" class="fa fa-star"></i>
+																			Có {{$rating['ra_3']}} đánh giá
 
-                                </div>
-                                <div class="rating-right-part">
-                                    2<i aria-hidden="true" class="fa fa-star"></i>
-                                    Có {{$rating['ra_2']}} đánh giá
+																		</div>
+																		<div class="rating-right-part">
+																			2<i aria-hidden="true" class="fa fa-star"></i>
+																			Có {{$rating['ra_2']}} đánh giá
 
-                                </div>
-                                <div class="rating-right-part">
-                                    1<i aria-hidden="true" class="fa fa-star"></i>
-                                    Có {{$rating['ra_1']}} đánh giá
+																		</div>
+																		<div class="rating-right-part">
+																			1<i aria-hidden="true" class="fa fa-star"></i>
+																			Có {{$rating['ra_1']}} đánh giá
 
-                                </div>
-                            </div>
-                            <div style="clear:both;"></div>
-                        </div>
-                    </div><br>
-                    <div style="float: left"> Chỉ có thành viên mới có thể nhận xét. Vui lòng <a href="{{ route('login') }}" data-toggle="modal" data-target="#tab-info">Đăng nhập</a> hoặc<a href="{{ route('signup') }}"> Đăng Ký</a></div>
-                    @endif
-                </div>
+																		</div>
+																	</div>
+																	<div style="clear:both;"></div>
+																</div>
+															</div><br>
+															<div style="float: left"> Chỉ có thành viên mới có thể nhận xét. Vui lòng <a href="{{ route('login') }}" data-toggle="modal" data-target="#tab-info">Đăng nhập</a> hoặc<a href="{{ route('signup') }}"> Đăng Ký</a></div>
+															@endif
+														</div>
 													</div>
 												</div>
 
@@ -385,46 +386,41 @@
 									</div>
 									<div class="tg-relatedproducts">
 										<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-											<div class="tg-sectionhead">
-												<h2>Sản Phẩm Liên Quan</h2>
-											</div>
-										</div>
-										<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 											<div id="tg-relatedproductslider" class="tg-relatedproductslider tg-relatedbooks owl-carousel">
 												@foreach ($product_related as $pro)
 												<div class="item">
-									<div class="tg-postbook">
-										<figure class="tg-featureimg" style="height: 250px">
-											<div class="tg-bookimg" >
-												<div class="tg-frontcover"> <img style="height: 240px" src="{{ asset('images/product/' . $pro->image) }}" alt="image" /></div>
-												<div class="tg-backcover"><img src="{{ asset('images/product/' . $pro->image) }}" alt="image" width="150px" height="150px" /></div>
-											</div>
-											<a class="tg-btnaddtowishlist" href="{{route('Read',$pro->id)}}">
-												<i class="fa fa-book" ></i>
-												<span>Đọc Online</span>
-											</a>
-										</figure>
-										<div class="tg-postbookcontent">
-											<div class="tg-themetagbox"><span class="tg-themetag">sale</span></div>
-											<div class="tg-booktitle">
-												<h3><a href="{{ route('detail', $pro->id) }}">{{ $pro->name }}</a></h3>
-											</div>
-											<span class="tg-bookwriter"><a href="javascript:void(0);">{{$pro->productCompany->name}}</a></span>
-											<span class="tg-bookprice">
-												  @if($pro->promotion_price == 0)
-												<ins style="margin-bottom: 20px">{{number_format($pro->unit_price,0,"",",")}} VNĐ</ins>
-												@else
-												<del>{{number_format($pro->unit_price,0,"",",")}} VNĐ </del>
-												<ins>&nbsp;&nbsp;{{number_format($pro->promotion_price,0,"",",")}} VNĐ</ins>
-												@endif
-											</span>
-											<a class="tg-btn tg-btnstyletwo" href="javascript:void(0);">
-												<i class="fa fa-shopping-basket"></i>
-												<em>Giỏ Hàng</em>
-											</a>
-										</div>
-									</div>
-								</div>
+													<div class="tg-postbook">
+														<figure class="tg-featureimg" style="height: 250px">
+															<div class="tg-bookimg">
+																<div class="tg-frontcover"> <img style="height: 240px" src="{{ asset('images/product/' . $pro->image) }}" alt="image" /></div>
+																<div class="tg-backcover"><img src="{{ asset('images/product/' . $pro->image) }}" alt="image" width="150px" height="150px" /></div>
+															</div>
+															<a class="tg-btnaddtowishlist" href="{{route('Read',$pro->id)}}">
+																<i class="fa fa-book"></i>
+																<span>Đọc Online</span>
+															</a>
+														</figure>
+														<div class="tg-postbookcontent">
+															<div class="tg-themetagbox"><span class="tg-themetag">sale</span></div>
+															<div class="tg-booktitle">
+																<h3><a href="{{ route('detail', $pro->id) }}">{{ $pro->name }}</a></h3>
+															</div>
+															<span class="tg-bookwriter"><a href="javascript:void(0);">{{$pro->productCompany->name}}</a></span>
+															<span class="tg-bookprice">
+																@if($pro->promotion_price == 0)
+																<ins style="margin-bottom: 20px">{{number_format($pro->unit_price,0,"",",")}} VNĐ</ins>
+																@else
+																<del>{{number_format($pro->unit_price,0,"",",")}} VNĐ </del>
+																<ins>&nbsp;&nbsp;{{number_format($pro->promotion_price,0,"",",")}} VNĐ</ins>
+																@endif
+															</span>
+															<a class="tg-btn tg-btnstyletwo" href="javascript:void(0);">
+																<i class="fa fa-shopping-basket"></i>
+																<em>Giỏ Hàng</em>
+															</a>
+														</div>
+													</div>
+												</div>
 												@endforeach
 											</div>
 										</div>

@@ -45,7 +45,7 @@ class AppServiceProvider extends ServiceProvider
             $company = Company::all();
             $view->with(['types' => $types, 'company' => $company, 'product_n' => $product_n, 'types_id' => $types_id, 'types_name' => $types_name]);
         });
-        view()->composer(['layout_index.page.cart', 'layout_index.page.checkout'], function ($view) {
+        view()->composer(['layout_index.header', 'layout_index.page.cart', 'layout_index.page.checkout'], function ($view) {
             if (Session('cart')) {
                 $oldcart = Session::get('cart');
                 $cart = new Cart($oldcart);

@@ -40,18 +40,19 @@
 								</div>
 								<div class="tg-productgrid">
 									<div class="tg-refinesearch">
-										<form action="" id="sort_by" name="sort_by" class="tg-formtheme tg-formsortshoitems">
+										<form action="" class="tg-formtheme tg-formsortshoitems">
+											@csrf
 											<fieldset>
 												<div class="form-group">
-													<label>Lựa Chọn:</label>
-
+													<label>Sắp xếp:</label>
 													<span class="tg-select">
-														<select class="sort_by">
-															<option><a class="{{Request::get('sort_by') == 'giam_dan' ? 'active' : ''}}" href="{{Request::url()}}?sort_by=giam_dan">Giá giảm dần</a></option>
-															<option><a class="{{Request::get('sort_by') == 'tang_dan' ? 'active' : ''}}" href="{{Request::url()}}?sort_by=tang_dan">Giá tăng dần</a></option>
-															<option><a class="{{Request::get('sort_by') == 'duoi_70' ? 'active' : ''}}" href="{{Request::url()}}?sort_by=duoi_70">Dưới 70,000 VNĐ</a></option>
-															<option><a class="{{Request::get('sort_by') == '70-100' ? 'active' : ''}}" href="{{Request::url()}}?sort_by=70-100">Từ 70,000 - 100,000 VNĐ</a></option>
-															<option><a class="{{Request::get('sort_by') == 'tren_100' ? 'active' : ''}}" href="{{Request::url()}}?sort_by=tren_100">Trên 100,000 VNĐ</a></option>
+														<select id="sort_by" name="sort_by">
+															<option value="{{Request::url()}}?sort_by=none"> --Mặc định</option>
+															<option value="{{Request::url()}}?sort_by=giam_dan"> Giá giảm dần</option>
+															<option value="{{Request::url()}}?sort_by=tang_dan">Giá tăng dần</option>
+															<option value="{{Request::url()}}?sort_by=duoi_70">Dưới 70,000 VNĐ</option>
+															<option value="{{Request::url()}}?sort_by=70-100"> Từ 70,000 - 100,000 VNĐ</option>
+															<option value="{{Request::url()}}?sort_by=tren_100">Trên 100,000 VNĐ</option>
 														</select>
 													</span>
 												</div>
@@ -95,9 +96,11 @@
 										</div>
 									</div>
 									@endforeach
-
 								</div>
 							</div>
+							<div class="row">
+									<div class="btn-sec">{{$product_all->appends(request()->input())->links('vendor.pagination.bootstrap-4')}}</div>
+								</div>
 						</div>
 					</div>
 					<div class="col-xs-12 col-sm-4 col-md-4 col-lg-3 pull-left">

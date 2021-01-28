@@ -102,6 +102,16 @@ class PageRepository
     }
     // sach mới
 
+    public function getAllproductNewThree(){
+        $product = Product::where('status', 1)
+        ->latest()
+        ->with('store')
+        ->limit(3)->get();
+        return $product;
+        }
+        //lấy 3 quyển sách mới nhất để show ra trang index
+
+
     public function getBillByCompanyId()
     {
         $company_id = GetSession::getCompanyId();
@@ -136,6 +146,7 @@ class PageRepository
     }
     // sách giảm giá
 
+    
     public function getAllproductHighlights()
     {
         if (isset($_GET['sort_by'])) {
@@ -160,6 +171,15 @@ class PageRepository
         return $product;
     }
     //sách nổi bật
+    public function getAllproductHighlightsThree(){
+    $product = Product::where('new', 1)->where('status', 1)
+    ->latest()
+    ->with('store')
+    ->limit(3)->get();
+    return $product;
+    }
+    //lấy 3 quyển sách nổi bật để show ra trang index
+
 
     public function getProduct($id)
     {

@@ -51,7 +51,7 @@
 												<figure class="tg-featureimg" style="height: 250px">
 													<div class="tg-bookimg">
 														<div class="tg-frontcover"><img style="height: 240px" src="{{ asset('images/product/' . $books->image) }}" alt="image" /></div>
-														<div class="tg-backcover"><img style="height: 240px" src="{{ asset('images/product/' . $books->image) }}" alt="image" /></div>
+														<div class="tg-backcover"><img src="{{ asset('images/product/' . $books->image) }}" alt="image" /></div>
 													</div>
 													<a class="tg-btnaddtowishlist" href="{{route('Read',$books->id)}}">
 														<i class="fa fa-book"></i>
@@ -83,6 +83,9 @@
 										</div>
 										@endforeach
 									</div>
+								</div>
+								<div class="row">
+									<div class="btn-sec">{{$product_company->appends(request()->input())->links('vendor.pagination.bootstrap-4')}}</div>
 								</div>
 							</div>
 						</div>

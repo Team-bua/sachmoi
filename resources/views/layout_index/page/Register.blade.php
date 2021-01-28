@@ -63,7 +63,7 @@
                             <br><br>
                             <div style="margin-left:130px" class=" tg-btns">
 
-                                <button class="tg-btn"> <b> Đăng Nhập </b></button>
+                                <button class="tg-btn"> <b> Đăng Ký </b></button>
 
                             </div>
 

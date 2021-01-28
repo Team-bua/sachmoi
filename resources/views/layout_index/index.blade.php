@@ -86,7 +86,7 @@
 								
 								<div class="row">
 									<div class="tg-newreleasebooks">
-										@foreach ($product_new as $pro)
+										@foreach ($product_new_three as $pro)
 										<div class="col-xs-4 col-sm-4 col-md-6 col-lg-4">
 											<div class="tg-postbook">
 												<figure class="tg-featureimg" style="height: 250px">
@@ -144,6 +144,7 @@
 								<h2>{{ __("hotbook") }}</h2>
 								<a class="tg-btn" href="{{ route('allnew') }}">{{ __('all') }}</a>
 							</div>
+<<<<<<< HEAD
 						</div>
 						<div id="tg-pickedbyauthorslider" class="tg-pickedbyauthor tg-pickedbyauthorslider owl-carousel">
 							@foreach ($product_hightlights as $pro)
@@ -174,6 +175,39 @@
 									</figure>
 									<div class="tg-postbookcontent">
 									<a class="tg-btn tg-btnstyletwo" href="javascript:void(0);">
+=======
+							<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+								<div class="row">
+									<div class="tg-newreleasebooks">
+										@foreach ($product_hightlights_three as $pro)
+										<div class="col-xs-4 col-sm-4 col-md-6 col-lg-4">
+											<div class="tg-postbook">
+												<figure class="tg-featureimg" style="height: 250px">
+													<div class="tg-bookimg" >
+														<div class="tg-frontcover"> <a href="{{ route('detail', $pro->id) }}"><img style="height: 240px" src="{{ asset('images/product/' . $pro->image) }}" alt="image" /></a></div>
+														<div class="tg-backcover"> <a href="{{ route('detail', $pro->id) }}"><img src="{{ asset('images/product/' . $pro->image) }}" alt="image" width="150px" height="150px" /></a></div>
+													</div>
+													<a class="tg-btnaddtowishlist" href="{{route('Read',$pro->id)}}">
+														<i class="fa fa-book" ></i>
+														<span>Đọc Online</span>
+													</a>
+												</figure>
+												<div class="tg-postbookcontent">
+													<div class="tg-themetagbox"><span class="tg-themetag">sale</span></div>
+													<div class="tg-booktitle">
+														<h3><a href="javascript:void(0);">{{ $pro->name }}</a></h3>
+													</div>
+													<span class="tg-bookwriter"><a href="javascript:void(0);">{{$pro->productCompany->name}}</a></span>
+													<span class="tg-bookprice">
+														  @if($pro->promotion_price == 0)
+														<ins style="margin-bottom: 20px">{{number_format($pro->unit_price,0,"",",")}} VNĐ</ins>
+														@else
+														<del>{{number_format($pro->unit_price,0,"",",")}} VNĐ </del>
+														<ins>&nbsp;&nbsp;{{number_format($pro->promotion_price,0,"",",")}} VNĐ</ins>
+														@endif
+													</span>
+													<a class="tg-btn tg-btnstyletwo" href="javascript:void(0);">
+>>>>>>> f9afe673e0e9ffd5c512100d6dbd62196f8a8bd1
 														<i class="fa fa-shopping-basket"></i>
 														<em>Giỏ Hàng</em>
 													</a>

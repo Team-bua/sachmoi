@@ -58,10 +58,10 @@
 									@foreach ($search as $pro)
 									<div class="col-xs-6 col-sm-6 col-md-4 col-lg-3">
 										<div class="tg-postbook">
-											<figure class="tg-featureimg">
+											<figure class="tg-featureimg" style="height: 250px">
 												<div class="tg-bookimg">
 													<div class="tg-frontcover"><img style="height: 240px" src="{{ asset('images/product/' . $pro->image) }}" alt="image" /></div>
-													<div class="tg-backcover"><img style="height: 240px" src="{{ asset('images/product/' . $pro->image) }}" alt="image" /></div>
+													<div class="tg-backcover"><img src="{{ asset('images/product/' . $pro->image) }}" alt="image" /></div>
 												</div>
 												<a class="tg-btnaddtowishlist" href="javascript:void(0);">
 													<i class="icon-heart"></i>
@@ -115,7 +115,7 @@
 								</div>
 								<div class="tg-widgetcontent">
 									<ul>
-										@for($i = 0; $i < count($product_n); $i++) <li><a href="{{ route('product_type', $types_id[$i]) }}"><span>{{ $types_name[$i] }}:</span><span>({{ $product_n[$i] }})</span></a>
+										@for($i = 0; $i < count($product_n); $i++) <li><a href="{{ route('product_type', $types_id[$i]) }}"><span>{{ $types_name[$i] }} </span><span>({{ $product_n[$i] }})</span></a>
 											</li>
 											@endfor
 

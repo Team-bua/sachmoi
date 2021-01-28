@@ -161,8 +161,8 @@
     }
 
     .bubble-msg {
-      width: 120px;
-      left: -140px;
+      width: 197px;
+      left: -208px;
       top: 5px;
       position: relative;
       background: rgba(59, 89, 152, .8);
@@ -181,7 +181,7 @@
       <div class="fb-credit"> <a href="https://hoaky68.com" target="_blank" rel="noopener noreferrer">Book Store</a> </div>
       <div id="fb-root"></div>
     </div><a href="https://m.me/&#039; + link_mobile + &#039;" title="Gửi tin nhắn cho chúng tôi qua Facebook" class="ctrlq fb-button" rel="nofollow" target="_blank">
-      <div class="bubble-msg">Bạn cần hỗ trợ gì không?</div>
+      <div class="bubble-msg">Bạn cần hỗ trợ gì không ?</div>
     </a>
   </div>
   <script>

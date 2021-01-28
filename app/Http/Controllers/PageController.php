@@ -46,17 +46,14 @@ class PageController extends Controller
         $slide = $this->repository->getSlide();
         // bìa quảng cáo
         $product_hightlights_three = $this->repository->getAllproductHighlightsThree();
-        $product_hightlights = $this->repository->getAllproductHighlights();
         // sách nổi bật 
         $product_sale = $this->repository->getAllProductSale();
         // sách giảm giá 
         $product_new_three = $this->repository->getAllproductNewThree();
-        $product_new = $this->repository->getAllproductNew();
         //sách mới 
         $product_type = $this->repository->getProductType();
-        return view('layout_index.index',compact('product_new', 'product_type', 
+        return view('layout_index.index',compact('product_type', 
                                                 'slide', 'product_sale', 
-                                                'product_hightlights',
                                                 'product_new_three',
                                                 'product_hightlights_three'));
     }

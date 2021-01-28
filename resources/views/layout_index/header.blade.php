@@ -21,23 +21,13 @@
                                 </li>
                             </ul>
                             <div class="dropdown tg-themedropdown tg-currencydropdown" style="margin-left: 4%">
-                                <a href="javascript:void(0);" id="tg-currenty" class="tg-btnthemedropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <i class="icon-earth"></i>
+                                <a href="{!! route('user.language', ['en']) !!}">
+                                    <span><img src="{{ asset('images/icon/tienganh.png') }}" height="25px" width="25px"></span>
                                 </a>
-                                <ul class="dropdown-menu tg-themedropdownmenu" aria-labelledby="tg-currenty">
-                                    <li>
-        
-                                        <a href="{!! route('user.language', ['en']) !!}">
-                                            <span><img src="{{ asset('images/icon/tienganh.png') }}" height="50px" width="50px"></span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="{!! route('user.language', ['vi']) !!}">
-                                            <span><img src="{{ asset('images/icon/tiengviet.png') }}" height="50px" width="50px"></span>
-                                        </a>
-                                    </li>
-        
-                                </ul>
+                                <a href="{!! route('user.language', ['vi']) !!}">
+                                    <span><img src="{{ asset('images/icon/tiengviet.png') }}" height="25px" width="25px"></span>
+                                </a>
+
                             </div>
                             @if (Auth::check())
                             @if (Auth::user()->id_role == 1 || Auth::user()->id_role == 2)

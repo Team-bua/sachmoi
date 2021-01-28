@@ -96,7 +96,7 @@ class PageRepository
             $product = Product::orderBy('created_at', 'desc')
                 ->where('status', 1)
                 ->with('store')
-                ->paginate(10);
+                ->paginate(3);
         }
         return $product;
     }
@@ -155,7 +155,7 @@ class PageRepository
             $product = Product::where('new', 1)->where('status', 1)
             ->latest()
             ->with('store')
-            ->paginate(10);
+            ->paginate(3);
         }
         return $product;
     }

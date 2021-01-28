@@ -15,7 +15,7 @@
 						</div>
 						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 							<div id="tg-bestsellingbooksslider" class="tg-bestsellingbooksslider tg-bestsellingbooks owl-carousel">
-								@foreach ($product_sale    as $pro)
+								@foreach ($product_sale as $pro)
 								<div class="item">
 									<div class="tg-postbook">
 										<figure class="tg-featureimg" style="height: 250px">
@@ -42,7 +42,7 @@
 												<ins>&nbsp;&nbsp;{{number_format($pro->promotion_price,0,"",",")}} VNĐ</ins>
 												@endif
 											</span>
-											<a class="tg-btn tg-btnstyletwo" href="javascript:void(0);">
+											<a class="tg-btn tg-btnstyletwo" onclick="AddCart('{{ $pro->id }}')">
 												<i class="fa fa-shopping-basket"></i>
 												<em>Giỏ Hàng</em>
 											</a>

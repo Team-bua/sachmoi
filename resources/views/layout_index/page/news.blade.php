@@ -31,14 +31,51 @@
 	<div class="tg-sectionspace tg-haslayout">
 		<div class="container">
 			<div class="row">
+
 				<div id="tg-twocolumns" class="tg-twocolumns">
+					
 					<div class="col-xs-12 col-sm-8 col-md-8 col-lg-9 pull-right">
 						<div id="tg-content" class="tg-content">
 							<div class="tg-newsgrid">
 								<div class="tg-sectionhead">
-									<h2>Tin Tức</h2>
+									<h2>Tin mới nhất</h2>
 								</div>
 								<div class="row">
+									<div class="tg-featurebook alert" role="alert">
+
+										<div class="tg-featureditm">
+											<div class="row">
+												
+												<div class="col-xs-12 col-sm-12 col-md-5 col-lg-5 hidden-sm hidden-xs">
+													<figure><a href="{{ route('newsdetail', [$content_fist['id']]) }}"><img style="width:320px;height:220px;" src="{{ asset('images/news/' .  $content_fist->image) }}" alt="image description"></a></figure>
+												</div>
+												<div class="col-xs-12 col-sm-12 col-md-7 col-lg-7">
+													<div class="tg-featureditmcontent">
+														<div class="tg-themetagbox"><span class="tg-themetag">featured</span></div>
+														<div class="tg-booktitle">
+															<h3><a href="javascript:void(0);">Things To Know About Green Flat Design</a></h3>
+														</div>
+														<span class="tg-bookwriter">By: <a href="javascript:void(0);">Farrah Whisenhunt</a></span>
+														<span class="tg-stars"><span></span></span>
+														<div class="tg-priceandbtn">
+															<span class="tg-bookprice">
+																<ins>$23.18</ins>
+																<del>$30.20</del>
+															</span>
+															<a class="tg-btn tg-btnstyletwo tg-active" href="javascript:void(0);">
+																<i class="fa fa-shopping-basket"></i>
+																<em>Add To Basket</em>
+															</a>
+														</div>
+													</div>
+												</div>
+											</div>
+											
+										</div>
+									</div>
+									<div class="tg-sectionhead">
+										<h2>Tin tổng hợp</h2>
+									</div>
 									@foreach ($content as $con)
 									<div class="col-xs-6 col-sm-12 col-md-6 col-lg-4">
 										<article class="tg-post">

@@ -86,7 +86,7 @@
 								
 								<div class="row">
 									<div class="tg-newreleasebooks">
-										@foreach ($product_new as $pro)
+										@foreach ($product_new_three as $pro)
 										<div class="col-xs-4 col-sm-4 col-md-6 col-lg-4">
 											<div class="tg-postbook">
 												<figure class="tg-featureimg" style="height: 250px">
@@ -159,7 +159,7 @@
 							<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
 								<div class="row">
 									<div class="tg-newreleasebooks">
-										@foreach ($product_hightlights as $pro)
+										@foreach ($product_hightlights_three as $pro)
 										<div class="col-xs-4 col-sm-4 col-md-6 col-lg-4">
 											<div class="tg-postbook">
 												<figure class="tg-featureimg" style="height: 250px">

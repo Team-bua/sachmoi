@@ -34,27 +34,52 @@ class CompanyRepository
 
     public function create(Request $request)
     {
+
+        $image="";
+        if($request->hasfile('img'))
+        {
+             $file = $request->file('img');
+             $image = time().'_'.$file->getClientOriginalName();
+             $destinationPath=public_path('images/companies');
+             $file->move($destinationPath, $image); //lưu hình ảnh vào thư mục public/image        
+        }
        $companies = new Company();
        $companies->name=$request->input('name');
        $companies->email=$request->input('email');
        $companies->address=$request->input('address');
        $companies->phone_number=$request->input('phone');
+       $companies->image= $image;
        $companies->save();
        
     }
 
     public function update($request, $id) {
+        $image="";
+        if($request->hasfile('img'))
+        {
+            $file = $request->file('img');
+            $image=time().'_'.$file->getClientOriginalName();
+            $destinationPath=public_path('images/companies'); //project\public\image\cars, //public_path(): trả về đường dẫn tới thư mục public
+            $file->move($destinationPath, $image); //lưu hình ảnh vào thư mục public/image
+        }
+
         $companies = Company::find($id);
         $companies->name=$request->input('name');
         $companies->email=$request->input('email');
         $companies->address=$request->input('address');
         $companies->phone_number=$request->input('phone');
+        $companies->image = $image;
+        if($image ==""){
+            $image=$companies->image;
+        }
+       
         $companies->save();
         
     }
 
     public function destroy($id) {
         $companies = Company::find($id);
+        unlink(public_path('images/companies').'/'.$companies->image); 
         $companies->delete();
       
     }

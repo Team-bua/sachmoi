@@ -6,9 +6,11 @@
 		border: 2px solid #EF5050;
 		resize: none;
 	}
+
 	.active {
-        color: #ff9705 !important;
-    }
+		color: #ff9705 !important;
+	}
+
 	/*--------------------------------rating------------------------------------*/
 
 	.rating-card {
@@ -198,7 +200,7 @@
 											}
 
 											?>
-											@for($i=1; $i<=5; $i++) <span class="tg-stars"><span class="{{$i <= $product_ra ? 'active' : ''}}"></span></span>
+											@for($i=1; $i<=5; $i++) <span class="fa fa-star {{$i <= $product_ra ? 'active' : ''}}" style="color:#999"></span>
 												@endfor
 												@endif
 												<div class="tg-share">
@@ -271,19 +273,19 @@
 												<h2>Đánh Giá</h2>
 											</div>
 											@foreach($rating['ra_date'] as $ra)
-													<?php
-													$ra_show = 0;
-													if ($ra->pivot->ra_number) {
-														$ra_show = $ra->pivot->ra_number;
-													}
-													?>
+											<?php
+											$ra_show = 0;
+											if ($ra->pivot->ra_number) {
+												$ra_show = $ra->pivot->ra_number;
+											}
+											?>
 											<div class="tg-authorbox">
 												<figure class="tg-authorimg">
 													<img src="images/author/imag-24.jpg" alt="image description">
 												</figure>
 
 												<div class="tg-authorinfo">
-													
+
 													<div class="tg-authorhead">
 														<div class="tg-leftarea">
 															<div class="tg-authorname">
@@ -292,20 +294,23 @@
 															</div>
 														</div>
 														<div class="tg-rightarea">
-															@for($i=1; $i<=5; $i++) 
-															<span class="fa fa-star {{$i <= $ra_show ? 'active' : ''}}" style="color:#999"></span>
-															
+															@for($i=1; $i<=5; $i++) <span class="fa fa-star {{$i <= $ra_show ? 'active' : ''}}" style="color:#999"></span>
+
 																@endfor
 														</div>
 													</div>
 													<div class="tg-description">
 														<p> {{$ra->pivot->body}}.</p>
 													</div>
-													
+
 												</div>
 
 											</div>
 											@endforeach
+										</div>
+										<br>
+										<div class="btn-sec">
+											<div class="btn-sec">{{$rating['ra_date']->appends(request()->input())->links('vendor.pagination.bootstrap-4')}}</div>
 										</div>
 									</div>
 									<div class="tg-relatedproducts">

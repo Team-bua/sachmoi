@@ -31,7 +31,8 @@ class AppServiceProvider extends ServiceProvider
     {
         view()->composer(['layout_index.header', 'layout_index.page.product_detail','layout_index.page.view_type','layout_index.page.view_all_new',
                         'layout_index.page.view_all_sale', 'layout_index.page.news', 'layout_index.page.news-detail',
-                        'layout_index.page.view_all_highlights','layout_index.page.product_company','layout_index.page.all_book','layout_index.page.search','layout_index.customer.info'], function ($view) {
+                        'layout_index.page.view_all_highlights','layout_index.page.product_company','layout_index.page.all_book','layout_index.page.search',
+                        'layout_index.page.about', 'layout_index.index'], function ($view) {
             $types = ProductType::all();
             $product_n = [];
             $types_id = [];
@@ -45,7 +46,7 @@ class AppServiceProvider extends ServiceProvider
                 $types_name[] = $t->name;
             }
             $company = Company::all();
-            $view->with(['types' => $types, 'company' => $company, 'product_n' => $product_n, 'types_id' => $types_id, 'types_name' => $types_name]);
+            $view->with(['types' => $types, 'company' => $company, 'product_n' => $product_n, 'types_id' => $types_id, 'types_name' => $types_name,]);
         });
         view()->composer(['layout_index.header', 'layout_index.page.cart', 'layout_index.page.checkout'], function ($view) {
             if (Session('cart')) {

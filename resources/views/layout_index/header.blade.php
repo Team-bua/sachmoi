@@ -30,28 +30,42 @@
                             </div>
                             @if (Auth::check())
                             @if (Auth::user()->id_role == 1 || Auth::user()->id_role == 2)
-                            <div class="tg-userlogin">
-                                <figure><a href="javascript:void(0);"><img src="" alt="image description"></a></figure>
-                                <a href="{{ route('admin') }}"><span>{{ Auth::user()->full_name }}</span></a>
-                                <br>
-                                <a href="{{ url('logout') }}"><span>{{ __('logout') }}</span></a>
+
+                            <div style="margin-left:350px " class="dropdown tg-themedropdown tg-currencydropdown">
+								<a  href="{{ route('admin') }}" id="tg-currenty" class="tg-btnthemedropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+									<i class="icon-user"></i>
+									<span style="font-weight: bold;">{{ Auth::user()->full_name }}</span>
+                                </a>
+                               
+								<ul  class="dropdown-menu tg-dropdownmenu" aria-labelledby="tg-currenty" >
+									
+									<li style="list-style-type: none;text-align:center;">
+                                        <a href="{{ url('logout') }}"><span>{{ __('logout') }}</span></a>
+										
+                                    </li>
+                                    @else
+                                    <li>
+                                      
+                                        <a href="{{ route('info',Auth::user()->id) }}"> <span>{{ Auth::user()->full_name }}</span> </a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ url('logout') }}"> <span>{{ __('logout') }}</span> </a>
+                                    </li>
+                                    @endif
+                                    @else
+                                </ul>
+                                    
+                                        <a style="margin-left:320px;margin-top:5px ;font-size:15px;font-weight: bold" class="tg-btn" href="{{ route('login') }}"><span>Đăng Nhập</span></a>
+                                    
+
+								
                             </div>
-                        </div>
-                        @else
-                        <div class="tg-userlogin">
-                            <figure><a href="javascript:void(0);"><img src="images/users/img-01.jpg" alt="image description"></a></figure>
-                            <a href="{{ route('info',Auth::user()->id) }}"> <span>{{ Auth::user()->full_name }}</span> </a>
-                            <br>
-                            <a href="{{ url('logout') }}"> <span>{{ __('logout') }}</span> </a>
-                        </div>
-                        @endif
-                        @else
-                        <div class="tg-userlogin">
-                            <a href="{{ route('login') }}"><span>Đăng Nhập</span></a>
-                        </div>
-                        @endif
+                            @endif
+                           
+                        
                     </div>
                 </div>
+                
             </div>
             </div>
             <div class="tg-middlecontainer">
@@ -89,7 +103,7 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                            <nav id="tg-nav" class="tg-nav">
+                            <nav style="font-weight: bold;font-size: 16px" id="tg-nav" class="tg-nav">
                                 <div class="navbar-header">
                                     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#tg-navigation" aria-expanded="false">
                                         <span class="sr-only">Toggle navigation</span>
@@ -107,34 +121,35 @@
                                             <a href="">{{ __('catelory') }}</a>
                                             <div class="mega-menu">
                                                 <ul class="tg-themetabnav" role="tablist">
-                                                    @for($i = 0; $i < count($product_n); $i++) <li><a href="{{ route('product_type', $types_id[$i]) }}">{{ $types_name[$i] }} ({{ $product_n[$i] }})</a>
+                                                    @for($i = 0; $i < count($product_n); $i++)
+                                                     <li style="font-weight: bold;font-size: 13px"  ><a href="{{ route('product_type', $types_id[$i]) }}">{{ $types_name[$i] }} ({{ $product_n[$i] }})</a>
                                         </li>
                                         @endfor
                                     </ul>
                                 </div>
                                 </li>
 
-                                <li class="menu-item-has-children">
+                                <li style="font-weight: bold" class="menu-item-has-children">
                                     <a href="{{ route('all_book') }}">{{ __('all') }}</a>
                                     <ul class="sub-menu">
-                                        <li><a href="{{ route('allnew') }}">{{ __("newbook") }}</a>
+                                        <li style="font-weight: bold;font-size: 13px" ><a href="{{ route('allnew') }}">{{ __("newbook") }}</a>
                                         </li>
-                                        <li><a href="{{ route('allsale') }}">{{ __("salebook") }}</a>
+                                        <li style="font-weight: bold;font-size: 13px"><a href="{{ route('allsale') }}">{{ __("salebook") }}</a>
                                         </li>
-                                        <li><a href="{{  route('allhighlights')  }}">{{ __("hotbook") }}</a>
+                                        <li style="font-weight: bold;font-size: 13px"><a href="{{  route('allhighlights')  }}">{{ __("hotbook") }}</a>
                                         </li>
                                     </ul>
                                 </li>
-                                <li class="menu-item-has-children">
+                                <li style="font-weight: bold" class="menu-item-has-children">
                                     <a href="#"> {{ __('company') }}</a>
                                     <ul class="sub-menu">
                                         @foreach ($company as $com)
-                                        <li><a href="{{ route('product_company', $com->id) }}">{{ $com->name }}</a>
+                                        <li style="font-weight: bold"><a href="{{ route('product_company', $com->id) }}">{{ $com->name }}</a>
                                         </li>
                                         @endforeach
                                     </ul>
                                 </li>
-                                <li><a href="{{ route('introduce') }}">{{ __('introduce') }} </a></li>
+                                <li ><a href="{{ route('introduce') }}">{{ __('introduce') }} </a></li>
 
                                 <li><a href="{{ route('news') }}">{{ __('newws') }}</a></li>
                                 </ul>

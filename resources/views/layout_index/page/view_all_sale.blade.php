@@ -2,43 +2,44 @@
 @section('content')
 <style type="text/css">
 	.Out {
-    display: block;
-    position: absolute;
-    top: 108px;
-    padding: 0px 13px;
-    width: 190px;
-    font-size: 20px;
-    color: #FFF;
-    text-align: center;
-    text-transform: uppercase;
-    -moz-transform: rotate(45deg);
-    -webkit-transform: rotate(45deg);
-    -o-transform: rotate(45deg);
-    -ms-transform: rotate(45deg);
-    background-color: #C1272C;
-    z-index: 3;
-    right: 0px;
-    height: 28px;
-    line-height: 30px;
-    box-shadow: 0px 1px 2px #666;
-    -webkit-box-shadow: 0px 1px 2px #666;
-    -moz-box-shadow: 0px 1px 2px #666;
-    font-weight: 700;
-    font-family: 'Source Sans Pro', Arial;
-}
-/*-------------------------------------------------*/
-.Out2 {
-    position: absolute;
-    right: 15px;
-    top: 15px;
-    z-index: 19;
-    padding: 10px;
-    font-size: 13px;
-    color: #fff;
-    background: #900101;
-    -webkit-border-radius: 10px;
-    border-radius: 10px;
-}
+		display: block;
+		position: absolute;
+		top: 108px;
+		padding: 0px 13px;
+		width: 190px;
+		font-size: 20px;
+		color: #FFF;
+		text-align: center;
+		text-transform: uppercase;
+		-moz-transform: rotate(45deg);
+		-webkit-transform: rotate(45deg);
+		-o-transform: rotate(45deg);
+		-ms-transform: rotate(45deg);
+		background-color: #C1272C;
+		z-index: 3;
+		right: 0px;
+		height: 28px;
+		line-height: 30px;
+		box-shadow: 0px 1px 2px #666;
+		-webkit-box-shadow: 0px 1px 2px #666;
+		-moz-box-shadow: 0px 1px 2px #666;
+		font-weight: 700;
+		font-family: 'Source Sans Pro', Arial;
+	}
+
+	/*-------------------------------------------------*/
+	.Out2 {
+		position: absolute;
+		right: 15px;
+		top: 15px;
+		z-index: 19;
+		padding: 10px;
+		font-size: 13px;
+		color: #fff;
+		background: #900101;
+		-webkit-border-radius: 10px;
+		border-radius: 10px;
+	}
 </style>
 <!--************************************
 				Inner Banner Start
@@ -116,8 +117,8 @@
 											<div class="tg-postbookcontent">
 												<div class="tg-themetagbox"><span class="tg-themetag">sale</span></div>
 												@if($books->store && $books->store->stored_product == 0)
-                             <div class="Out">Hết Hàng</div>
-                             @endif
+												<div class="Out">Hết Hàng</div>
+												@endif
 												<div class="tg-booktitle">
 													<h3><a href="javascript:void(0);">{{ $books->name }}</a></h3>
 												</div>
@@ -132,18 +133,15 @@
 													@endif
 												</span>
 												<a class="tg-btn tg-btnstyletwo" onclick="AddCart('{{ $books->id }}')">
-												<i class="fa fa-shopping-basket"></i>
-												<em>{{ __('Cart') }}</em>
-											</a>
-											<a class="tg-btn tg-btnstyletwo" href="{{ route('detail', $books->id) }}" style="margin-top: 4px;">
-												<i class="fa fa-info"></i>
-												<em>{{ __('Detail') }}</em>
-											</a>
+													<i class="fa fa-shopping-basket"></i>
+													<em>{{ __('Cart') }}</em>
+												</a>
+												<a class="tg-btn tg-btnstyletwo" href="{{ route('detail', $books->id) }}" style="margin-top: 4px;">
+													<i class="fa fa-info"></i>
+													<em>{{ __('Detail') }}</em>
+												</a>
 											</div>
 										</div>
-										  <div class="row">
-                    <div class="btn-sec">{{$product_sale->appends(request()->input())->links('vendor.pagination.bootstrap-4')}}</div>
-                </div>
 									</div>
 									@endforeach
 								</div>

@@ -41,6 +41,7 @@
 										</ul>
 										<div class="tg-themetagbox"><span class="tg-themetag">featured</span></div>
 										<div class="tg-posttitle">
+<<<<<<< HEAD
 											<h3>{{$con->name}}</a></h3>
 										</div>
 										<div class="tg-description" style="text-align: justify; font-size: 13px">
@@ -49,6 +50,12 @@
 												<span class="tg-bookwriter">By: <a href="javascript:void(0);">Angela Gunning</a></span>
 											</blockquote>
 										
+=======
+											<h3><a href="javascript:void(0);">Where The Wild Things Are</a></h3>
+										</div>
+										<div class="tg-description" style="text-align: justify; font-size: 16px">
+										{!! $con->content !!}
+>>>>>>> 228745575022eb456b9a30ecbcc2e04bd46cd083
 										</div>
 									</div>
 								@endforeach

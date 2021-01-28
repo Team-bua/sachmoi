@@ -2,31 +2,32 @@
 @section('content')
 <style type="text/css">
 	.Out {
-    display: block;
-    position: absolute;
-    top: 108px;
-    padding: 0px 13px;
-    width: 190px;
-    font-size: 20px;
-    color: #FFF;
-    text-align: center;
-    text-transform: uppercase;
-    -moz-transform: rotate(45deg);
-    -webkit-transform: rotate(45deg);
-    -o-transform: rotate(45deg);
-    -ms-transform: rotate(45deg);
-    background-color: #C1272C;
-    z-index: 3;
-    right: 0px;
-    height: 28px;
-    line-height: 30px;
-    box-shadow: 0px 1px 2px #666;
-    -webkit-box-shadow: 0px 1px 2px #666;
-    -moz-box-shadow: 0px 1px 2px #666;
-    font-weight: 700;
-    font-family: 'Source Sans Pro', Arial;
-}
-/*-------------------------------------------------*/
+		display: block;
+		position: absolute;
+		top: 108px;
+		padding: 0px 13px;
+		width: 190px;
+		font-size: 20px;
+		color: #FFF;
+		text-align: center;
+		text-transform: uppercase;
+		-moz-transform: rotate(45deg);
+		-webkit-transform: rotate(45deg);
+		-o-transform: rotate(45deg);
+		-ms-transform: rotate(45deg);
+		background-color: #C1272C;
+		z-index: 3;
+		right: 0px;
+		height: 28px;
+		line-height: 30px;
+		box-shadow: 0px 1px 2px #666;
+		-webkit-box-shadow: 0px 1px 2px #666;
+		-moz-box-shadow: 0px 1px 2px #666;
+		font-weight: 700;
+		font-family: 'Source Sans Pro', Arial;
+	}
+
+	/*-------------------------------------------------*/
 </style>
 <!--************************************
 				Inner Banner Start
@@ -103,8 +104,8 @@
 												<div class="tg-themetagbox"><span class="tg-themetag">sale</span></div>
 												@endif
 												@if($pro->store && $pro->store->stored_product == 0)
-                             <div class="Out">Hết Hàng</div>
-                             @endif
+												<div class="Out">Hết Hàng</div>
+												@endif
 												<div class="tg-booktitle">
 													<h3><a href="{{ route('detail', $pro->id) }}">{{ $pro->name }}</a></h3>
 												</div>
@@ -118,15 +119,14 @@
 													@endif
 												</span>
 												<a class="tg-btn tg-btnstyletwo" onclick="AddCart('{{ $pro->id }}')">
-												<i class="fa fa-shopping-basket"></i>
-												<em>{{ __('Cart') }}</em>
-											</a>
-											<a class="tg-btn tg-btnstyletwo" href="{{ route('detail', $pro->id) }}" style="margin-top: 4px;">
-												<i class="fa fa-info"></i>
-												<em>{{ __('Detail') }}</em>
-											</a>
+													<i class="fa fa-shopping-basket"></i>
+													<em>{{ __('Cart') }}</em>
+												</a>
+												<a class="tg-btn tg-btnstyletwo" href="{{ route('detail', $pro->id) }}" style="margin-top: 4px;">
+													<i class="fa fa-info"></i>
+													<em>{{ __('Detail') }}</em>
+												</a>
 											</div>
-											  @endforeach
 										</div>
 									</div>
 									@endforeach

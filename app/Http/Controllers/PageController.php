@@ -51,11 +51,13 @@ class PageController extends Controller
         // sách giảm giá 
         $product_new_three = $this->repository->getAllproductNewThree();
         //sách mới 
+        $content_new_four = $this->repository->getContentNewFour();
+        //đổ ra 4 tin tức mới nhất ra trang index
         $product_type = $this->repository->getProductType();
         return view('layout_index.index',compact('product_type', 
                                                 'slide', 'product_sale', 
                                                 'product_new_three',
-                                                'product_hightlights_three'));
+                                                'product_hightlights_three','content_new_four'));
     }
 
     public function getDetail($id)

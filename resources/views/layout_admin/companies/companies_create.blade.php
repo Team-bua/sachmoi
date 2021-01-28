@@ -56,6 +56,15 @@
                     <div style="color: red"> {{ $message }} </div>
                     @enderror
                     <br>
+                    <div class="form-group">
+                        <h4 for="exampleInputFile">Ảnh nhà xuất bản </h4>
+                        <input id="imgbook" type="file" name="img" onchange="changeImg(this)">
+                        <img id="avatar" class="img-rounded" width="200px" height="300px">
+                    </div>
+                    @error('img')
+                    <div style="color: red"> {{ $message }} </div>
+                    @enderror
+                    <br>
                     <div class="text-center">
                         <button class=" btn  btn-success btn-lg" style="border-color: #4a4235;background-color:#4a4235;"> Thêm </button>
                     </div>
@@ -64,3 +73,29 @@
     </section><!-- /.content -->
 </div>
 @endsection
+@section('js')
+
+
+<script type="text/javascript">
+    $('#avatar').hide();
+
+    function changeImg(input) {
+        //Nếu như tồn thuộc tính file, đồng nghĩa người dùng đã chọn file mới
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            //Sự kiện file đã được load vào website
+            reader.onload = function(e) {
+                //Thay đổi đường dẫn ảnh
+                $('#avatar').attr('src', e.target.result);
+            }
+            reader.readAsDataURL(input.files[0]);
+            $('#avatar').show();
+        }
+    }
+    $(document).ready(function() {
+        $('#avatar').click(function() {
+            $('#imgbook').click();
+        });
+    });
+</script>
+@stop

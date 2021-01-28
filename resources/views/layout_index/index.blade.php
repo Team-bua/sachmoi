@@ -79,7 +79,7 @@
 									<div class="Out">Hết Hàng</div>
 									@endif
 									<div class="tg-booktitle">
-										<h3><a href="javascript:void(0);">{{ $pro->name }}</a></h3>
+										<h3><a href="{{ route('detail', $pro->id) }}">{{ $pro->name }}</a></h3>
 									</div>
 									<span class="tg-bookwriter"><a href="javascript:void(0);">{{$pro->productCompany->name}}</a></span>
 									<span class="tg-bookprice">
@@ -254,6 +254,54 @@
 	<!--************************************
 					Picked By Author End
 			*************************************-->
-	</main>
-</div>
+			<section class="tg-sectionspace tg-haslayout">
+				<div class="container">
+					<div class="row">
+	
+						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+							<div class="tg-sectionhead">
+								<h2><span>Tin Tức &amp; Mới Nhất</span>Có gì Hot ?</h2>
+								<a class="tg-btn" href="javascript:void(0);">Xem Thêm</a>
+							</div>
+						</div>
+						<div id="tg-postslider" class="tg-postslider tg-blogpost owl-carousel">
+							@foreach ($content_new_four as $four)
+	
+								<article class="item tg-post">
+									<figure><a href="{{ route('newsdetail', [$four['id']]) }}"><img
+												style="width:300px;height:250px;"
+												src="{{ asset('images/news/' . $four->image) }}" alt="image description"></a>
+									</figure>
+									<div class="tg-postcontent">
+										<ul class="tg-bookscategories">
+											<li><a href="javascript:void(0);">Tin Hot</a></li>
+	
+										</ul>
+										<div class="tg-themetagbox"><span class="tg-themetag">New</span></div>
+										<div class="tg-posttitle">
+											<h3
+												style=" width:250px;text-overflow: ellipsis;overflow: hidden;white-space: nowrap;">
+												<a href="{{ route('newsdetail', [$four['id']]) }}">{{ $four->name }}</a></h3>
+												
+											<p style=" margin-top:10px;display: -webkit-box;width:230px;line-height:20px;overflow: hidden;text-overflow: ellipsis;-webkit-line-clamp:3;-webkit-box-orient: vertical;">
+												{{ $four->name }}
+											</p>
+										</div>
+										<span class="tg-bookwriter">Bởi: <a href="javascript:void(0);">Tuấn Râu</a></span>
+										<ul class="tg-postmetadata">
+											<li><a href="javascript:void(0);"><i class="fa fa-comment-o"></i><i>21,415
+														Comments</i></a></li>
+											<li><a href="javascript:void(0);"><i class="fa fa-eye"></i><i>24,565 Views</i></a>
+											</li>
+										</ul>
+									</div>
+								</article>
+							@endforeach
+	
+						</div>
+					</div>
+				</div>
+			</section>
+		</main>
+	</div>
 @endsection

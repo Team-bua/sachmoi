@@ -8,10 +8,10 @@
 				<div class="row">
 					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 						<div class="tg-innerbannercontent">
-							<h1>About Us</h1>
+							<h1>{{__('introduce') }}</h1>
 							<ol class="tg-breadcrumb">
-								<li><a href="javascript:void(0);">home</a></li>
-								<li class="tg-active">About Us</li>
+								<li><a href="javascript:void(0);">{{ __('hompage') }}</a></li>
+								<li class="tg-active">{{ __('introduce')}}</li>
 							</ol>
 						</div>
 					</div>
@@ -35,21 +35,22 @@
 							<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
 								<div class="tg-aboutusshortcode">
 									<div class="tg-sectionhead">
-										<h2><span>Greetings &amp; Welcome</span>Know More About Us</h2>
+										<h2><span>Chào mừng &amp; BookStore</span>Về Chúng Tôi</h2>
 									</div>
 									<div class="tg-description">
-										<p>Consectetur adipisicing elit sed do eiusmod tempor incididunt labore toloregna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamcoiars nisiuip commodo consequat aute irure dolor in aprehenderit aveli esseati cillum dolor fugiat nulla pariatur cepteur sint occaecat cupidatat.</p>
+										<p style="line-height:28px;text-align: justify;" >Trang web bookstore là một trong những nơi uy
+											tín cung cấp các đầu sách hiện hành của nước Việt Nam. 
+											Là một trong những người yêu thích sách nói chung 
+											và yêu thích sự tìm tòi học hỏi nói riêng chúng tôi mong muốn mang đến cho bạn đọc 
+											những quyển sách đủ thể loại gần gủi nhất đối với mọi công dân. </p>
 									</div>
-									<div class="tg-btns">
-										<a class="tg-btn tg-active" href="javascript:void(0);">Our History</a>
-										<a class="tg-btn" href="javascript:void(0);">Meet Our Team</a>
-									</div>
+									
 								</div>
 							</div>
 							<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
 								<figure>
 									<img src="images/placeholder.jpg" alt="image description">
-									<iframe src="https://www.youtube.com/embed/acwr_Islo9A?rel=0&amp;controls=0&amp;showinfo=0"></iframe>
+									<iframe width="853" height="480" src="https://www.youtube.com/embed/SKVcQnyEIT8" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 								</figure>
 							</div>
 						</div>
@@ -68,9 +69,9 @@
 						<div class="row">
 							<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 								<div class="tg-calltoaction">
-									<h2>Fully Loaded Template</h2>
-									<h3>Consectetur adipisicing elit sed do eiusmod tempor incididunt ut labore et dolore.</h3>
-									<a class="tg-btn tg-active" href="javascript:void(0);">Buy Now</a>
+									<h2>Trang Chủ</h2>
+									<h3>Xem sách </h3>
+									<a class="tg-btn tg-active"  href="{{ route('index') }}">Xem Ngay</a>
 								</div>
 							</div>
 						</div>
@@ -89,7 +90,7 @@
 						<div class="tg-successstory">
 							<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 								<div class="tg-sectionhead">
-									<h2><span>Our Pride Moments</span>Journey of Success</h2>
+									<h2><span>Chi nhánh :</span>Hà Nội - Đà Nẵng - Hồ Chí Minh</h2>
 								</div>
 								<div id="tg-successslider" class="tg-successslider tg-success owl-carousel">
 									<div class="item">
@@ -98,39 +99,22 @@
 										</figure>
 										<div class="tg-successcontent">
 											<div class="tg-sectionhead">
-												<h2><span>June 27, 2017</span>First Step Toward Success</h2>
+												<h2><span>BookStore</span>Chuyên Bán</h2>
 											</div>
 											<div class="tg-description">
-												<p>Consectetur adipisicing elit sed do eiusmod tempor incididunt labore toloregna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamcoiars nisiuip commodo consequat aute irure dolor in aprehenderit aveli esseati cillum dolor fugiat nulla pariatur cepteur sint occaecat cupidatat.</p>
+												<p   style="line-height:24px;text-align: justify;">Chuyên bán Sỉ & Lẻ các loại sách, truyên, đủ thể loại...
+													Chúng tôi cung cấp dịch vụ giao sách đến tận cơ quan, đơn vị, nhà của Quý khách trên mọi miền tổ quốc
+													Số lượng nhiều GỌI 0909 366 555 để nhận GIÁ SỈ
+													Hiện nay công ty chúng tôi đang cung cấp một số đầu sách như: 
+													Sách Công Nghệ , ...
+													Và còn nhiều loại sách nổi bật khác.
+													Nếu bạn đang có nhu cầu mua sách để bổ sung kiến thức hay phục vụ công việc, học tập thì nhanh tay liên hệ với chúng tôi để có giá tốt nhất nhé.</p>
 											</div>
 										</div>
 									</div>
-									<div class="item">
-										<figure>
-											<img src="images/img-01.jpg" alt="image description">
-										</figure>
-										<div class="tg-successcontent">
-											<div class="tg-sectionhead">
-												<h2><span>June 27, 2017</span>First Step Toward Success</h2>
-											</div>
-											<div class="tg-description">
-												<p>Consectetur adipisicing elit sed do eiusmod tempor incididunt labore toloregna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamcoiars nisiuip commodo consequat aute irure dolor in aprehenderit aveli esseati cillum dolor fugiat nulla pariatur cepteur sint occaecat cupidatat.</p>
-											</div>
-										</div>
-									</div>
-									<div class="item">
-										<figure>
-											<img src="images/img-01.jpg" alt="image description">
-										</figure>
-										<div class="tg-successcontent">
-											<div class="tg-sectionhead">
-												<h2><span>June 27, 2017</span>First Step Toward Success</h2>
-											</div>
-											<div class="tg-description">
-												<p>Consectetur adipisicing elit sed do eiusmod tempor incididunt labore toloregna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamcoiars nisiuip commodo consequat aute irure dolor in aprehenderit aveli esseati cillum dolor fugiat nulla pariatur cepteur sint occaecat cupidatat.</p>
-											</div>
-										</div>
-									</div>
+
+
+
 								</div>
 							</div>
 						</div>
@@ -150,27 +134,11 @@
 							<div class="col-xs-12 col-sm-12 col-md-12 col-lg-8 col-lg-push-2">
 								<div id="tg-testimonialsslider" class="tg-testimonialsslider tg-testimonials owl-carousel">
 									<div class="item tg-testimonial">
-										<figure><img src="images/author/imag-02.jpg" alt="image description"></figure>
-										<blockquote><q>Consectetur adipisicing elit sed do eiusmod tempor incididunt ut labore tolore magna aliqua enim ad minim veniam, quis nostrud exercitation ullamcoiars nisi ut aliquip commodo.</q></blockquote>
+										<figure><img src="images/author/leader.png" alt="image description"></figure>
+										<blockquote><q>Điều hành hệ thống quản lý của Website, liên hệ vói các công ty khác .</q></blockquote>
 										<div class="tg-testimonialauthor">
-											<h3>Holli Fenstermacher</h3>
-											<span>Manager @ CIFP</span>
-										</div>
-									</div>
-									<div class="item tg-testimonial">
-										<figure><img src="images/author/imag-02.jpg" alt="image description"></figure>
-										<blockquote><q>Consectetur adipisicing elit sed do eiusmod tempor incididunt ut labore tolore magna aliqua enim ad minim veniam, quis nostrud exercitation ullamcoiars nisi ut aliquip commodo.</q></blockquote>
-										<div class="tg-testimonialauthor">
-											<h3>Holli Fenstermacher</h3>
-											<span>Manager @ CIFP</span>
-										</div>
-									</div>
-									<div class="item tg-testimonial">
-										<figure><img src="images/author/imag-02.jpg" alt="image description"></figure>
-										<blockquote><q>Consectetur adipisicing elit sed do eiusmod tempor incididunt ut labore tolore magna aliqua enim ad minim veniam, quis nostrud exercitation ullamcoiars nisi ut aliquip commodo.</q></blockquote>
-										<div class="tg-testimonialauthor">
-											<h3>Holli Fenstermacher</h3>
-											<span>Manager @ CIFP</span>
+											<h3>Nhâm Hoàng Tuấn</h3>
+											<span>Phân phối và chỉ đạo .</span>
 										</div>
 									</div>
 								</div>
@@ -190,83 +158,24 @@
 					<div class="row">
 						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 							<div class="tg-sectionhead">
-								<h2><span>Team Behind Book Library</span>Meet Our Professionals</h2>
+								<h2><span>Liên Kết </span>Nhà Xuất Bản</h2>
 							</div>
 						</div>
+						
 						<div id="tg-teamsslider" class="tg-authors tg-authorsslider tg-teamsmember owl-carousel">
+							@foreach ($company as $com)
 							<div class="item tg-author tg-member">
-								<figure><a href="javascript:void(0);"><img src="images/team/img-01.jpg" alt="image description"></a></figure>
+								<figure><a href="{{ route('product_company', [$com['id']]) }}"><img style="width:620px;height:220px;" src="{{ asset('images/companies/' . $com->image) }}" alt="image description"></a></figure>
 								<div class="tg-authorcontent">
-									<h2><a href="javascript:void(0);">Jude Morphew</a></h2>
-									<span>Online Retail Manager</span>
+									<h2><a href="{{ route('product_company',  [$com['id']]) }}">{{ $com->name }}</a></h2>
+									<span>Chi Nhánh</span>
 									<ul class="tg-socialicons">
-										<li class="tg-facebook"><a href="javascript:void(0);"><i class="fa fa-facebook"></i></a></li>
-										<li class="tg-twitter"><a href="javascript:void(0);"><i class="fa fa-twitter"></i></a></li>
-										<li class="tg-linkedin"><a href="javascript:void(0);"><i class="fa fa-linkedin"></i></a></li>
+										<li class="tg-facebook"><a href="{{ route('product_company', $com->id) }}">{{ $com->name }} <i class="fa fa-facebook"></i></a></li>
 									</ul>
 								</div>
 							</div>
-							<div class="item tg-author tg-member">
-								<figure><a href="javascript:void(0);"><img src="images/team/img-02.jpg" alt="image description"></a></figure>
-								<div class="tg-authorcontent">
-									<h2><a href="javascript:void(0);">Book Burger</a></h2>
-									<span>Bookstore Director</span>
-									<ul class="tg-socialicons">
-										<li class="tg-facebook"><a href="javascript:void(0);"><i class="fa fa-facebook"></i></a></li>
-										<li class="tg-twitter"><a href="javascript:void(0);"><i class="fa fa-twitter"></i></a></li>
-										<li class="tg-linkedin"><a href="javascript:void(0);"><i class="fa fa-linkedin"></i></a></li>
-									</ul>
-								</div>
-							</div>
-							<div class="item tg-author tg-member">
-								<figure><a href="javascript:void(0);"><img src="images/team/img-03.jpg" alt="image description"></a></figure>
-								<div class="tg-authorcontent">
-									<h2><a href="javascript:void(0);">Book Ship &amp; Co.</a></h2>
-									<span>Business Operations</span>
-									<ul class="tg-socialicons">
-										<li class="tg-facebook"><a href="javascript:void(0);"><i class="fa fa-facebook"></i></a></li>
-										<li class="tg-twitter"><a href="javascript:void(0);"><i class="fa fa-twitter"></i></a></li>
-										<li class="tg-linkedin"><a href="javascript:void(0);"><i class="fa fa-linkedin"></i></a></li>
-									</ul>
-								</div>
-							</div>
-							<div class="item tg-author tg-member">
-								<figure><a href="javascript:void(0);"><img src="images/team/img-04.jpg" alt="image description"></a></figure>
-								<div class="tg-authorcontent">
-									<h2><a href="javascript:void(0);">Enoch Gallion</a></h2>
-									<span>Assistant Director</span>
-									<ul class="tg-socialicons">
-										<li class="tg-facebook"><a href="javascript:void(0);"><i class="fa fa-facebook"></i></a></li>
-										<li class="tg-twitter"><a href="javascript:void(0);"><i class="fa fa-twitter"></i></a></li>
-										<li class="tg-linkedin"><a href="javascript:void(0);"><i class="fa fa-linkedin"></i></a></li>
-									</ul>
-								</div>
-							</div>
-							<div class="item tg-author tg-member">
-								<figure><a href="javascript:void(0);"><img src="images/team/img-05.jpg" alt="image description"></a></figure>
-								<div class="tg-authorcontent">
-									<h2><a href="javascript:void(0);">Book House</a></h2>
-									<span>Business Operations</span>
-									<ul class="tg-socialicons">
-										<li class="tg-facebook"><a href="javascript:void(0);"><i class="fa fa-facebook"></i></a></li>
-										<li class="tg-twitter"><a href="javascript:void(0);"><i class="fa fa-twitter"></i></a></li>
-										<li class="tg-linkedin"><a href="javascript:void(0);"><i class="fa fa-linkedin"></i></a></li>
-									</ul>
-								</div>
-							</div>
-							<div class="item tg-author tg-member">
-								<figure><a href="javascript:void(0);"><img src="images/team/img-04.jpg" alt="image description"></a></figure>
-								<div class="tg-authorcontent">
-									<h2><a href="javascript:void(0);">Linnie Klimek</a></h2>
-									<span>Assistant Director</span>
-									<ul class="tg-socialicons">
-										<li class="tg-facebook"><a href="javascript:void(0);"><i class="fa fa-facebook"></i></a></li>
-										<li class="tg-twitter"><a href="javascript:void(0);"><i class="fa fa-twitter"></i></a></li>
-										<li class="tg-linkedin"><a href="javascript:void(0);"><i class="fa fa-linkedin"></i></a></li>
-									</ul>
-								</div>
-							</div>
-						</div>
+							@endforeach 
+						
 					</div>
 				</div>
 			</section>

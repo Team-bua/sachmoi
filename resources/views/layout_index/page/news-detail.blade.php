@@ -45,7 +45,7 @@
 										<div class="tg-posttitle">
 											<h3><a href="javascript:void(0);">Where The Wild Things Are</a></h3>
 										</div>
-										<div class="tg-description" style="text-align: justify; font-size: 13px">
+										<div class="tg-description" style="text-align: justify; font-size: 16px">
 										{!! $con->content !!}
 										</div>
 									</div>

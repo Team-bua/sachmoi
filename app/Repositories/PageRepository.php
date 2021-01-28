@@ -474,4 +474,9 @@ class PageRepository
         return News::orderBy('id', 'desc')->where('status', 1)->first();
     }
 
+    public function getContentNewFour()
+    {
+        return News::orderBy('id', 'desc')->where('status', 1)->limit(4)->get();
+    }
+
 }

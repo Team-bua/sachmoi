@@ -103,7 +103,7 @@ class PageRepository
     // sach mới
 
     public function getAllproductNewThree(){
-        $product = Product::where('new', 1)->where('status', 1)
+        $product = Product::where('status', 1)
         ->latest()
         ->with('store')
         ->limit(3)->get();

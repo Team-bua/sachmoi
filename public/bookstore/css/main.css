@@ -195,7 +195,7 @@ textarea.form-control {
 /* Internet Explorer 10-11 */
 
 .form-control::-ms-input-placeholder {
-    color: #66;
+    color: #666;
 }
 
 

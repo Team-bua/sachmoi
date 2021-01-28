@@ -1,5 +1,33 @@
 @extends('layout_index.master')
 @section('content')
+<style type="text/css">
+	.Out {
+    display: block;
+    position: absolute;
+    top: 108px;
+    padding: 0px 13px;
+    width: 190px;
+    font-size: 20px;
+    color: #FFF;
+    text-align: center;
+    text-transform: uppercase;
+    -moz-transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    background-color: #C1272C;
+    z-index: 3;
+    right: 0px;
+    height: 28px;
+    line-height: 30px;
+    box-shadow: 0px 1px 2px #666;
+    -webkit-box-shadow: 0px 1px 2px #666;
+    -moz-box-shadow: 0px 1px 2px #666;
+    font-weight: 700;
+    font-family: 'Source Sans Pro', Arial;
+}
+/*-------------------------------------------------*/
+</style>
 <!--************************************
 				Inner Banner Start
 		*************************************-->
@@ -10,7 +38,7 @@
 				<div class="tg-innerbannercontent">
 					<h1>Sách được tìm thấy </h1>
 					<ol class="tg-breadcrumb">
-						<li><a href="javascript:void(0);">{{ __('hompage') }}</a></li>
+						<li> <a href="{{ route('index') }}">{{ __('hompage') }}</a></li>
 						<li class="tg-active">Sản Phẩm</li>
 					</ol>
 				</div>
@@ -58,10 +86,10 @@
 									@foreach ($search as $pro)
 									<div class="col-xs-6 col-sm-6 col-md-4 col-lg-3">
 										<div class="tg-postbook">
-											<figure class="tg-featureimg">
+											<figure class="tg-featureimg" style="height: 250px">
 												<div class="tg-bookimg">
 													<div class="tg-frontcover"><img style="height: 240px" src="{{ asset('images/product/' . $pro->image) }}" alt="image" /></div>
-													<div class="tg-backcover"><img style="height: 240px" src="{{ asset('images/product/' . $pro->image) }}" alt="image" /></div>
+													<div class="tg-backcover"><img src="{{ asset('images/product/' . $pro->image) }}" alt="image" /></div>
 												</div>
 												<a class="tg-btnaddtowishlist" href="javascript:void(0);">
 													<i class="icon-heart"></i>
@@ -74,6 +102,9 @@
 												@else
 												<div class="tg-themetagbox"><span class="tg-themetag">sale</span></div>
 												@endif
+												@if($pro->store && $pro->store->stored_product == 0)
+                             <div class="Out">Hết Hàng</div>
+                             @endif
 												<div class="tg-booktitle">
 													<h3><a href="{{ route('detail', $pro->id) }}">{{ $pro->name }}</a></h3>
 												</div>
@@ -86,11 +117,16 @@
 													<ins>&nbsp;&nbsp;{{number_format($pro->promotion_price,0,"",",")}} VNĐ</ins>
 													@endif
 												</span>
-												<a class="tg-btn tg-btnstyletwo" href="javascript:void(0);">
-													<i class="fa fa-shopping-basket"></i>
-													<em>Giỏ Hàng</em>
-												</a>
+												<a class="tg-btn tg-btnstyletwo" onclick="AddCart('{{ $pro->id }}')">
+												<i class="fa fa-shopping-basket"></i>
+												<em>{{ __('Cart') }}</em>
+											</a>
+											<a class="tg-btn tg-btnstyletwo" href="{{ route('detail', $pro->id) }}" style="margin-top: 4px;">
+												<i class="fa fa-info"></i>
+												<em>{{ __('Detail') }}</em>
+											</a>
 											</div>
+											  @endforeach
 										</div>
 									</div>
 									@endforeach
@@ -114,7 +150,7 @@
 								</div>
 								<div class="tg-widgetcontent">
 									<ul>
-										@for($i = 0; $i < count($product_n); $i++) <li><a href="{{ route('product_type', $types_id[$i]) }}"><span>{{ $types_name[$i] }}:</span><span>({{ $product_n[$i] }})</span></a>
+										@for($i = 0; $i < count($product_n); $i++) <li><a href="{{ route('product_type', $types_id[$i]) }}"><span>{{ $types_name[$i] }} </span><span>({{ $product_n[$i] }})</span></a>
 											</li>
 											@endfor
 

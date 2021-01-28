@@ -1,4 +1,4 @@
-        <!--************************************
+<!--************************************
                 Header Start
         *************************************-->
         <header id="tg-header" class="tg-header tg-haslayout">
@@ -58,7 +58,7 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                            <strong class="tg-logo"><a href="{{ route('index') }}"><img src="" alt="company name here"></a></strong>
+                            <strong class="tg-logo"><a href="{{ route('index') }}"><img src="images/logo.png" alt="image description"></a></strong>
                             <div  class="tg-wishlistandcart">
                                 <div class="dropdown tg-themedropdown tg-minicartdropdown">
                                     <a  href="{{ route('cart') }}" id="tg-minicart" class="tg-btn" aria-haspopup="true" aria-expanded="false">
@@ -75,7 +75,7 @@
                             <div class="tg-searchbox"  style="margin-top:18px">
                                 <form class="tg-formtheme tg-formsearch" role="search" method="get" id="searchform" action="{{ route('search') }}">
                                     <fieldset>
-                                        <input type="text" value="" name="key" id="s" class="typeahead form-control" placeholder="Nhập Từ Khóa" autocomplete="off">
+                                        <input type="text" value="" name="key" id="s" class="typeahead form-control" placeholder="{{ __('Enter keywords') }}" autocomplete="off">
                                         <button type="submit"><i class="icon-magnifier"></i></button>
                                     </fieldset>
 

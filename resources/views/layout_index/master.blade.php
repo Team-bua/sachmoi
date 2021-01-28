@@ -41,7 +41,9 @@
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
   <script src="https://code.responsivevoice.org/responsivevoice.js?key=xPvZGVgP"></script>
   <script src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&#038;version=v2.9"></script>
-
+@yield('show')
+  @yield('speak')
+    <script src="https://code.responsivevoice.org/responsivevoice.js?key=xPvZGVgP"></script>
   <style>
     .fb-livechat,
     .fb-widget {
@@ -226,7 +228,7 @@
         type: 'GET',
         success: function(response) {
           $('.quntity').html(response['cart']['totalQty']);
-        $('.total-price').html('('+Number(response['cart']['totalPrice']).toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,') + 'VNĐ)');
+          $('.total-price').html('('+Number(response['cart']['totalPrice']).toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,') + 'VNĐ)');
           Swal.fire({
             icon: 'success',
             title: 'Đã thêm vào giỏ hàng',

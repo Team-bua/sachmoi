@@ -93,6 +93,7 @@
 						if (data.code == 200) {
 							$('#totalPrice').html('Tổng tiền : ' + Number(data['cart']['totalPrice']).toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,') + ' VNĐ');
 							$('.quntity').html(data['cart']['totalQty']);
+							$('.total-price').html('('+Number(data['cart']['totalPrice']).toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,') + 'VNĐ)');
 							that.parent().parent().remove();
 							Swal.fire(
 								'Đã xóa!',

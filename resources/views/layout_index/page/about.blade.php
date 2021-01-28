@@ -8,10 +8,9 @@
 				<div class="row">
 					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 						<div class="tg-innerbannercontent">
-							<h1>About Us</h1>
+							<h1>{{ __('About') }}</h1>
 							<ol class="tg-breadcrumb">
-								<li><a href="javascript:void(0);">home</a></li>
-								<li class="tg-active">About Us</li>
+								<li> <a href="{{ route('index') }}">{{ __('hompage') }}</a></li>
 							</ol>
 						</div>
 					</div>

@@ -1,5 +1,34 @@
 @extends('layout_index.master')
 @section('content')
+<style type="text/css">
+	.Out {
+    display: block;
+    position: absolute;
+    top: 108px;
+    padding: 0px 13px;
+    width: 190px;
+    font-size: 20px;
+    color: #FFF;
+    text-align: center;
+    text-transform: uppercase;
+    -moz-transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    background-color: #C1272C;
+    z-index: 3;
+    right: 0px;
+    height: 28px;
+    line-height: 30px;
+    box-shadow: 0px 1px 2px #666;
+    -webkit-box-shadow: 0px 1px 2px #666;
+    -moz-box-shadow: 0px 1px 2px #666;
+    font-weight: 700;
+    font-family: 'Source Sans Pro', Arial;
+}
+/*-------------------------------------------------*/
+
+</style>
 <!--************************************
 				Inner Banner Start
 		*************************************-->
@@ -10,8 +39,8 @@
 				<div class="tg-innerbannercontent">
 					<h1>{{ __('all') }}</h1>
 					<ol class="tg-breadcrumb">
-						<li><a href="javascript:void(0);">{{ __('hompage') }}</a></li>
-						<li class="tg-active">Products</li>
+						<li> <a href="{{ route('index') }}">{{ __('hompage') }}</a></li>
+						<li class="tg-active">{{ __('Product') }}</li>
 					</ol>
 				</div>
 			</div>
@@ -36,7 +65,7 @@
 						<div id="tg-content" class="tg-content">
 							<div class="tg-products">
 								<div class="tg-sectionhead">
-									<h2>{{ __("newbook") }}</h2>
+									<h2>{{ __("hotbook") }}</h2>
 								</div>
 								<div class="tg-productgrid">
 									<div class="tg-refinesearch">
@@ -75,6 +104,9 @@
 											</figure>
 											<div class="tg-postbookcontent">
 												<div class="tg-themetagbox"><span class="tg-themetag">Hot</span></div>
+												@if($books->store && $books->store->stored_product == 0)
+                             <div class="Out">Hết Hàng</div>
+                             @endif
 												<div class="tg-booktitle">
 													<h3><a href="javascript:void(0);">{{ $books->name }}</a></h3>
 												</div>
@@ -82,19 +114,25 @@
 
 												<span class="tg-bookprice">
 													@if($books->promotion_price == 0)
-													<ins>{{number_format($books->unit_price,0,"",",")}} VNĐ</ins>
+													<ins style="margin-bottom: 20px">{{number_format($books->unit_price,0,"",",")}} VNĐ</ins>
 													@else
 													<del>{{number_format($books->unit_price,0,"",",")}} VNĐ</del>
 													<ins>{{number_format($books->promotion_price,0,"",",")}} VNĐ</ins>
 													@endif
 												</span>
-												<a class="tg-btn tg-btnstyletwo" href="javascript:void(0);">
-													<i class="fa fa-shopping-basket"></i>
-													<em>Giỏ Hàng</em>
-												</a>
+												<a class="tg-btn tg-btnstyletwo" onclick="AddCart('{{ $books->id }}')">
+												<i class="fa fa-shopping-basket"></i>
+												<em>{{ __('Cart') }}</em>
+											</a>
+											<a class="tg-btn tg-btnstyletwo" href="{{ route('detail', $books->id) }}" style="margin-top: 4px;">
+												<i class="fa fa-info"></i>
+												<em>{{ __('Detail') }}</em>
+											</a>
 											</div>
-
 										</div>
+										  <div class="row">
+                    <div class="btn-sec">{{$product_highlights->appends(request()->input())->links('vendor.pagination.bootstrap-4')}}</div>
+                </div>
 									</div>
 									@endforeach
 								</div>

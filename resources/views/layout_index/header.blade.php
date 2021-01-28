@@ -21,23 +21,12 @@
                                 </li>
                             </ul>
                             <div class="dropdown tg-themedropdown tg-currencydropdown" style="margin-left: 4%">
-                                <a href="javascript:void(0);" id="tg-currenty" class="tg-btnthemedropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <i class="icon-earth"></i>
+                                <a href="{!! route('user.language', ['en']) !!}">
+                                    <span><img src="{{ asset('images/icon/tienganh.png') }}" height="25px" width="25px"></span>
                                 </a>
-                                <ul class="dropdown-menu tg-themedropdownmenu" aria-labelledby="tg-currenty">
-                                    <li>
-
-                                        <a href="{!! route('user.language', ['en']) !!}">
-                                            <span><img src="{{ asset('images/icon/tienganh.png') }}" height="50px" width="50px"></span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="{!! route('user.language', ['vi']) !!}">
-                                            <span><img src="{{ asset('images/icon/tiengviet.png') }}" height="50px" width="50px"></span>
-                                        </a>
-                                    </li>
-
-                                </ul>
+                                <a href="{!! route('user.language', ['vi']) !!}">
+                                    <span><img src="{{ asset('images/icon/tiengviet.png') }}" height="25px" width="25px"></span>
+                                </a>
                             </div>
                             @if (Auth::check())
                             @if (Auth::user()->id_role == 1 || Auth::user()->id_role == 2)
@@ -69,19 +58,11 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-<<<<<<< HEAD
-                            <strong class="tg-logo"><a href="{{ route('index') }}"><img src="images/logo.png" alt="company name here"></a></strong>
-                            <div class="tg-wishlistandcart">
-                                <div class="dropdown tg-themedropdown tg-minicartdropdown">
-                                    <a href="" id="tg-minicart" class="tg-btnthemedropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        <span class="tg-themebadge quntity"> @if (Session::has('cart'))
-=======
-                            <strong class="tg-logo"><a href="{{ route('index') }}"><img src="" alt="company name here"></a></strong>
+                            <strong class="tg-logo"><a href="{{ route('index') }}"><img src="images/logo.png" alt="image description"></a></strong>
                             <div  class="tg-wishlistandcart">
                                 <div class="dropdown tg-themedropdown tg-minicartdropdown">
-                                    <a  href="javascript:void(0);" id="tg-minicart" class="tg-btn" margin-top:11px   aria-haspopup="true" aria-expanded="false">
+                                    <a  href="{{ route('cart') }}" id="tg-minicart" class="tg-btn" aria-haspopup="true" aria-expanded="false">
                                         <span style=" margin-left:28px;margin-top:11px "class="tg-themebadge quntity"> @if (Session::has('cart'))
->>>>>>> f9afe673e0e9ffd5c512100d6dbd62196f8a8bd1
                                             {{ Session('cart')->totalQty }}
                                             @else 0 @endif
                                         </span>
@@ -94,7 +75,7 @@
                             <div class="tg-searchbox"  style="margin-top:18px">
                                 <form class="tg-formtheme tg-formsearch" role="search" method="get" id="searchform" action="{{ route('search') }}">
                                     <fieldset>
-                                        <input type="text" value="" name="key" id="s" class="typeahead form-control" placeholder="Nhập Từ Khóa" autocomplete="off">
+                                        <input type="text" value="" name="key" id="s" class="typeahead form-control" placeholder="{{ __('Enter keywords') }}" autocomplete="off">
                                         <button type="submit"><i class="icon-magnifier"></i></button>
                                     </fieldset>
 

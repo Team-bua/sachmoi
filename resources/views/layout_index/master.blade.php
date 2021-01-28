@@ -41,7 +41,9 @@
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
   <script src="https://code.responsivevoice.org/responsivevoice.js?key=xPvZGVgP"></script>
   <script src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&#038;version=v2.9"></script>
-
+@yield('show')
+  @yield('speak')
+    <script src="https://code.responsivevoice.org/responsivevoice.js?key=xPvZGVgP"></script>
   <style>
     .fb-livechat,
     .fb-widget {

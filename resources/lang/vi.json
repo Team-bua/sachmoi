@@ -27,9 +27,18 @@
     "logout": "Đăng Xuất",
     "login": "Đăng nhập",
     "signup": "Đăng kí",
-    "About":"Giới Thiệu",
-    "Product":"Sản Phẩm",
-    "All Product":"Tất Cả Sách",
+    "About": "Giới Thiệu",
+    "Product": "Sản Phẩm",
+    "All product": "Tất Cả Sách",
+    "Cart": "Giỏ Hàng",
+    "Detail": "Chi Tiết",
+    "See more": "Xem Thêm",
+    "Enter keywords": "Nhập Từ Khóa",
+    "All Products": "Tất Cả Sản Phẩm",
+    "Publishing company": "Nhà Xuất Bản",
+    "Check Out":"Thanh Toán",
+    "Related Products":"Sản Phẩm Liên Quan",
+
 
 
     "free ship": "Miễn phí vận chuyển",

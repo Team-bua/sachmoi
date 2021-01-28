@@ -1,5 +1,33 @@
 @extends('layout_index.master')
 @section('content')
+<style type="text/css">
+	.Out {
+    display: block;
+    position: absolute;
+    top: 108px;
+    padding: 0px 13px;
+    width: 190px;
+    font-size: 20px;
+    color: #FFF;
+    text-align: center;
+    text-transform: uppercase;
+    -moz-transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    background-color: #C1272C;
+    z-index: 3;
+    right: 0px;
+    height: 28px;
+    line-height: 30px;
+    box-shadow: 0px 1px 2px #666;
+    -webkit-box-shadow: 0px 1px 2px #666;
+    -moz-box-shadow: 0px 1px 2px #666;
+    font-weight: 700;
+    font-family: 'Source Sans Pro', Arial;
+}
+/*-------------------------------------------------*/
+</style>
 <!--************************************
 				Inner Banner Start
 		*************************************-->
@@ -8,10 +36,10 @@
 		<div class="row">
 			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 				<div class="tg-innerbannercontent">
-					<h1>All Products</h1>
+					<h1>{{ __('All Products') }}</h1>
 					<ol class="tg-breadcrumb">
-						<li><a href="javascript:void(0);">home</a></li>
-						<li class="tg-active">Products</li>
+						<li> <a href="{{ route('index') }}">{{ __('hompage') }}</a></li>
+						<li class="tg-active">{{ __('Product') }}</li>
 					</ol>
 				</div>
 			</div>
@@ -81,6 +109,9 @@
 													@else
 													<div class="tg-themetagbox"><span class="tg-themetag">new</span></div>
 													@endif
+													@if($books->store && $books->store->stored_product == 0)
+                             <div class="Out">Hết Hàng</div>
+                             @endif
 													<div class="tg-booktitle">
 														<h3><a href="{{ route('detail', $books->id) }}">{{ $books->name }}</a></h3>
 													</div>
@@ -93,13 +124,16 @@
 														<ins>&nbsp;&nbsp;{{number_format($books->promotion_price,0,"",",")}} VNĐ</ins>
 														@endif
 													</span>
-													<a class="tg-btn tg-btnstyletwo" href="javascript:void(0);">
+													<a class="tg-btn tg-btnstyletwo" onclick="AddCart('{{ $books->id }}')">
 														<i class="fa fa-shopping-basket"></i>
-														<em>Giỏ Hàng</em>
+														<em>{{ __('Cart') }}</em>
 													</a>
+													<a class="tg-btn tg-btnstyletwo" href="{{ route('detail', $books->id) }}" style="margin-top: 4px;">
+												<i class="fa fa-info"></i>
+												<em>{{ __('Detail') }}</em>
+											</a>
 												</div>
 											</div>
-											 @endforeach
 										</div>
 										@endforeach
 									</div>
@@ -107,22 +141,16 @@
                     <div class="btn-sec">{{$product_types->appends(request()->input())->links('vendor.pagination.bootstrap-4')}}</div>
                 </div>
 									</div>
-							
-								</div>
-								<div class="row">
-									<div class="btn-sec">{{$product_types->appends(request()->input())->links('vendor.pagination.bootstrap-4')}}</div>
 								</div>
 							</div>
-
 						</div>
-					</div>
 					<div class="col-xs-12 col-sm-4 col-md-4 col-lg-3 pull-left">
 						<aside id="tg-sidebar" class="tg-sidebar">
 							<div class="tg-widget tg-widgetsearch">
 								<form class="tg-formtheme tg-formsearch">
 									<div class="form-group">
 										<button type="submit"><i class="icon-magnifier"></i></button>
-										<input type="search" name="search" class="form-group" placeholder="Tìm Kiếm ...." id="myInput" onkeyup="myFunction()">
+										<input type="search" name="search" class="form-group" placeholder="{{ __('Enter keywords') }}" id="myInput" onkeyup="myFunction()">
 									</div>
 								</form>
 							</div>
@@ -159,7 +187,6 @@
 				</div>
 			</div>
 		</div>
-	</div>
 	<!--************************************
 					News Grid End
 			*************************************-->

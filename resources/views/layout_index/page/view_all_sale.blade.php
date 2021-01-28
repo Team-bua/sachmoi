@@ -63,9 +63,9 @@
 									<div class="col-xs-6 col-sm-6 col-md-4 col-lg-3">
 										<div class="tg-postbook">
 
-											<figure class="tg-featureimg">
+											<figure class="tg-featureimg" style="height: 250px">
 												<div class="tg-bookimg">
-													<div class="tg-frontcover"><img src="{{ asset('images/product/' . $books->image) }}" alt="image" /></div>
+													<div class="tg-frontcover"><img style="height: 240px" src="{{ asset('images/product/' . $books->image) }}" alt="image" /></div>
 													<div class="tg-backcover"><img src="{{ asset('images/product/' . $books->image) }}" alt="image" /></div>
 												</div>
 												<a class="tg-btnaddtowishlist" href="{{route('Read',$books->id)}}">

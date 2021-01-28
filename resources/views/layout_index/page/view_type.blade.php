@@ -63,7 +63,6 @@
 				<div id="tg-twocolumns" class="tg-twocolumns">
 					<div class="col-xs-12 col-sm-8 col-md-8 col-lg-9 pull-right">
 						<div id="tg-content" class="tg-content">
-
 							<div class="tg-products">
 								<div class="tg-sectionhead">
 									<h2>{{ $type_name->name }}</h2>

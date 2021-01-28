@@ -68,33 +68,17 @@
 									<h2>{{count($search)}} sản phẩm</h2>
 								</div>
 								<div class="tg-productgrid">
-									<div class="tg-refinesearch">
-										<form class="tg-formtheme tg-formsortshoitems">
-											<fieldset>
-												<div class="form-group">
-													<label>sort by:</label>
-													<span class="tg-select">
-														<select>
-															<option>name</option>
-															<option>name</option>
-															<option>name</option>
-														</select>
-													</span>
-												</div>
-											</fieldset>
-										</form>
-									</div>
 									@foreach ($search as $pro)
 									<div class="col-xs-6 col-sm-6 col-md-4 col-lg-3">
 										<div class="tg-postbook">
 											<figure class="tg-featureimg" style="height: 250px">
 												<div class="tg-bookimg">
 													<div class="tg-frontcover"><img style="height: 240px" src="{{ asset('images/product/' . $pro->image) }}" alt="image" /></div>
-													<div class="tg-backcover"><img src="{{ asset('images/product/' . $pro->image) }}" alt="image" /></div>
+													<div class="tg-backcover"><img src="{{ asset('images/product/' . $pro->image) }}" alt="image" width="150px" height="150px" /></div>
 												</div>
-												<a class="tg-btnaddtowishlist" href="javascript:void(0);">
-													<i class="icon-heart"></i>
-													<span>add to wishlist</span>
+												<a class="tg-btnaddtowishlist" href="{{route('Read',$pro->id)}}">
+													<i class="fa fa-book"></i>
+													<span>Đọc Online</span>
 												</a>
 											</figure>
 											<div class="tg-postbookcontent">
@@ -130,6 +114,9 @@
 										</div>
 									</div>
 									@endforeach
+								</div>
+								<div class="row">
+									<div class="btn-sec">{{$search->appends(request()->input())->links('vendor.pagination.bootstrap-4')}}</div>
 								</div>
 							</div>
 						</div>

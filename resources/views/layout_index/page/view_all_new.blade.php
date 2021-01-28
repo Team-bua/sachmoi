@@ -36,7 +36,7 @@
 		<div class="row">
 			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 				<div class="tg-innerbannercontent">
-					<h1>{{ __('all') }}</h1>
+					<h1>{{ __('newbook') }}</h1>
 					<ol class="tg-breadcrumb">
 						<li> <a href="{{ route('index') }}">{{ __('hompage') }}</a></li>
 						<li class="tg-active">{{ __('Product') }}</li>

@@ -32,7 +32,7 @@ class AppServiceProvider extends ServiceProvider
         view()->composer(['layout_index.header', 'layout_index.page.product_detail','layout_index.page.view_type','layout_index.page.view_all_new',
                         'layout_index.page.view_all_sale', 'layout_index.page.news', 'layout_index.page.news-detail',
                         'layout_index.page.view_all_highlights','layout_index.page.product_company','layout_index.page.all_book','layout_index.page.search',
-                        'layout_index.page.about', 'layout_index.index'], function ($view) {
+                        'layout_index.page.about', 'layout_index.index', 'layout_index.customer.info'], function ($view) {
             $types = ProductType::all();
             $product_n = [];
             $types_id = [];

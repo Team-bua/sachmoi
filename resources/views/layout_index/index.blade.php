@@ -51,7 +51,7 @@
 				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 					<div class="tg-sectionhead">
 						<h2>{{ __("salebook") }}</h2>
-						<a class="tg-btn" href="{{  route('allnew')  }}">{{ __('all') }}</a>
+						<a class="tg-btn" href="{{  route('allsale')  }}">{{ __('all') }}</a>
 					</div>
 				</div>
 				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
@@ -200,7 +200,7 @@
 				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 					<div class="tg-sectionhead">
 						<h2>{{ __("hotbook") }}</h2>
-						<a class="tg-btn" href="{{ route('allnew') }}">{{ __('all') }}</a>
+						<a class="tg-btn" href="{{ route('allhighlights') }}">{{ __('all') }}</a>
 					</div>
 				</div>
 				<div id="tg-pickedbyauthorslider" class="tg-pickedbyauthor tg-pickedbyauthorslider owl-carousel">

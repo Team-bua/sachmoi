@@ -59,48 +59,20 @@
                     <div class="row">
                         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                             <strong class="tg-logo"><a href="{{ route('index') }}"><img src="" alt="company name here"></a></strong>
-                            <div class="tg-wishlistandcart">
+                            <div  class="tg-wishlistandcart">
                                 <div class="dropdown tg-themedropdown tg-minicartdropdown">
-                                    <a href="javascript:void(0);" id="tg-minicart" class="tg-btnthemedropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        <span class="tg-themebadge quntity"> @if (Session::has('cart'))
+                                    <a  href="javascript:void(0);" id="tg-minicart" class="tg-btn" margin-top:11px   aria-haspopup="true" aria-expanded="false">
+                                        <span style=" margin-left:28px;margin-top:11px "class="tg-themebadge quntity"> @if (Session::has('cart'))
                                             {{ Session('cart')->totalQty }}
                                             @else 0 @endif
                                         </span>
-                                        <i class="icon-cart"></i>
-                                        <span class="total-price">( @if(Session::has('cart')) {{number_format($cart->totalPrice)}} @else 0 @endif VNĐ )</span>
+                                        <i style="font-size: 20px" class="icon-cart"></i>
+                                        <span style="font-size: 16px"class="total-price">( @if(Session::has('cart')) {{number_format($cart->totalPrice)}} @else 0 @endif VNĐ )</span>
                                     </a>
-                                    <div class="dropdown-menu tg-themedropdownmenu" aria-labelledby="tg-minicart">
-                                        <div class="tg-minicartbody">
-                                            <div class="tg-minicarproduct">
-                                                @if(Session::has('cart'))
-                                                @foreach($product_cart as $pro)
-                                                <figure>
-                                                    <img style="width:70px; height:70px" src="{{asset('images/product/'.$pro['item']['image'])}}" alt="image description">
-                                                </figure>
-                                                <div class="tg-minicarproductdata">
-                                                    <h5>{{$pro['item']['name']}}</h5>
-                                                    <h6>@if($pro['item']['promotion_price']==0){{number_format($pro['item']['unit_price'])}} @else {{number_format($pro['item']['promotion_price'])}} @endif VNĐ * {{$pro['qty']}}</h6>
-                                                </div>
-                                                <br>
-                                                @endforeach
-                                            @endif
-                                            </div>
-                                        </div>
-                                        <div class="tg-minicartfoot">
-                                            <a class="tg-btnemptycart">
-                                                <i class="fa fa-trash-o"></i>
-                                                <span>Clear Your Cart</span>
-                                            </a>
-                                            <span class="tg-subtotal">Tổng tiền: <strong>@if(Session::has('cart')) {{number_format($cart->totalPrice)}} @else 0 @endif VNĐ</strong></span>
-                                            <div class="tg-btns">
-                                                <a class="tg-btn tg-active" href="javascript:void(0);">Giỏ hàng</a>
-                                                <a class="tg-btn" href="javascript:void(0);">Thanh toán</a>
-                                            </div>
-                                        </div>
-                                    </div>
+
                                 </div>
                             </div>
-                            <div class="tg-searchbox">
+                            <div class="tg-searchbox"  style="margin-top:18px">
                                 <form class="tg-formtheme tg-formsearch" role="search" method="get" id="searchform" action="{{ route('search') }}">
                                     <fieldset>
                                         <input type="text" value="" name="key" id="s" class="typeahead form-control" placeholder="Nhập Từ Khóa" autocomplete="off">

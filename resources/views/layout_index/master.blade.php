@@ -228,7 +228,7 @@
         type: 'GET',
         success: function(response) {
           $('.quntity').html(response['cart']['totalQty']);
-        $('.total-price').html('('+Number(response['cart']['totalPrice']).toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,') + 'VNĐ)');
+          $('.total-price').html('('+Number(response['cart']['totalPrice']).toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,') + 'VNĐ)');
           Swal.fire({
             icon: 'success',
             title: 'Đã thêm vào giỏ hàng',
@@ -270,6 +270,8 @@
       })
     })
   </script>
+  @yield('script')
+  @yield('speak')
   </body>
 
 </html>

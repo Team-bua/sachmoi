@@ -65,12 +65,7 @@
                     </div>
                     @endif
                     @else
-
-
                     <a style="margin-left:320px;margin-top:5px ;font-size:15px;font-weight: bold" class="tg-btn" href="{{ route('login') }}"><span>Đăng Nhập</span></a>
-
-
-
                 </div>
                 @endif
 
@@ -129,46 +124,42 @@
                                 <li>
                                     <a href="{{ route('index') }}">{{ __('hompage') }}</a>
                                 </li>
-                                <li class="menu-item-has-children">
-                                    <a href="">{{ __('catelory') }}</a>
-                                    <div class="mega-menu">
-                                        <ul class="tg-themetabnav" role="tablist">
-                                            @for($i = 0; $i < count($product_n); $i++) <li style="font-weight: bold;font-size: 13px"><a href="{{ route('product_type', $types_id[$i]) }}">{{ $types_name[$i] }} ({{ $product_n[$i] }})</a>
+                                <li style="font-weight: bold" class="menu-item-has-children">
+                                <a href="">{{ __('catelory') }}</a>
+                                    <ul class="sub-menu" style="width:280px">
+                                    @for($i = 0; $i < count($product_n); $i++) <li style="font-weight: bold;font-size: 13px"><a href="{{ route('product_type', $types_id[$i]) }}">{{ $types_name[$i] }} ({{ $product_n[$i] }})</a>
                                 </li>
                                 @endfor
+                                    </ul>
+                            <li style="font-weight: bold" class="menu-item-has-children">
+                                <a href="{{ route('all_book') }}">{{ __('all') }}</a>
+                                <ul class="sub-menu">
+                                    <li style="font-weight: bold;font-size: 13px"><a href="{{ route('allnew') }}">{{ __("newbook") }}</a>
+                                    </li>
+                                    <li style="font-weight: bold;font-size: 13px"><a href="{{ route('allsale') }}">{{ __("salebook") }}</a>
+                                    </li>
+                                    <li style="font-weight: bold;font-size: 13px"><a href="{{  route('allhighlights')  }}">{{ __("hotbook") }}</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li style="font-weight: bold" class="menu-item-has-children">
+                                <a href="#"> {{ __('company') }}</a>
+                                <ul class="sub-menu">
+                                    @foreach ($company as $com)
+                                    <li style="font-weight: bold"><a href="{{ route('product_company', $com->id) }}">{{ $com->name }}</a>
+                                    </li>
+                                    @endforeach
+                                </ul>
+                            </li>
+                            <li><a href="{{ route('introduce') }}">{{ __('introduce') }} </a></li>
+
+                            <li><a href="{{ route('news') }}">{{ __('newws') }}</a></li>
                             </ul>
                         </div>
-                        </li>
-
-                        <li style="font-weight: bold" class="menu-item-has-children">
-                            <a href="{{ route('all_book') }}">{{ __('all') }}</a>
-                            <ul class="sub-menu">
-                                <li style="font-weight: bold;font-size: 13px"><a href="{{ route('allnew') }}">{{ __('newbook') }}</a>
-                                </li>
-                                <li style="font-weight: bold;font-size: 13px"><a href="{{ route('allsale') }}">{{ __('salebook') }}</a>
-                                </li>
-                                <li style="font-weight: bold;font-size: 13px"><a href="{{  route('allhighlights')  }}">{{ __('hotbook') }}</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li style="font-weight: bold" class="menu-item-has-children">
-                            <a href="#"> {{ __('company') }}</a>
-                            <ul class="sub-menu">
-                                @foreach ($company as $com)
-                                <li style="font-weight: bold"><a href="{{ route('product_company', $com->id) }}">{{ $com->name }}</a>
-                                </li>
-                                @endforeach
-                            </ul>
-                        </li>
-                        <li><a href="{{ route('introduce') }}">{{ __('introduce') }} </a></li>
-
-                        <li><a href="{{ route('news') }}">{{ __('newws') }}</a></li>
-                        </ul>
+                    </nav>
                 </div>
-                </nav>
             </div>
         </div>
-    </div>
     </div>
 </header>
 <!--************************************

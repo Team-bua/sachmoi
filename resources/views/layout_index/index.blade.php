@@ -1,6 +1,10 @@
 @extends('layout_index.master')
 @section('content')
 <style type="text/css">
+	.font {
+		color: #895A89;
+	}
+
 	.Out {
 		display: block;
 		position: absolute;
@@ -122,14 +126,16 @@
 						<div class="tg-sectionhead">
 							<h2><span></span>{{ __("newbook") }}</h2>
 						</div>
+						<blockquote>
 						<div class="tg-description">
-							<p style="line-height:28px;text-align: justify;"> Bạn đọc thân mến, như chúng ta đã biết,
+							<p style="line-height:28px;text-align: justify; "> Bạn đọc thân mến, như chúng ta đã biết,
 								sách là một công cụ hỗ trợ đắc lực trong việc nghiên cứu giảng dạy,
 								học tập và nâng cao tri thức. Vì vậy,
 								hàng tháng cửa hàng chúng tôi sẽ lần lượt giới thiệu những quyển sách mới, sách hay đến bạn đọc.</p>
 						</div>
+						</blockquote>
 						<div class="tg-btns">
-							<a class="tg-btn tg-active" href="{{ route('allnew') }}">{{ __('See more') }}</a>
+							<a class="tg-btn tg-active" href="{{ route('allnew') }}" style="margin-left: 150px;">{{ __('See more') }}</a>
 
 						</div>
 					</div>
@@ -217,19 +223,27 @@
 									@endif
 
 									<div class="tg-description">
-										<p> {!! $pro->description !!}</p>
+										<b><p> {!! $pro->description !!}</p></b>
 									</div>
-									<strong class="tg-bookpage">{{ $pro->name }}</strong>
-									<strong class="tg-bookcategory">{{$pro->productCompany->name}}</strong>
+									<strong class="tg-bookpage">
+										<b class="font"><i class="fa fa-book"></i>: {{ $pro->name }}</b>
+									</strong>
+									<strong class="tg-bookcategory">
+										<b class="font"><i class="fa fa-home"></i>: {{$pro->productCompany->name}}</b>
+									</strong>
 									@if($pro->store && $pro->store->stored_product == 0)
 									<strong class="Out2">hết hàng</strong>
 									@endif
 									@if($pro->promotion_price == 0)
-									<strong class="tg-bookprice">{{number_format($pro->unit_price,0,"",",")}} VNĐ </strong>
-									@else
-									<strong class="tg-bookprice">{{number_format($pro->unit_price,0,"",",")}} VNĐ
+									<strong class="tg-bookprice">
+										<b class="font"><i class="fa fa-money"></i>: {{number_format($pro->unit_price,0,"",",")}} VNĐ </b>
 									</strong>
-									<strong class="tg-bookprice">{{number_format($pro->promotion_price,0,"",",")}} VNĐ
+									@else
+									<strong class="tg-bookprice">
+										<b class="font"><i class="fa fa-money"></i>: {{number_format($pro->unit_price,0,"",",")}} VNĐ</b>
+									</strong>
+									<strong class="tg-bookprice">
+										<b class="font"><i class="fa fa-money"></i>: {{number_format($pro->promotion_price,0,"",",")}} VNĐ</b>
 									</strong>
 									@endif
 								</div>
@@ -254,16 +268,17 @@
 	<!--************************************
 					Picked By Author End
 			*************************************-->
-			<section class="tg-sectionspace tg-haslayout">
-				<div class="container">
-					<div class="row">
-	
-						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-							<div class="tg-sectionhead">
-								<h2><span>Tin Tức &amp; Mới Nhất</span>Có gì Hot ?</h2>
-								<a class="tg-btn" href="javascript:void(0);">Xem Thêm</a>
-							</div>
-						</div>
+	<section class="tg-sectionspace tg-haslayout">
+		<div class="container">
+			<div class="row">
+
+				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+					<div class="tg-sectionhead">
+						<h2><span>Tin Tức &amp; Mới Nhất</span>Có gì Hot ?</h2>
+						<a class="tg-btn" href="javascript:void(0);">Xem Thêm</a>
+					</div>
+				</div>
+			
 						<div id="tg-postslider" class="tg-postslider tg-blogpost owl-carousel">
 							@foreach ($content_new_four as $four)
 	
@@ -291,17 +306,18 @@
 										<ul class="tg-postmetadata">
 											<li><a href="javascript:void(0);"><i class="fa fa-comment-o"></i><i>21,415
 														Comments</i></a></li>
-											<li><a href="javascript:void(0);"><i class="fa fa-eye"></i><i>{{ $four->news_view }} Views</i></a>
+											<li><a href="javascript:void(0);"><i class="fa fa-eye"></i><i>{{ $four->news_view }} Lượt xem</i></a>
 											</li>
 										</ul>
 									</div>
 								</article>
 							@endforeach
 	
-						</div>
-					</div>
+					
 				</div>
-			</section>
-		</main>
-	</div>
+			</div>
+		</div>
+	</section>
+	</main>
+</div>
 @endsection

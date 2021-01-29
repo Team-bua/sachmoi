@@ -150,32 +150,19 @@
 								</div>
 							</div>
 
-                                                    <figure class="tg-featureimg" style="height: 250px">
-                                                        <div class="tg-bookimg">
-                                                            <div class="tg-frontcover"><img style="height: 240px"
-                                                                    src="{{ asset('images/product/' . $books->image) }}"
-                                                                    alt="image" /></div>
-                                                            <div class="tg-backcover"><img
-                                                                    src="{{ asset('images/product/' . $books->image) }}"
-                                                                    alt="image" /></div>
-                                                        </div>
-                                                        <a class="tg-btnaddtowishlist"
-                                                            href="{{ route('Read', $books->id) }}">
-                                                            <i class="fa fa-book"></i>
-                                                            <span>Đọc Online</span>
-                                                        </a>
-                                                    </figure>
-                                                    <div class="tg-postbookcontent">
-                                                        <div class="tg-themetagbox"><span class="tg-themetag">sale</span>
-                                                        </div>
-                                                        @if ($books->store && $books->store->stored_product == 0)
-                                                            <div class="Out">Hết Hàng</div>
-                                                        @endif
-                                                        <div class="tg-booktitle">
-                                                            <h3><a href="javascript:void(0);">{{ $books->name }}</a></h3>
-                                                        </div>
-                                                        <span class="tg-bookwriter"><a
-                                                                href="javascript:void(0);">{{ $books->productCompany->name }}</a></span>
+						</div>
+					</div>
+					<div class="col-xs-12 col-sm-4 col-md-4 col-lg-3 pull-left">
+						<aside id="tg-sidebar" class="tg-sidebar">
+							<div class="tg-widget tg-catagories">
+								<div class="tg-widgettitle">
+									<h3>{{ __('catelory') }}</h3>
+								</div>
+								<div class="tg-widgetcontent">
+									<ul>
+										@for($i = 0; $i < count($product_n); $i++) <li><a href="{{ route('product_type', $types_id[$i]) }}"><span>{{ $types_name[$i] }}:</span><span>({{ $product_n[$i] }})</span></a>
+											</li>
+											@endfor
 
                                                         <span class="tg-bookprice">
                                                             @if ($books->promotion_price == 0)

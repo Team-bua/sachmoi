@@ -62,7 +62,7 @@
 										<div class="tg-widgetcontent">
 											<ul>
 											 @for($i = 0; $i < count($product_n); $i++) 
-														   <li><a href="{{ route('product_type', $types_id[$i]) }}"><span>{{ $types_name[$i] }}:</span><span>({{ $product_n[$i] }})</span></a>
+														   <li><a href="{{ route('product_type', $types_id[$i]) }}"><span>{{ $types_name[$i] }} </span><span>({{ $product_n[$i] }})</span></a>
 														   </li>
 														    @endfor
 										

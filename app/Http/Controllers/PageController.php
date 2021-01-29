@@ -10,6 +10,7 @@ use App\Http\Requests\UserRequest;
 use Illuminate\Support\Facades\Session;
 use Analytics;
 use App\Models\Bill;
+use App\Models\BillDetail;
 use App\Models\Date;
 use Spatie\Analytics\Period;
 use Exception;

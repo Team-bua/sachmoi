@@ -1,15 +1,21 @@
 @extends('layout_index.master')
 @section('content')
-
+<style>
+    div.dataTables_wrapper div.dataTables_length select {
+        padding-left: 10px;
+        height: -webkit-fill-available;
+        display: inline-block;
+    }
+</style>
 <div class="tg-innerbanner tg-haslayout tg-parallax tg-bginnerbanner" data-z-index="-100" data-appear-top-offset="600" data-parallax="scroll" data-image-src="images/parallax/bgparallax-07.jpg">
     <div class="container">
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                 <div class="tg-innerbannercontent">
-                    <h1>{{ __('all') }}</h1>
+                    <h1>{{ __('Information') }}</h1>
                     <ol class="tg-breadcrumb">
                         <li> <a href="{{ route('index') }}">{{ __('hompage') }}</a></li>
-                        <li class="tg-active">{{ __('Product') }}</li>
+                        <li class="tg-active">{{ __('Information') }}</li>
                     </ol>
                 </div>
             </div>
@@ -58,7 +64,6 @@
                                         <button class="btn black">Cập nhật thông tin </button>
                                     </div>
                                 </form>
-
                             </div>
                             <br>
                             <br>
@@ -69,7 +74,7 @@
                                     <form method="post" action="{{ route('updatePassword',Auth::user()->id)}}">
                                         @csrf
                                         <label>Mật Khẩu Cũ</label>
-                                        <div class="form-group pass_show" >
+                                        <div class="form-group pass_show">
                                             <input type="password" name="password" class="form-control" placeholder="Mật Khẩu Cũ">
                                         </div>
                                         <label>Mật Khẩu Mới</label>
@@ -86,9 +91,67 @@
                                         <br>
                                     </form>
                                 </div>
-
                             </div>
+                            <div>
+                                <h2>Đơn hàng của bạn</h2>
+                            </div>
+                            <div class="accordion-inner">
+                                <table id="example" class="table table-striped table-bordered display" cellspacing="0" width="100%">
+                                    <thead>
+                                        <tr>
+                                            <th>Tên khách hàng</th>
+                                            <th>Số Lượng</th>
+                                            <th>Địa chỉ</th>
+                                            <th>Ngày đặt</th>
+                                            <th>Tình Trạng </th>
+                                            <th>Tổng tiền</th>
+                                            <th>Sản phẩm</th>
+                                            <th>Chi tiết</th>
+                                        </tr>
+                                    </thead>
 
+                                    <tbody>
+                                        @foreach($bill as $bills)
+                                        <tr>
+                                            <td>{{$bills->user->full_name}}</td>
+                                            <td>{{$bills->quantity}}</td>
+                                            <td>{{$bills->address}}</td>
+                                            <td>{{$bills->created_at->format('d/m/y')}}</td>
+                                            <td> @if($bills->status == 0)
+                                                <button type="button" class="btn btn-default">Đang xử lý</button>
+                                                @elseif($bills->status == 1)
+                                                <button type="button" class="btn btn-primary">Tiếp nhận</button>
+                                                @elseif($bills->status == 2)
+                                                <button type="button" class="btn btn-success">Đã giao</button>
+                                                @elseif($bills->status == 3)
+                                                <button type="button" class="btn btn-danger">Thất bại</button>
+                                                @endif
+                                            </td>
+                                            <td>{{number_format($bills->total,0,"",",")}} VNĐ</td>
+                                            <td>
+                                                <div class="your-order-item" width="100%">
+                                                    @foreach($bills->products as $product)
+                                                    <div class="cart-item">
+                                                        <div class="media">
+                                                            <img style="width:100px;height:80px;" src="{{ asset('images/product/' . $product->image) }}" class="pull-left">
+                                                            <div class="media-body">
+                                                                <span class="color-gray your-order-info pull-left"><b>Tên sách:</b> {{$product->name}}</span><br>
+                                                                <span class="color-gray your-order-info pull-left"><b>Đơn giá:</b> {{number_format($product->pivot->unit_price)}} VNĐ</span><br>
+                                                                <span class="color-gray your-order-info pull-left"><b>Số lượng:</b> *{{$product->pivot->quantity}} </span>
+                                                            </div>
+                                                            <br><br>
+                                                        </div>
+                                                    </div>
+                                                    @endforeach
+                                                </div>
+
+                                            </td>
+                                            <td><button style="border-radius: 4px;" class='btn btn-flat btn-info'><i class='fa fa-eye'></i></button></td>
+                                        </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                     <div class="col-xs-12 col-sm-4 col-md-4 col-lg-3 pull-left">
@@ -133,67 +196,26 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="accordion-group" style="font-size: 25px; width:97%; margin-left: 15px; ">
-                    <div class="accordion-heading country">
-                        <a class="accordion-toggle" data-toggle="collapse" href="#country1" style="text-decoration: blink;
-                        background: #666;
-                        color: #fff;
-                        border: 2px solid #666;
-                        border-radius: 1px; 
-                        text-decoration: none;  
-                        background: #fff; 
-                        color: #666;">
-                            Đơn Hàng Của Bạn
-                        </a>
-                    </div>
-                    <div id="country1" class="accordion-body collapse">
-                        <div class="accordion-inner">
-                            <table class="table table-striped table-condensed" style="margin-top: 15px">
-                                <thead>
-                                    <tr>
-                                        <th>Ảnh sản phẩm</th>
-                                        <th>Tên sản phẩm</th>
-                                        <th>Số Lượng</th>
-                                        <th>Giá</th>
-                                        <th>Ngày đặt</th>
-                                        <th>Tình Trạng </th>
-                                        <th>Thành tiền</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach($bill as $bills)
-                                    @foreach($bills->products as $product)
-                                    <tr>
-                                        <td><img style="width:120px;height:100px;" src="{{ asset('images/product/' . $product->image) }}"></td>
-                                        <td>{{$product->name}}</td>
-                                        <td>{{$product->pivot->quantity}}</td>
-                                        <td>{{number_format($product->pivot->unit_price)}} VNĐ</td>
-                                        <td>{{$bills->created_at->format('d/m/y')}}</td>
-                                        <td> @if($bills->status == 0)
-                                            <button type="button" class="btn btn-default">Đang xử lý</button>
-                                            @elseif($bills->status == 1)
-                                            <button type="button" class="btn btn-primary">Tiếp nhận</button>
-                                            @elseif($bills->status == 2)
-                                            <button type="button" class="btn btn-success">Đã giao</button>
-                                            @elseif($bills->status == 3)
-                                            <button type="button" class="btn btn-danger">Thất bại</button>
-                                            @endif
-                                        </td>
-                                        <td>{{number_format($product->pivot->unit_price * $product->pivot->quantity)}} VNĐ</td>
-                                    </tr>
 
-                                    @endforeach
-                                    @endforeach
-                                </tbody>
-                            </table>
+            <!-- Modal -->
+            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content" style="width:auto">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h3 class="modal-title" id="myModalLabel" style="color: red">Chi tiết sản phẩm</h3>
                         </div>
+                        <div class="modal-body">
+                            <div class="showBill"></div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
+                        </div>
+
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-    <!--************************************
+            <!--************************************
 					News Grid End
 			*************************************-->
 </main>
@@ -202,19 +224,40 @@
 		*************************************-->
 @endsection
 @section('show')
+<link rel="stylesheet" type="text/css" href="DataTables-1.10.23/css/dataTables.bootstrap.min.css" />
+<script type="text/javascript" src="DataTables-1.10.23/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="DataTables-1.10.23/js/dataTables.bootstrap.min.js"></script>
 <script type="text/javascript">
-    $(document).ready(function() {
-        $('.pass_show').append('<span class="ptxt">hiện</span>');
+    var table = $('#example').DataTable({
+        "bPaginate": true,
+        "bLengthChange": true,
+        "bFilter": false,
+        "bSort": false,
+        "bInfo": false,
+        "order": [],
+        "bAutoWidth": true,
+        "info": false,
+        // hiding columns via datatable column.visivle API
+        "columnDefs": [{
+            "targets": [6],
+            "visible": false
+        }, {
+            // adding a more info button at the end
+            "targets": -1,
+            "data": null,
+            "defaultContent": "<button class='btn btn-info btn1' ><i class='fa fa-eye'></i></button>",
+        }]
     });
 
-    $(document).on('click', '.pass_show .ptxt', function() {
+    $('#example tbody').on('click', '.btn1', function() {
+        var data = table.row($(this).parents('tr')).data(); // getting target row data
+        $('.showBill').html(
+            // Adding and structuring the full data
+            '<table class="table table-bordered table-hover dataTable"><tr role="row"><th class="sorting_asc text-center"><h4 style="color:blue">Thông tin đơn hàng</h4></th></tr><tbody><tr><td>' + data[6] +
+            '</td></tr><tr><td><b style="font-size:18px; color:red">Tổng tiền :</b><b class="text-red pull-right" style="color:red">' + data[5] + '</b></td></tr></table>'
 
-        $(this).text($(this).text() == "ẩn" ? "hiện" : "ẩn");
-
-        $(this).prev().attr('type', function(index, attr) {
-            return attr == 'password' ? 'text' : 'password';
-        });
-
+        );
+        $('#myModal').modal('show'); // calling the bootstrap modal
     });
 </script>
 @stop

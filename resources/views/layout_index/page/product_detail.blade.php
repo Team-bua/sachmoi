@@ -3,7 +3,7 @@
 <style type="text/css">
 	.area {
 		font-size: 15px;
-		border: 2px solid #EF5050;
+		border: 1px solid #77b748;
 		resize: none;
 	}
 	.active {

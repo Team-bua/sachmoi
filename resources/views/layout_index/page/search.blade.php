@@ -126,7 +126,6 @@
 												<em>{{ __('Detail') }}</em>
 											</a>
 											</div>
-											  @endforeach
 										</div>
 									</div>
 									@endforeach

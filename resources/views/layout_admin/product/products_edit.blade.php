@@ -29,6 +29,9 @@
             <span class="input-group-addon"><i class="fa fa-pencil"></i></span>
             <input required name="name" type="text" class="form-control" value="{{$product->name}}" placeholder="Tên sách . . . . . . . . .">
           </div>
+          @error('name')
+          <div style="color: red"> {{ $message }} </div>
+          @enderror
           <h4>Loại sách</h4>
 
           <div class="input-group input-group">
@@ -50,16 +53,22 @@
             <span class="input-group-addon"><i class="fa fa-smile-o"></i></span>
             <input name="publisher" type="text" value="{{$product->publisher}}" class="form-control" placeholder="Tác giả. . . . . . . . .">
           </div>
+          @error('publisher')
+          <div style="color: red"> {{ $message }} </div>
+          @enderror
           <h4> Giá : </h4>
           <div class="input-group">
             <span class="input-group-addon"><i class="fa fa-money"></i></span>
-            <input name="unit_price" type="number" value="{{$product->unit_price}}" class="form-control" placeholder="Giá . . . . . . . . .">
+            <input name="unit_price" type="number" value="{{$product->unit_price}}" min="0" max="1000000000" class="form-control" placeholder="Giá . . . . . . . . .">
             <span class="input-group-addon">VNĐ</span>
           </div>
+          @error('unit_price')
+          <div style="color: red"> {{ $message }} </div>
+          @enderror
           <h4> Giá khuyến mãi : </h4>
           <div class="input-group">
             <span class="input-group-addon"><i class="fa fa-money"></i></span>
-            <input name="promotion_price" type="number" value="{{$product->promotion_price}}" class="form-control" placeholder="Khuyến mãi . . . . . . . . .">
+            <input name="promotion_price" type="number" value="{{$product->promotion_price}}" min="0" max="1000000000" class="form-control" placeholder="Khuyến mãi . . . . . . . . .">
             <span class="input-group-addon">VNĐ</span>
           </div>
 
@@ -69,6 +78,9 @@
               <textarea name="description" class="textarea" placeholder="Miêu tả . . . . ." style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;">{{$product->description}}</textarea>
             </form>
           </div>
+          @error('description')
+          <div style="color: red"> {{ $message }} </div>
+          @enderror
           <h4> Định dạng: </h4>
           <div class="input-group">
             <span class="input-group-addon"><i class="fa fa-money"></i></span>
@@ -103,7 +115,9 @@
             <input name="img" type="file" id="exampleInputFile" onchange="changeImg(this)">
             <img id="avatar" class="thumbnail" width="100px" height="100px" src="{{asset('images/product/'.$product->image)}}">
           </div>
-
+          @error('img')
+          <div style="color: red"> {{ $message }} </div>
+          @enderror
           <div class="form-group">
             <h4 for="exampleInputFile">Ảnh chi tiết</h4>
             @foreach($product->imagedetail as $pro)

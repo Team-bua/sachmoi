@@ -22,6 +22,9 @@
             <form action="{{ url('book') }}" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="box-header">
+                    @if (session('error'))
+                    <div class="alert alert-danger text-center">{{ session('error') }}</div>
+                    @endif
                 </div>
                 <div class="box-body">
                     <h4> Tên sách : </h4>
@@ -43,7 +46,6 @@
                             </select>
                         </div><!-- /btn-group -->
                     </div><!-- /input-group -->
-
                     <h4> Tác giả : </h4>
                     <div class="input-group">
                         <span class="input-group-addon"><i class="fa fa-smile-o fa-lg"></i></span>
@@ -56,7 +58,7 @@
                     <h4> Giá : </h4>
                     <div class="input-group">
                         <span class="input-group-addon"><i class="fa fa-money fa-lg"></i></span>
-                        <input value="{{ old('unit_price') }}" min="0" max="99999999" id="unit_pricebook" name="unit_price" type="number" class="form-control" placeholder="Giá  . . . . . . . . .">
+                        <input value="{{ old('unit_price') }}" min="0" max="1000000000" id="unit_pricebook" name="unit_price" type="number" class="form-control" placeholder="Giá  . . . . . . . . .">
                         <span class="input-group-addon">VNĐ</span>
                     </div>
                     @error('unit_price')
@@ -67,7 +69,7 @@
                     <h4> Giá khuyến mãi : </h4>
                     <div class="input-group">
                         <span class="input-group-addon"><i class="fa fa-money fa-lg"></i></span>
-                        <input id="promotion_pricebook" min="0" max="99999999" name="promotion_price" type="number" class="form-control" placeholder="Khuyến mãi . . . . . . . . .">
+                        <input id="promotion_pricebook" min="0" max="1000000000" name="promotion_price" type="number" class="form-control" placeholder="Khuyến mãi . . . . . . . . .">
                         <span class="input-group-addon">VNĐ</span>
                     </div>
 

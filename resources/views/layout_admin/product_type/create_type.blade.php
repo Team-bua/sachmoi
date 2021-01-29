@@ -68,7 +68,7 @@
                                     <h4>Loại sách: </h4>
                                 </label>
                                 <input style="width:250px" type="text" id="name_type" name="name" class="form-control" id="type_name" placeholder="Tên loại sách . . . . .">
-
+                                <p id="edit-error" style="color:red"></p>
                             </div>
                             <button style="border-color: #4a4235;background-color:#4a4235" type="submit" id="editsubmit " class="btn btn-success"> Cập nhật </button>
 
@@ -183,6 +183,7 @@
 
     function editType(edit) {
         $('#bookeditmodal').modal('show');
+        $('#edit-error').html('');
         var [x, book_type] = edit.id.split('-')
         $.ajax({
             url: "{{ route('book_edit') }}",
@@ -200,6 +201,7 @@
 
     $('#bookEditForm').submit(function(e) {
         e.preventDefault();
+        $('#edit-error').html('');
         let id = $("#id").val();
         let name = $("#name_type").val();
         $.ajax({
@@ -219,6 +221,12 @@
                     showConfirmButton: false,
                     timer: 1500
                 })
+            },
+            error: function(response){
+                let errors = response.responseJSON['errors'];
+                for (const key in errors) {
+                    $('#edit-error').append(errors[key][0]);
+                }
             }
         });
     });

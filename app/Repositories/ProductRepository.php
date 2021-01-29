@@ -155,8 +155,7 @@ class ProductRepository
             $image=$product->image;
         }
         $product->image = $image;
-
-       
+  
         if($imgdetail == []){
             $imgdetail = $product->imagedetail;
         }

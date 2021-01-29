@@ -58,7 +58,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label>Email:</label>
-                                        <input type="text" name="email" class="form-control" value="{{$customer->email}}" />
+                                        <input style="text-transform :none; " type="text" name="email" class="form-control" value="{{$customer->email}}" />
                                     </div>
                                     <div class="col-3">
                                         <button class="btn black">Cập nhật thông tin </button>
@@ -77,14 +77,23 @@
                                         <div class="form-group pass_show">
                                             <input type="password" name="password" class="form-control" placeholder="Mật Khẩu Cũ">
                                         </div>
+                                        @error('password')
+                                        <p style="color:red">{{ $message }}</p>
+                                        @enderror
                                         <label>Mật Khẩu Mới</label>
                                         <div class="form-group pass_show">
                                             <input type="password" name="new_password" class="form-control" placeholder="Mật Khẩu Mới">
                                         </div>
+                                        @error('new_password')
+                                        <p style="color:red">{{ $message }}</p>
+                                        @enderror
                                         <label>Nhập Lại Mật Khẩu</label>
                                         <div class="form-group pass_show">
                                             <input type="password" name="re_password" class="form-control" placeholder="Nhập Lại Mật Khẩu">
                                         </div>
+                                        @error('re_password')
+                                        <p style="color:red">{{ $message }}</p>
+                                        @enderror
                                         <div class="col-3">
                                             <button class="btn black">Cập nhật thông tin </button>
                                         </div>
@@ -260,4 +269,28 @@
         $('#myModal').modal('show'); // calling the bootstrap modal
     });
 </script>
+<script>
+    function AddCart(id) {
+      $.ajax({
+        url: "{{url('updatePassword')}}" + '/' + id,
+        type: 'GET',
+        success: function(response) {
+          Swal.fire({
+            icon: 'success',
+            title: 'Thay đổi mật khẩu thành công',
+            showConfirmButton: false,
+            timer: 1500
+          })
+        },
+        error: function(response) {
+          Swal.fire({
+            icon: 'error',
+            title: 'Sách đã hết hàng',
+            showConfirmButton: false,
+            timer: 1500
+          })
+        }
+      })
+    }
+  </script>
 @stop

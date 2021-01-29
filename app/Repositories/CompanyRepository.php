@@ -64,15 +64,14 @@ class CompanyRepository
         }
 
         $companies = Company::find($id);
-        $companies->name=$request->input('name');
+        $companies->name=$companies->name;
         $companies->email=$request->input('email');
         $companies->address=$request->input('address');
         $companies->phone_number=$request->input('phone');
-        $companies->image = $image;
         if($image ==""){
             $image=$companies->image;
         }
-       
+        $companies->image = $image;
         $companies->save();
         
     }

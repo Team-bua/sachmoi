@@ -30,8 +30,6 @@ class UserRequest extends FormRequest
             'phone' => 'required|numeric|digits:10',
             'password' => 'required|min:6|max:25',
 
-            // 'new_password' => 'required|min:6|max:20',
-            // 're_password' => 'required|same:new_password',
         ];
     }
     public function messages()
@@ -49,9 +47,6 @@ class UserRequest extends FormRequest
             'phone.digits' => 'Điện thoại chỉ có 10 số',
             'phone.numeric' => 'Điện thoại chỉ được nhập số', 
 
-            // 're_password.same' => 'Xác nhận mật khẩu không đúng',
-            // 'new_password.min' => 'Mật khẩu ít nhất 6 ký tự',
-            // 'new_password.max' => 'Mật khẩu không quá 20 ký tự',
         ];
     }
 }

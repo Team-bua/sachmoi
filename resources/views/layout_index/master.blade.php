@@ -277,18 +277,6 @@
     }
   </script>
   <script>
-    $(document).ready(function() {
-      $('#myInput').on('keyup', function(event) {
-        event.preventDefault();
-        /* Act on the event */
-        var tukhoa = $(this).val().toLowerCase();
-        $('#myTable div').filter(function() {
-          $(this).toggle($(this).text().toLowerCase().indexOf(tukhoa) > -1);
-        });
-      });
-    });
-  </script>
-  <script>
     $(document).ready(function(){
       $('#sort_by').on('change',function(){
         var url = $(this).val();

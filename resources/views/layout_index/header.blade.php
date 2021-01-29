@@ -31,7 +31,7 @@
                     @if (Auth::check())
                     @if (Auth::user()->id_role == 1 || Auth::user()->id_role == 2)
 
-                    <div style="margin-left:350px " class="dropdown tg-themedropdown tg-currencydropdown">
+                    <div style="margin-left:320px " class="dropdown tg-themedropdown tg-currencydropdown">
                         <a href="" id="tg-currenty" class="tg-btnthemedropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <i class="icon-user"></i>
                             <span style="font-weight: bold;">{{ Auth::user()->full_name }}</span>
@@ -49,7 +49,7 @@
                         </ul>
                     </div>
                     @else
-                    <div style="margin-left:350px " class="dropdown tg-themedropdown tg-currencydropdown">
+                    <div style="margin-left:320px " class="dropdown tg-themedropdown tg-currencydropdown">
                         <a href="" id="tg-currenty" class="tg-btnthemedropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <i class="icon-user"></i>
                             <span style="font-weight: bold;">{{ Auth::user()->full_name }}</span>

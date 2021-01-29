@@ -92,6 +92,30 @@ class CompanyController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $this->validate($request, 
+                [
+                //Kiểm tra đúng file đuôi .jpg,.jpeg,.png.gif và dung lượng không quá 2M
+                'img' => 'mimes:jpg,jpeg,png,gif|max:10048|',
+                'name' => 'required|regex:/(^[\pL0-9 ]+$)/u',
+                'email' => 'required',
+                'address' => 'required',
+                'phone' => 'required|numeric|digits:10',
+                ],          
+                [
+                //Tùy chỉnh hiển thị thông báo không thõa điều kiện
+                'name.required' => 'Bạn chưa nhập tên',
+                'name.regex' => 'Tên nhà xuất bản không được phép có ký tự đặc biệt',
+                'email.required' => 'Bạn chưa nhập email',
+                'address.required' => 'Bạn chưa nhập địa chỉ',
+                'phone.required' => 'Bạn chưa nhập số điện thoại',
+                'phone.digits' => 'Điện thoại chỉ có 10 số',
+                'phone.numeric' => 'Điện thoại chỉ được nhập số',
+    
+                'img.required' => 'Vui lòng chọn ảnh',
+                'img.mimes' => 'Chỉ chấp nhận hình thẻ với đuôi .jpg .jpeg .png .gif',
+                'img.max' => 'Hình thẻ giới hạn dung lượng không quá 10M',
+                ]
+            );
         $this->repository->update($request, $id);
         return redirect(route('companies.index'));
     }

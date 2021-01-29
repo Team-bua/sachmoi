@@ -9,6 +9,7 @@ use App\Http\Requests\PageRequest;
 use App\Http\Requests\UserRequest;
 use Illuminate\Support\Facades\Session;
 use Analytics;
+use App\Http\Requests\ChangePassRequest;
 use App\Models\Bill;
 use App\Models\BillDetail;
 use App\Models\Date;
@@ -334,10 +335,10 @@ class PageController extends Controller
         return redirect()->back()->with('thongbao', 'Cập nhật thông tin thành công');
     }
 
-    public function updatePassword(UserRequest $request, $id)
+    public function updatePassword(Request $request, $id)
     {
-        $this->repository->updatePassword($request, $id);
-        return redirect()->back();
+        return $this->repository->updatePassword($request, $id);
+       
     }
 
     public function changeLanguage($language)

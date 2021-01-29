@@ -1,6 +1,5 @@
 @extends('layout_index.master')
 @section('content')
-@if(Session::has('cart'))
 <main id="tg-main" class="tg-main tg-haslayout">
 	<div class="tg-sectionspace tg-haslayout">
 		<div class="container">
@@ -60,13 +59,6 @@
 		</div>
 	</div>
 </main>
-@else
-<main id="tg-main" class="tg-main tg-haslayout">
-	<div class="container">
-		<h1>Giỏ hàng trống !</h1>
-	</div>
-</main>
-@endif
 @endsection
 @section('script')
 <script>

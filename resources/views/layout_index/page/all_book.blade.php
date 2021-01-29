@@ -88,7 +88,6 @@
 											</fieldset>
 										</form>
 									</div>
-									<div id="myTable">
 										@foreach ($product_all as $books)
 										<div class="col-xs-6 col-sm-6 col-md-4 col-lg-3">
 											<div class="tg-postbook">
@@ -132,7 +131,6 @@
 											</div>
 										</div>
 										@endforeach
-									</div>
 									<div class="row">
 										<div class="btn-sec">{{$product_all->appends(request()->input())->links('vendor.pagination.bootstrap-4')}}</div>
 									</div>

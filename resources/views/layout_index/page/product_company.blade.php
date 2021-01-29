@@ -62,8 +62,19 @@
 				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 					<div class="tg-authordetail">
 						<figure class="tg-authorimg">
-							<img src="images/author/imag-25.jpg" alt="image description">
+							<img style="width:370px; height:370px" src="{{ asset('images/companies/' . $company_name->image) }}" alt="image description">
+							<br>
+							<div>
+								<h2>Thông Tin</h2>
+							</div>
+							<ul class="tg-productinfo" style="width:370px">
+								<li><span>Tên:</span><span>{{ $company_name->name}}</span></li>
+								<li><span>Email:</span><span>{{ $company_name->email}}</span></li>
+								<li><span>Địa chỉ:</span><span>{{ $company_name->address}}</span></li>
+								<li><span>Số điện thoại:</span><span>{{ $company_name->phone_number}}</span></li>
+							</ul>
 						</figure>
+
 						<div class="tg-authorcontentdetail">
 							<div class="tg-sectionhead">
 								<div class="tg-booksfromauthor">
@@ -115,13 +126,14 @@
 										</div>
 										@endforeach
 									</div>
-								</div>
-								<div class="row">
-									<div class="btn-sec">{{$product_company->appends(request()->input())->links('vendor.pagination.bootstrap-4')}}</div>
+									<div class="row" style="margin-left:10px">
+										<div class="btn-sec">{{$product_company->appends(request()->input())->links('vendor.pagination.bootstrap-4')}}</div>
+									</div>
 								</div>
 							</div>
 						</div>
 					</div>
+
 				</div>
 			</div>
 		</div>

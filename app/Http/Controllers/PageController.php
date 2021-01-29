@@ -77,14 +77,17 @@ class PageController extends Controller
     public function getNews()
     {
         $content_fist = $this->repository->getContentFist();
+        
         $content = $this->repository->getContent();
         return view('layout_index.page.news', compact('content', 'content_fist'));
     }
     public function getNewsContent($id)
     {
+        $content_new_four = $this->repository->getContentNewFour();
+        $this->repository->NewView($id);
         $content = $this->repository->getContent();
         $content_detail = $this->repository->getContentDetail($id);
-        return view('layout_index.page.news-detail', compact('content_detail', 'content'));
+        return view('layout_index.page.news-detail', compact('content_detail', 'content','content_new_four'));
     }
     // tin tức
 
@@ -216,7 +219,8 @@ class PageController extends Controller
     {
         $product_detail = $this->repository->getProduct($id);
         $pdf = $this->repository->getRead($id);
-        return view('layout_index.page.Read_book', compact('pdf','product_detail'));
+         $product_type = $this->repository->getProductType();
+        return view('layout_index.page.Read_book', compact('pdf','product_detail','product_type'));
     }
 
     public function getCheckout()
@@ -266,7 +270,7 @@ class PageController extends Controller
 
     public function getAdmin()
     {
-        $data["fetchTotalVisitorsAndPageViews"] = Analytics::fetchTotalVisitorsAndPageViews(Period::days(9));
+        $data["fetchTotalVisitorsAndPageViews"] = Analytics::fetchTotalVisitorsAndPageViews(Period::days(15));
         $user = $this->repository->getAll();
         $product = $this->repository->allBookAdm();
         $store = $this->repository->getAllstore();

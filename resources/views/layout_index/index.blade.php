@@ -124,15 +124,15 @@
 					<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
 
 						<div class="tg-sectionhead">
-							<h2><span></span>{{ __("newbook") }}</h2>
+							<h2>{{ __("newbook") }}</h2>
 						</div>
 						<blockquote>
-						<div class="tg-description">
-							<p style="line-height:28px;text-align: justify; "> Bạn đọc thân mến, như chúng ta đã biết,
-								sách là một công cụ hỗ trợ đắc lực trong việc nghiên cứu giảng dạy,
-								học tập và nâng cao tri thức. Vì vậy,
-								hàng tháng cửa hàng chúng tôi sẽ lần lượt giới thiệu những quyển sách mới, sách hay đến bạn đọc.</p>
-						</div>
+							<div class="tg-description">
+								<p style="line-height:28px;text-align: justify; "> Bạn đọc thân mến, như chúng ta đã biết,
+									sách là một công cụ hỗ trợ đắc lực trong việc nghiên cứu giảng dạy,
+									học tập và nâng cao tri thức. Vì vậy,
+									hàng tháng cửa hàng chúng tôi sẽ lần lượt giới thiệu những quyển sách mới, sách hay đến bạn đọc.</p>
+							</div>
 						</blockquote>
 						<div class="tg-btns">
 							<a class="tg-btn tg-active" href="{{ route('allnew') }}" style="margin-left: 150px;">{{ __('See more') }}</a>
@@ -221,9 +221,13 @@
 									@if ($pro->new == 1)
 									<div class="tg-themetagbox"><span class="tg-themetag">hot</span></div>
 									@endif
-
+									@if($pro->store && $pro->store->stored_product == 0)
+									<div class="Out2">Hết Hàng</div>
+									@endif
 									<div class="tg-description">
-										<b><p> {!! $pro->description !!}</p></b>
+										<b>
+											<p> {!! $pro->description !!}</p>
+										</b>
 									</div>
 									<strong class="tg-bookpage">
 										<b class="font"><i class="fa fa-book"></i>: {{ $pro->name }}</b>
@@ -275,9 +279,10 @@
 				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 					<div class="tg-sectionhead">
 						<h2><span>Tin Tức &amp; Mới Nhất</span>Có gì Hot ?</h2>
-						<a class="tg-btn" href="javascript:void(0);">Xem Thêm</a>
+						<a class="tg-btn" href="{{route('news')}}">Xem Thêm</a>
 					</div>
 				</div>
+
 				<div id="tg-postslider" class="tg-postslider tg-blogpost owl-carousel">
 					@foreach ($content_new_four as $four)
 
@@ -298,16 +303,14 @@
 									{{ $four->name }}
 								</p>
 							</div>
-							<span class="tg-bookwriter">Bởi: <a href="javascript:void(0);">Tuấn Râu</a></span>
 							<ul class="tg-postmetadata">
-								<li><a href="javascript:void(0);"><i class="fa fa-comment-o"></i><i>21,415
-											Comments</i></a></li>
-								<li><a href="javascript:void(0);"><i class="fa fa-eye"></i><i>24,565 Views</i></a>
-								</li>
+								<li><a href="javascript:void(0);">Bởi: Tuấn </a></li>
+								<li><a href="javascript:void(0);"><i class="fa fa-eye"></i><i>{{ $four->news_view  }} lượt xem</i></a></li>
 							</ul>
 						</div>
 					</article>
 					@endforeach
+
 
 				</div>
 			</div>

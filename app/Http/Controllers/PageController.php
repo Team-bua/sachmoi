@@ -10,6 +10,7 @@ use App\Http\Requests\UserRequest;
 use Illuminate\Support\Facades\Session;
 use Analytics;
 use App\Models\Bill;
+use App\Models\BillDetail;
 use App\Models\Date;
 use Spatie\Analytics\Period;
 use Exception;
@@ -76,14 +77,17 @@ class PageController extends Controller
     public function getNews()
     {
         $content_fist = $this->repository->getContentFist();
+        
         $content = $this->repository->getContent();
         return view('layout_index.page.news', compact('content', 'content_fist'));
     }
     public function getNewsContent($id)
     {
+        $content_new_four = $this->repository->getContentNewFour();
+        $this->repository->NewView($id);
         $content = $this->repository->getContent();
         $content_detail = $this->repository->getContentDetail($id);
-        return view('layout_index.page.news-detail', compact('content_detail', 'content'));
+        return view('layout_index.page.news-detail', compact('content_detail', 'content','content_new_four'));
     }
     // tin tức
 

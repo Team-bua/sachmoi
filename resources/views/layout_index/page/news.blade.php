@@ -51,20 +51,24 @@
 												</div>
 												<div class="col-xs-12 col-sm-12 col-md-7 col-lg-7">
 													<div class="tg-featureditmcontent">
-														<div class="tg-themetagbox"><span class="tg-themetag">featured</span></div>
-														<div class="tg-booktitle">
-															<h3><a href="javascript:void(0);">Things To Know About Green Flat Design</a></h3>
-														</div>
-														<span class="tg-bookwriter">By: <a href="javascript:void(0);">Farrah Whisenhunt</a></span>
-														<span class="tg-stars"><span></span></span>
-														<div class="tg-priceandbtn">
-															<span class="tg-bookprice">
-																<ins>$23.18</ins>
-																<del>$30.20</del>
+														<div class="tg-themetagbox"><span class="tg-themetag">Hot</span></div>
+														<div class="tg-posttitle">
+															<h3
+																style=" width:490px;text-overflow: ellipsis;overflow: hidden;white-space: nowrap;">
+																<a href="{{ route('newsdetail', [$content_fist['id']]) }}">{{ $content_fist->name }}</a></h3>
+																
+															<span style=" margin-top:10px;display: -webkit-box;width:480px;line-height:20px;overflow: hidden;text-overflow: ellipsis;-webkit-line-clamp:3;-webkit-box-orient: vertical;">
+																{!! $content_fist->content !!}
 															</span>
-															<a class="tg-btn tg-btnstyletwo tg-active" href="javascript:void(0);">
-																<i class="fa fa-shopping-basket"></i>
-																<em>Add To Basket</em>
+														</div>
+														<ul class="tg-postmetadata">
+															<li><a href="javascript:void(0);">Bởi:Tuấn </a></li>
+															<li><a href="javascript:void(0);"><i class="fa fa-eye"></i><i>{{ $content_fist->news_view  }} lượt xem</i></a></li>
+														</ul>
+														<div class="tg-priceandbtn">
+															<a class="tg-btn tg-btnstyletwo tg-active"href="{{ route('newsdetail', [$content_fist['id']]) }}">
+																<i class="fa fa-plus"></i>
+																<em>Xem thêm</em>
 															</a>
 														</div>
 													</div>
@@ -84,12 +88,18 @@
 												<ul class="tg-bookscategories">
 												</ul>
 												<div class="tg-posttitle">
-													<h3 style=" width:250px;text-overflow: ellipsis;overflow: hidden;white-space: nowrap;"><a href="{{ route('newsdetail', [$con['id']]) }}">{{$con->name}}</a></h3>
+													<h3
+														style=" width:250px;text-overflow: ellipsis;overflow: hidden;white-space: nowrap;">
+														<a href="{{ route('newsdetail', [$con['id']]) }}">{{ $con->name }}</a></h3>
+														
+													<span style=" margin-top:10px;display: -webkit-box;width:230px;line-height:20px;overflow: hidden;text-overflow: ellipsis;-webkit-line-clamp:3;-webkit-box-orient: vertical;">
+														{!! $con->content !!}
+													</span>
 												</div>
-												<span class="tg-bookwriter">Bởi: <a href="javascript:void(0);">Tuấn Râu</a></span>
+												
 												<ul class="tg-postmetadata">
-													<li><a href="javascript:void(0);"><i class="fa fa-comment-o"></i><i>21,415 Comments</i></a></li>
-													<li><a href="javascript:void(0);"><i class="fa fa-eye"></i><i>24,565 Views</i></a></li>
+													<li><a href="javascript:void(0);">Bởi:Tuấn </a></li>
+													<li><a href="javascript:void(0);"><i class="fa fa-eye"></i><i>{{ $con->news_view  }} lượt xem</i></a></li>
 												</ul>
 											</div>
 										</article>
@@ -135,7 +145,10 @@
 													<div class="tg-posttitle">
 														<h3 style=" width:150px;text-overflow: ellipsis;overflow: hidden;white-space: nowrap;"><a href="{{ route('newsdetail', [$con['id']]) }}">{{$con->name}}</a></h3>
 													</div>
-													<span class="tg-bookwriter">Bởi: <a href="javascript:void(0);">Tuấn Râu</a></span>
+													<ul class="tg-postmetadata">
+														
+														<li><a href="javascript:void(0);"><i class="fa fa-eye"></i><i>{{ $con->news_view  }} lượt xem</i></a></li>
+													</ul>
 												</div>
 											</article>
 									</ul>

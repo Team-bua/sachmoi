@@ -206,6 +206,15 @@ class PageRepository
         $product->product_view += 1;
         $product->save();
     }
+    // tính lượt xem sản phẩm
+
+    public function NewView($id)
+    {
+        $views = News::where('id', $id)->first();
+        $views ->news_view += 1;
+        $views ->save();
+    }
+    // tính lượt xem tin tức
 
     public function getSearch($req)
     {

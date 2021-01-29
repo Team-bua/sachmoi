@@ -40,14 +40,13 @@
 										<ul class="tg-bookscategories">
 										</ul>
 										<div class="tg-themetagbox"><span class="tg-themetag">News</span></div>
+										
 										<div class="tg-posttitle">
-											<h3>{{$con->name}}</a></h3>
+											<h2><a href="javascript:void(0);">{{ $con->name }}.</a></h2>
 										</div>
 										<blockquote>
-
-										<div class="tg-description" style="text-align: justify; font-size: 20px">
-												<q>{!! $con->content !!}</q>
-										
+										<div class="tg-description" style="text-align: justify; font-size: 18px">
+										{!! $con->content !!}
 										</div>
 										</blockquote>
 									</div>
@@ -63,7 +62,7 @@
 										<div class="tg-widgetcontent">
 											<ul>
 											 @for($i = 0; $i < count($product_n); $i++) 
-														   <li><a href="{{ route('product_type', $types_id[$i]) }}"><span>{{ $types_name[$i] }}:</span><span>({{ $product_n[$i] }})</span></a>
+														   <li><a href="{{ route('product_type', $types_id[$i]) }}"><span>{{ $types_name[$i] }} </span><span>({{ $product_n[$i] }})</span></a>
 														   </li>
 														    @endfor
 										
@@ -101,5 +100,50 @@
 			<!--************************************
 					News Grid End
 			*************************************-->
+			<section class="tg-sectionspace tg-haslayout">
+				<div class="container">
+					<div class="row">
+	
+						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+							<div class="tg-sectionhead">
+								<h2><span>Liên Quan &amp; </span>Có gì Hot ?</h2>
+								<a class="tg-btn" href="javascript:void(0);">Xem Thêm</a>
+							</div>
+						</div>
+						<div id="tg-postslider" class="tg-postslider tg-blogpost owl-carousel">
+							@foreach ($content_new_four as $four)
+	
+								<article class="item tg-post">
+									<figure><a href="{{ route('newsdetail', [$four['id']]) }}"><img
+												style="width:300px;height:250px;"
+												src="{{ asset('images/news/' . $four->image) }}" alt="image description"></a>
+									</figure>
+									<div class="tg-postcontent">
+										<ul class="tg-bookscategories">
+										
+	
+										</ul>
+										<div class="tg-themetagbox"><span class="tg-themetag">New</span></div>
+										<div class="tg-posttitle">
+											<h3
+												style=" width:250px;text-overflow: ellipsis;overflow: hidden;white-space: nowrap;">
+												<a href="{{ route('newsdetail', [$four['id']]) }}">{{ $four->name }}</a></h3>
+												
+											<p style=" margin-top:10px;display: -webkit-box;width:230px;line-height:20px;overflow: hidden;text-overflow: ellipsis;-webkit-line-clamp:3;-webkit-box-orient: vertical;">
+												{{ $four->name }}
+											</p>
+										</div>
+										<ul class="tg-postmetadata">
+											<li><a href="javascript:void(0);">Bởi:Tuấn </a></li>
+											<li><a href="javascript:void(0);"><i class="fa fa-eye"></i><i>{{ $four->news_view  }} lượt xem</i></a></li>
+										</ul>
+									</div>
+								</article>
+							@endforeach
+	
+						</div>
+					</div>
+				</div>
+			</section>
 		</main>
 @endsection

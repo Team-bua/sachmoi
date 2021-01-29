@@ -1,70 +1,71 @@
 @extends('layout_index.master')
 @section('content')
 @if(Session::has('cart'))
-<section class="static about-sec">
-	<div class="container">
-	<h2>Đơn hàng </h2>
-		@if($errors->any())
-		<div id="error" style="color: red">{{$errors->first()}}</div>
-		@endif
-		<table id="cart" class="table table-hover table-condensed" style="margin-bottom: 2em;">
-			<thead>
-				<tr>
-					<th style="width:40%">Tên sản phẩm</th>
-					<th style="width:15%">Giá tiền</th>
-					<th style="width:10%">Số lượng</th>
-					<th style="width:20%; text-align:center">Thành tiền</th>
-					<th style="width:10%">Thao tác</th>
-				</tr>
-			</thead>
-			<tbody>
-				<form>
-					<input type="hidden" name="_token" id="_token" value="{{ csrf_token() }}" />
-					@if(Session::has('cart'))
-					@foreach($product_cart as $pro)
+<main id="tg-main" class="tg-main tg-haslayout">
+	<div class="tg-sectionspace tg-haslayout">
+		<div class="container">
+			<h2>Đơn hàng </h2>
+			@if($errors->any())
+			<div id="error" style="color: red">{{$errors->first()}}</div>
+			@endif
+			<table id="cart" class="table table-hover table-condensed" style="margin-bottom: 2em;">
+				<thead>
 					<tr>
-						<td data-th="Product">
-							<div class="row">
-								<div class="col-sm-3 hidden-xs"><img style="width:150px; height:80px" src="{{asset('images/product/'.$pro['item']['image'])}}" alt="..." class="img-responsive" /></div>
-								<div class="col-sm-9">
-									<h4 class="nomargin">{{$pro['item']['name']}}</h4>
-									<p></p>
-								</div>
-							</div>
-						</td>
-						<td data-th="Price"><span>@if($pro['item']['promotion_price']==0){{number_format($pro['item']['unit_price'])}} @else {{number_format($pro['item']['promotion_price'])}} @endif VNĐ </span></td>
-						<td data-th="Quantity" class="product_quantity">
-							<input type="number" class="form-control text-center" id="qty-{{$pro['item']['id']}}" onchange="changeQuantity(this)" min="1" value="{{$pro['qty']}}">
-						</td>
-						<td style="text-align:center" id="total-{{$pro['item']['id']}}">@if($pro['item']['promotion_price']==0){{number_format($pro['item']['unit_price']*$pro['qty'])}} @else {{number_format($pro['item']['promotion_price']*$pro['qty'])}} @endif VNĐ</td>
-						<td class="actions">
-							<button class="btn btn-danger btn-sm" data-url="{{route('delcart',$pro['item']['id'])}}"><i class="fa fa-trash"></i></button>
-						</td>
+						<th style="width:40%">Tên sản phẩm</th>
+						<th style="width:15%">Giá tiền</th>
+						<th style="width:10%">Số lượng</th>
+						<th style="width:20%; text-align:center">Thành tiền</th>
+						<th style="width:10%">Thao tác</th>
 					</tr>
-					@endforeach
-					@endif
-				</form>
-			</tbody>
-			<tfoot>
-				<tr>
-					<td colspan="3" class="hidden-xs"></td>
-					<td colspan="2"><strong id="totalPrice">Tổng tiền :@if(Session::has('cart')) {{number_format($cart->totalPrice)}} @else 0 @endif VNĐ</strong></td>
-				</tr>
-				<tr>
-					<td colspan="3" class="hidden-xs"></td>
-					<td colspan="2"><a href="@if(Auth::check()) {{route('checkout')}} @else {{route('login')}} @endif" class="btn btn-success btn-block">Thanh Toán <i class="fa fa-angle-right"></i></a></td>
-				</tr>
-			</tfoot>
-		</table>
-
+				</thead>
+				<tbody>
+					<form>
+						<input type="hidden" name="_token" id="_token" value="{{ csrf_token() }}" />
+						@if(Session::has('cart'))
+						@foreach($product_cart as $pro)
+						<tr>
+							<td data-th="Product">
+								<div class="row">
+									<div class="col-sm-3 hidden-xs"><img style="width:150px; height:80px" src="{{asset('images/product/'.$pro['item']['image'])}}" alt="..." class="img-responsive" /></div>
+									<div class="col-sm-9">
+										<h4 class="nomargin">{{$pro['item']['name']}}</h4>
+										<p></p>
+									</div>
+								</div>
+							</td>
+							<td data-th="Price"><span>@if($pro['item']['promotion_price']==0){{number_format($pro['item']['unit_price'])}} @else {{number_format($pro['item']['promotion_price'])}} @endif VNĐ </span></td>
+							<td data-th="Quantity" class="product_quantity">
+								<input type="number" class="form-control text-center" id="qty-{{$pro['item']['id']}}" onchange="changeQuantity(this)" min="1" value="{{$pro['qty']}}">
+							</td>
+							<td style="text-align:center" id="total-{{$pro['item']['id']}}">@if($pro['item']['promotion_price']==0){{number_format($pro['item']['unit_price']*$pro['qty'])}} @else {{number_format($pro['item']['promotion_price']*$pro['qty'])}} @endif VNĐ</td>
+							<td class="actions">
+								<button class="btn btn-danger btn-sm" data-url="{{route('delcart',$pro['item']['id'])}}"><i class="fa fa-trash"></i></button>
+							</td>
+						</tr>
+						@endforeach
+						@endif
+					</form>
+				</tbody>
+				<tfoot>
+					<tr>
+						<td colspan="3" class="hidden-xs"></td>
+						<td colspan="2"><strong id="totalPrice">Tổng tiền :@if(Session::has('cart')) {{number_format($cart->totalPrice)}} @else 0 @endif VNĐ</strong></td>
+					</tr>
+					<tr>
+						<td colspan="3" class="hidden-xs"></td>
+						<td colspan="2"><a href="@if(Auth::check()) {{route('checkout')}} @else {{route('login')}} @endif" class="btn btn-success btn-block">Thanh Toán <i class="fa fa-angle-right"></i></a></td>
+					</tr>
+				</tfoot>
+			</table>
+		</div>
 	</div>
-</section>
+</main>
 @else
-<section class="static about-sec">
+<main id="tg-main" class="tg-main tg-haslayout">
 	<div class="container">
-	<h1>Giỏ hàng trống !</h1>
+		<h1>Giỏ hàng trống !</h1>
 	</div>
-</section>
+</main>
 @endif
 @endsection
 @section('script')
@@ -93,7 +94,7 @@
 						if (data.code == 200) {
 							$('#totalPrice').html('Tổng tiền : ' + Number(data['cart']['totalPrice']).toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,') + ' VNĐ');
 							$('.quntity').html(data['cart']['totalQty']);
-							$('.total-price').html('('+Number(data['cart']['totalPrice']).toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,') + 'VNĐ)');
+							$('.total-price').html('(' + Number(data['cart']['totalPrice']).toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,') + 'VNĐ)');
 							that.parent().parent().remove();
 							Swal.fire(
 								'Đã xóa!',
@@ -102,6 +103,7 @@
 							)
 						}
 						$('#error').html('');
+						$('#tg-main').html();
 					}
 				});
 			}
@@ -122,6 +124,7 @@
 				$('#total-' + data['id']).html(Number(data['cart']['items'][data['id']]['price']).toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,') + ' VNĐ');
 				$('#totalPrice').html('Tổng tiền : ' + Number(data['cart']['totalPrice']).toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,') + ' VNĐ');
 				$('.quntity').html(data['cart']['totalQty']);
+
 			} else {
 				Swal.fire({
 					icon: 'error',

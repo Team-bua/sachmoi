@@ -19,7 +19,19 @@
   <link rel="stylesheet" href="css/main.css">
   <link rel="stylesheet" href="css/color.css">
   <link rel="stylesheet" href="css/responsive.css">
-  <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
+
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-187250841-2"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+    
+      gtag('config', 'UA-187250841-2');
+    </script>
+    </head>
+    <body>
   <!--*************************************************************************-->
   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-187250841-2"></script>
     <script>
@@ -38,6 +50,8 @@
   @yield('content')
   @include('layout_index.footer')
   <!--*************************************************************************-->
+ 
+    <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
   <script src="js/vendor/jquery-library.js"></script>
   <script src="js/vendor/bootstrap.min.js"></script>
   <script src="https://maps.google.com/maps/api/js?key=AIzaSyCR-KEWAVCn52mSdeVeTqZjtqbmVJyfSus&amp;language=en"></script>
@@ -53,9 +67,9 @@
   <!--*************************************************************************-->
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
   <script src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&#038;version=v2.9"></script>
+
 @yield('show')
-  @yield('speak')
-    <script src="https://code.responsivevoice.org/responsivevoice.js?key=xPvZGVgP"></script>
+@yield('speak')
   <style>
     .fb-livechat,
     .fb-widget {

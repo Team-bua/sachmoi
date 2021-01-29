@@ -8,13 +8,13 @@
                         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                             <ul class="tg-addnav">
                                 <li>
-                                    <a href="javascript:void(0);">
+                                    <a >
                                         <i class="icon-question-circle"></i>
                                         <em>{{ __('free ship') }}</em>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="javascript:void(0);">
+                                    <a >
                                         <i class="fa fa-phone"></i>
                                         <em>{{ __('phone') }}: 0779 750 123 || 0945 555 666</em>
                                     </a>
@@ -141,7 +141,7 @@
                                     </ul>
                                 </li>
                                 <li style="font-weight: bold" class="menu-item-has-children">
-                                    <a href="#"> {{ __('company') }}</a>
+                                    <a > {{ __('company') }}</a>
                                     <ul class="sub-menu">
                                         @foreach ($company as $com)
                                         <li style="font-weight: bold"><a href="{{ route('product_company', $com->id) }}">{{ $com->name }}</a>

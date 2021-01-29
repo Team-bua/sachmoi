@@ -193,63 +193,63 @@
 			<!--************************************
 					Picked By Author Start
 			*************************************-->
-			<section class="tg-sectionspace tg-haslayout">
-				<div class="container">
-					<div class="row">
-						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-							<div class="tg-sectionhead">
-								<h2>{{ __("hotbook") }}</h2>
-								<a class="tg-btn" href="{{ route('allnew') }}">{{ __('all') }}</a>
-							</div>
-						</div>
-						<div id="tg-pickedbyauthorslider" class="tg-pickedbyauthor tg-pickedbyauthorslider owl-carousel">
-							@foreach ($product_hightlights_three as $pro)
-							<div class="item">
-								<div class="tg-postbook">
-									<figure class="tg-featureimg" style="height: 350px">
-										<div class="tg-bookimg">
-											<div class="tg-frontcover"> <a href="{{ route('detail', $pro->id) }}"><img style="height: 300px" src="{{ asset('images/product/' . $pro->image) }}" alt="image" /></a></div>
-										</div>
-										<div class="tg-hovercontent">
-											@if ($pro->new == 1)
-											<div class="tg-themetagbox"><span class="tg-themetag">hot</span></div>
-											@endif
-		
-											<div class="tg-description">
-												<p> {!! $pro->description !!}</p>
-											</div>
-											<strong class="tg-bookpage">{{ $pro->name }}</strong>
-											<strong class="tg-bookcategory">{{$pro->productCompany->name}}</strong>
-											@if($pro->store && $pro->store->stored_product == 0)
-											<strong class="Out2">hết hàng</strong>
-											@endif
-											@if($pro->promotion_price == 0)
-											<strong class="tg-bookprice">{{number_format($pro->unit_price,0,"",",")}} VNĐ </strong>
-											@else
-											<strong class="tg-bookprice">{{number_format($pro->unit_price,0,"",",")}} VNĐ
-											</strong>
-											<strong class="tg-bookprice">{{number_format($pro->promotion_price,0,"",",")}} VNĐ
-											</strong>
-											@endif
-										</div>
-									</figure>
-									<div class="tg-postbookcontent">
-										<a class="tg-btn tg-btnstyletwo" onclick="AddCart('{{ $pro->id }}')">
-											<i class="fa fa-shopping-basket"></i>
-											<em>{{ __('Cart') }}</em>
-										</a>
-										<a class="tg-btn tg-btnstyletwo" href="{{ route('detail', $pro->id) }}">
-											<i class="fa fa-info"></i>
-											<em>{{ __('Detail') }}</em>
-										</a>
-									</div>
-								</div>
-							</div>
-							@endforeach
-						</div>
+<section class="tg-sectionspace tg-haslayout">
+		<div class="container">
+			<div class="row">
+				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+					<div class="tg-sectionhead">
+						<h2>{{ __("hotbook") }}</h2>
+						<a class="tg-btn" href="{{ route('allnew') }}">{{ __('all') }}</a>
 					</div>
 				</div>
-			</section>
+				<div id="tg-pickedbyauthorslider" class="tg-pickedbyauthor tg-pickedbyauthorslider owl-carousel">
+					@foreach ($product_hightlights_three as $pro)
+					<div class="item">
+						<div class="tg-postbook">
+							<figure class="tg-featureimg" style="height: 350px">
+								<div class="tg-bookimg">
+									<div class="tg-frontcover"> <a href="{{ route('detail', $pro->id) }}"><img style="height: 300px" src="{{ asset('images/product/' . $pro->image) }}" alt="image" /></a></div>
+								</div>
+								<div class="tg-hovercontent">
+									@if ($pro->new == 1)
+									<div class="tg-themetagbox"><span class="tg-themetag">hot</span></div>
+									@endif
+
+									<div class="tg-description">
+										<p> {!! $pro->description !!}</p>
+									</div>
+									<strong class="tg-bookpage">{{ $pro->name }}</strong>
+									<strong class="tg-bookcategory">{{$pro->productCompany->name}}</strong>
+									@if($pro->store && $pro->store->stored_product == 0)
+									<strong class="Out2">hết hàng</strong>
+									@endif
+									@if($pro->promotion_price == 0)
+									<strong class="tg-bookprice">{{number_format($pro->unit_price,0,"",",")}} VNĐ </strong>
+									@else
+									<strong class="tg-bookprice">{{number_format($pro->unit_price,0,"",",")}} VNĐ
+									</strong>
+									<strong class="tg-bookprice">{{number_format($pro->promotion_price,0,"",",")}} VNĐ
+									</strong>
+									@endif
+								</div>
+							</figure>
+							<div class="tg-postbookcontent">
+								<a class="tg-btn tg-btnstyletwo" onclick="AddCart('{{ $pro->id }}')">
+									<i class="fa fa-shopping-basket"></i>
+									<em>{{ __('Cart') }}</em>
+								</a>
+								<a class="tg-btn tg-btnstyletwo" href="{{ route('detail', $pro->id) }}">
+									<i class="fa fa-info"></i>
+									<em>{{ __('Detail') }}</em>
+								</a>
+							</div>
+						</div>
+					</div>
+					@endforeach
+				</div>
+			</div>
+		</div>
+	</section>
 			<!--************************************
 					Picked By Author End
 			*************************************-->

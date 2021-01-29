@@ -130,9 +130,7 @@
 											</a>
 											</div>
 										</div>
-										  <div class="row">
-                    <div class="btn-sec">{{$product_highlights->appends(request()->input())->links('vendor.pagination.bootstrap-4')}}</div>
-                </div>
+					
 									</div>
 									@endforeach
 								</div>

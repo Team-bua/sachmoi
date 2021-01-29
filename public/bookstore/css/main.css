@@ -3511,7 +3511,7 @@ li.menu-item-has-mega-menu {
     float: left;
     padding: 0 20px;
     border-radius: 5px;
-    background: #484848;
+    background: #77b748;
     border-bottom: 1px solid #dbdbdb;
 }
 
@@ -5266,7 +5266,7 @@ blockquote .tg-bookwriter {
 .tg-authorbox {
     width: 100%;
     float: left;
-    padding: 30px;
+    padding: 0px;
     background: #fcfcfc;
     border-bottom: 2px solid #dbdbdb;
 }
@@ -5292,7 +5292,7 @@ blockquote .tg-bookwriter {
 }
 
 .tg-authorhead {
-    width: 100%;
+    width: 30%;
     float: left;
     padding: 0 0 25px;
 }

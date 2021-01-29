@@ -43,21 +43,21 @@ class PageRepository
 
     public function getAllproductbook()
     {
-        if (isset($_POST['sort_by'])) {
-            $sort_by = $_POST['sort_by'];
+        if (isset($_GET['sort_by'])) {
+            $sort_by = $_GET['sort_by'];
             if ($sort_by == 'giam_dan') {
-                $product = Product::orderBy('unit_price', 'DESC')->with('store')->paginate(8);
+                $product = Product::orderBy('unit_price', 'DESC')->where('status', 1)->with('store')->paginate(8);
             } elseif ($sort_by == 'tang_dan') {
-                $product = Product::orderBy('unit_price', 'ASC')->with('store')->paginate(8);
+                $product = Product::orderBy('unit_price', 'ASC')->where('status', 1)->with('store')->paginate(8);
             } elseif ($sort_by == 'duoi_70') {
-                $product = Product::where('unit_price', '<=', 70000)->orderBy('unit_price', 'ASC')->with('store')->paginate(8);
+                $product = Product::where('unit_price', '<=', 70000)->where('status', 1)->orderBy('unit_price', 'ASC')->with('store')->paginate(8);
             } elseif ($sort_by == '70-100') {
-                $product = Product::whereBetween('unit_price', [70000, 100000])->orderBy('unit_price', 'ASC')->with('store')->paginate(8);
+                $product = Product::whereBetween('unit_price', [70000, 100000])->where('status', 1)->orderBy('unit_price', 'ASC')->with('store')->paginate(8);
             } elseif ($sort_by == 'tren_100') {
-                $product = Product::where('unit_price', '>=', 100000)->orderBy('unit_price', 'ASC')->with('store')->paginate(8);
+                $product = Product::where('unit_price', '>=', 100000)->where('status', 1)->orderBy('unit_price', 'ASC')->with('store')->paginate(8);
             }
         } else {
-            $product = Product::orderBy('created_at', 'desc')->with('store')->paginate(8);
+            $product = Product::orderBy('created_at', 'desc')->where('status', 1)->with('store')->paginate(8);
         }
         return $product;
     }
@@ -102,14 +102,15 @@ class PageRepository
     }
     // sach mới
 
-    public function getAllproductNewThree(){
+    public function getAllproductNewThree()
+    {
         $product = Product::where('status', 1)
-        ->latest()
-        ->with('store')
-        ->limit(3)->get();
+            ->latest()
+            ->with('store')
+            ->limit(3)->get();
         return $product;
-        }
-        //lấy 3 quyển sách mới nhất để show ra trang index
+    }
+    //lấy 3 quyển sách mới nhất để show ra trang index
 
 
     public function getBillByCompanyId()
@@ -120,6 +121,12 @@ class PageRepository
             ->count('bill_detail.id');
     }
     // sach mới
+    public function VerifyAccount($id)
+    {
+        $user = User::find($id);
+        $user->is_verified = 1;
+        $user->save();
+    }
 
     public function getAllProductSale()
     {
@@ -138,15 +145,15 @@ class PageRepository
             }
         } else {
             $product = Product::where('promotion_price', '<>', 0)->where('status', 1)
-            ->latest()
-            ->with('store')
-            ->paginate(8);
+                ->latest()
+                ->with('store')
+                ->paginate(8);
         }
         return $product;
     }
     // sách giảm giá
 
-    
+
     public function getAllproductHighlights()
     {
         if (isset($_GET['sort_by'])) {
@@ -164,19 +171,20 @@ class PageRepository
             }
         } else {
             $product = Product::where('new', 1)->where('status', 1)
-            ->latest()
-            ->with('store')
-            ->paginate(8);
+                ->latest()
+                ->with('store')
+                ->paginate(8);
         }
         return $product;
     }
     //sách nổi bật
-    public function getAllproductHighlightsThree(){
-    $product = Product::where('new', 1)->where('status', 1)
-    ->latest()
-    ->with('store')
-    ->limit(3)->get();
-    return $product;
+    public function getAllproductHighlightsThree()
+    {
+        $product = Product::where('new', 1)->where('status', 1)
+            ->latest()
+            ->with('store')
+            ->limit(3)->get();
+        return $product;
     }
     //lấy 3 quyển sách nổi bật để show ra trang index
 
@@ -186,17 +194,17 @@ class PageRepository
         return Product::find($id);
     }
 
-    public function getProductRelated($id){
-        $product=Product::find($id);
-        return Product::where(['id_type'=>$product->id_type])->paginate(5);
+    public function getProductRelated($id)
+    {
+        $product = Product::find($id);
+        return Product::where(['id_type' => $product->id_type])->paginate(5);
     }
 
     public function ProductView($id)
     {
-        $product = Product::where('id',$id)->first();
+        $product = Product::where('id', $id)->first();
         $product->product_view += 1;
         $product->save();
-        
     }
 
     public function getSearch($req)
@@ -369,6 +377,11 @@ class PageRepository
     public function postCheckout(Request $request)
     {
         $cart = Session::get('cart');
+        $image_products = [];
+        $name_products = [];
+        $quantity_products = [];
+        $price = [];
+        $id_account = Auth::user()->id;
 
         $bill = new Bill();
         $bill->id_user = Auth::user()->id;
@@ -384,27 +397,32 @@ class PageRepository
 
         foreach ($cart->items as $key => $value) {
             $bill_detail = new BillDetail();
+
+            $i = Product::where('id', $key)
+                ->value('image');
+            $n = Product::where('id', $key)
+                ->value('name');
+            $q = $value['qty'];
+            $p = $value['price'];
+            $image_products[] = $i;
+            $name_products[] = $n;
+            $quantity_products[] = $q;
+            $price[] = $p;
+
             $bill_detail->id_bill = $bill->id;
             $bill_detail->id_product = $key;
             $bill_detail->quantity = $value['qty'];
             $bill_detail->unit_price = ($value['price'] / $value['qty']);
             $bill_detail->save();
         }
-        $details = [
-            'title' => 'Xin Chào',
-            'body' => 'Ngon lắm',
-            'url' => 'http://localhost:8000/index',
-        ];
-        $body = [
-            'title' => 'vip pro'
-        ];
-        Mail::to(Auth::user()->username)->send(new \App\Mail\TestMail($details, $body));
+        Mail::to(Auth::user()->email)->send(new \App\Mail\TestMail($image_products, $name_products, $quantity_products, $price, $id_account));
         Session::forget('cart');
     }
 
     public function createUser(Request $request)
     {
         $user = new User();
+        $user_name = $request->input('username');
         $user->full_name = $request->input('fullname');
         $user->username = $request->input('username');
         $user->email = $request->input('username');
@@ -412,6 +430,9 @@ class PageRepository
         $user->phone = $request->input('phone');
         $user->address = $request->input('address');
         $user->save();
+        $id = User::where('username', $user_name)
+            ->value('id');
+        Mail::to($user_name)->send(new \App\Mail\RegisterEmail($id));
     }
 
     public function getInfo($id)
@@ -474,4 +495,8 @@ class PageRepository
         return News::orderBy('id', 'desc')->where('status', 1)->first();
     }
 
+    public function getContentNewFour()
+    {
+        return News::orderBy('id', 'desc')->where('status', 1)->limit(4)->get();
+    }
 }

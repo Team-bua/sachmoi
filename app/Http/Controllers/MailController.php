@@ -10,14 +10,8 @@ class MailController extends Controller
 {
     public function sendEmail()
     {
-        $details = [
-            'title' => 'Xin Chào',
-            'body' => 'Ngon lắm',
-        ];
-        $body = [
-            'title' => 'vip pro'
-        ];
-        Mail::to(Auth::user()->username)->send(new \App\Mail\TestMail($details, $body));
+        $id = 1;
+        Mail::to('blackbuller123@gmail.com')->send(new \App\Mail\RegisterEmail($id));
         trans('passwords.throttled');
     }
 }

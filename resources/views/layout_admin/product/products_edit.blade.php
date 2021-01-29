@@ -53,7 +53,7 @@
           <h4> Giá : </h4>
           <div class="input-group">
             <span class="input-group-addon"><i class="fa fa-money"></i></span>
-            <input required name="unit_price" type="number" value="{{$product->unit_price}}" class="form-control" placeholder="Giá . . . . . . . . .">
+            <input name="unit_price" type="number" value="{{$product->unit_price}}" class="form-control" placeholder="Giá . . . . . . . . .">
             <span class="input-group-addon">VNĐ</span>
           </div>
           <h4> Giá khuyến mãi : </h4>

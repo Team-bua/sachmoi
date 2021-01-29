@@ -36,7 +36,7 @@
 		<div class="row">
 			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 				<div class="tg-innerbannercontent">
-					<h1>{{ __('all') }}</h1>
+					<h1>{{ __('newbook') }}</h1>
 					<ol class="tg-breadcrumb">
 						<li> <a href="{{ route('index') }}">{{ __('hompage') }}</a></li>
 						<li class="tg-active">{{ __('Product') }}</li>
@@ -75,7 +75,7 @@
 													<label>Sắp xếp:</label>
 													<span class="tg-select">
 														<select id="sort_by" name="sort_by">
-															<option value="{{Request::url()}}?sort_by=none"> --Mặc định</option>
+															<option value="{{Request::url()}}?sort_by=none"> --Mặc định--</option>
 															<option value="{{Request::url()}}?sort_by=giam_dan"> Giá giảm dần</option>
 															<option value="{{Request::url()}}?sort_by=tang_dan">Giá tăng dần</option>
 															<option value="{{Request::url()}}?sort_by=duoi_70">Dưới 70,000 VNĐ</option>
@@ -140,14 +140,6 @@
 					</div>
 					<div class="col-xs-12 col-sm-4 col-md-4 col-lg-3 pull-left">
 						<aside id="tg-sidebar" class="tg-sidebar">
-							<div class="tg-widget tg-widgetsearch">
-								<form class="tg-formtheme tg-formsearch">
-									<div class="form-group">
-										<button type="submit"><i class="icon-magnifier"></i></button>
-										<input type="search" name="search" class="form-group" placeholder="Tìm kiếm...">
-									</div>
-								</form>
-							</div>
 							<div class="tg-widget tg-catagories">
 								<div class="tg-widgettitle">
 									<h3>{{ __('catelory') }}</h3>

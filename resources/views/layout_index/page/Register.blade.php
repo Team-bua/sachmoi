@@ -15,8 +15,8 @@
                     <h2 style="color: rgb(72, 167, 77)">Đăng Ký tài khoản</h2>
                     <form action="{{url('signup')}}" method="post" class="tg-formtheme tg-formnewsletter">
                         @csrf
-                        @if(Session::has('thongbao'))
-                        <div class="alert alert-success">{{Session::get('thongbao')}} </div>
+                        @if(Session::has('flag'))
+                        <div class="alert alert-{{Session::get('flag')}}">{{Session::get('message')}} </div>
                         @endif
                         <div class="form-group">
                             <label><b>Họ và tên :</b></label>
@@ -25,15 +25,15 @@
                             <p style="color:red">{{ $message }}</p>
                             @enderror
                             <br><br>
-                            <label><b>Email</b></label>
-                            <input type="email" name="username" class="form-control" placeholder="Email . . . . . ">
+                            <label><b>Username</b></label>
+                            <input style="text-transform :none; " type="email" name="username" class="form-control" placeholder="Email . . . . . ">
 
                             @error('username')
                             <p style="color:red">{{ $message }}</p>
                             @enderror
                             <br><br>
                             <label><b>Mật Khẩu:</b></label>
-                            <input type="Password" name="password" class="form-control"  placeholder="Password . . . . . ">
+                            <input type="Password" name="password" class="form-control" placeholder="Password . . . . . ">
 
                             @error('password')
                             <p style="color:red">{{ $message }}</p>

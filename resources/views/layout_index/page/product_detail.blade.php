@@ -6,20 +6,20 @@
 		border: 1px solid #77b748;
 		resize: none;
 	}
-	.active {
-        color: #ff9705 !important;
-    }
-	/*--------------------------------rating------------------------------------*/
 
+	.active {
+		color: #ff9705 !important;
+	}
+
+	/*--------------------------------rating------------------------------------*/
 	.rating-card {
 		padding: 10px;
 		background-color: #F5F5F5;
-		width: 70%;
+		width: 75%;
 		border-radius: 10px;
 		text-align: center;
 		margin: 0 auto;
-		margin-top: 30px;
-		box-shadow: 2px 2px 18px -2px #337AB7;
+		margin-top: -12px;
 	}
 
 	.fa-star,
@@ -38,6 +38,7 @@
 	}
 
 	.rating p {
+		color: #337AB7;
 		margin-top: 10px;
 		font-size: 20px;
 	}
@@ -51,11 +52,12 @@
 	.rating-process {
 		width: 50%;
 		text-align: left;
-		float: left;
+		float: right;
 	}
 
 	.rating-right-part {
 		margin-bottom: 3px;
+		color: #000;
 	}
 
 	.rating-right-part p {
@@ -69,10 +71,10 @@
 	.progress-5 {
 		background: #c2c2c2;
 		border-radius: 13px;
-		height: 18px;
+		height: 27px;
 		width: 70%;
-		padding: 1px;
-		margin: -21px 0px 0px 30px;
+		padding: 3px;
+		margin: -25px 0px 0px 30px;
 		display: block;
 	}
 
@@ -86,9 +88,7 @@
 		}
 	}
 
-
-	/*--------------------------------rating------------------------------------*/
-
+	/*---------------------------------------------------*/
 	.rating1 {
 		display: flex;
 		flex-direction: row-reverse;
@@ -198,9 +198,12 @@
 											}
 
 											?>
-											@for($i=1; $i<=5; $i++) <span class="tg-stars"><span class="{{$i <= $product_ra ? 'active' : ''}}"></span></span>
+											@for($i=1; $i<=5; $i++) <span class="fa fa-star {{$i <= $product_ra ? 'active' : ''}}" style="color:#999"></span>
 												@endfor
 												@endif
+													<ul class="tg-postmetadata">
+										<li><a href="javascript:void(0);"><i class="fa fa-eye"></i><i style="font-size: 18px">{{$product_detail->product_view}} Lượt Xem</i></a></li>
+									</ul>
 												<div class="tg-share">
 													<span>Trạng Thái:</span>
 													<ul class="tg-socialicons">
@@ -212,6 +215,7 @@
 
 													</ul>
 												</div>
+											
 												<div class="tg-description">
 													<textarea class="area" type="text" rows="25" cols="62" id="text" disabled style="height: 200px;">
                						 				{!! $product_detail->description !!}
@@ -225,17 +229,16 @@
 															</select>
 														</div>
 													</div>
-													<button class="btn btn-success btn-lg" id="btPlay" onclick="playAudio()"><i class="fa fa-play"></i></button>
-													<button class="btn btn-success btn-lg" id="btPause" onclick="pauseAudio()"><i class="fa fa-stop"></i></button>
+													<button class="btn btn-success btn-lg" id="btPlay"><i class="fa fa-play"></i></button>
+													<button class="btn btn-success btn-lg" id="btStop"><i class="fa fa-stop"></i></button>
 												</div>
 												<div class="tg-sectionhead">
 													<h2>Thông Tin</h2>
 												</div>
 												<ul class="tg-productinfo">
 													<li><span>Tác Giả:</span><span>{{ $product_detail->publisher  }}</span></li>
-													<li><span>Nhà Phát Hành:</span><span>{{ $product_detail->publisher  }}</span></li>
+													<li><span>Phát Hành:</span><span>{{ $product_detail->publisher  }}</span></li>
 													<li><span>Định Dạng:</span><span>{{ $product_detail->format }}</span></li>
-													<li><span>Ngày Phát Hành:</span><span>{{ $product_detail->releasedate }}</span></li>
 													<li><span>Ngôn Ngữ:</span><span>{{ $product_detail->language }}</span></li>
 													<li><span>Kích Thước:</span><span>&amp;{{ $product_detail->size  }} Cm</span></li>
 													<li><span>Số Trang:</span><span>{{ $product_detail->pagenumber  }} Trang</span></li>
@@ -248,18 +251,114 @@
 											<div class="tg-sectionhead">
 											</div>
 											<ul class="tg-themetabs" role="tablist">
-												<li role="presentation" class="active"><a href="#description" data-toggle="tab">Đánh Giá</a></li>
-												<li role="presentation"><a href="#review" data-toggle="tab">Reviews</a></li>
+										<li role="presentation" class="active"><a href="#description" data-toggle="tab">Đánh Giá</a></li>
 											</ul>
 											<div class="tg-tab-content tab-content">
 												<div role="tabpanel" class="tg-tab-pane tab-pane active" id="description">
 													<div class="tg-description">
+														 @if(Auth::check())
+                    <form action="{{route('rating',$product_detail->id)}}" method="post">
+                        @csrf
+                        @method('put')
+                        <div class="cpt_product_description ">
+                            <div class="rating-card">
+                                <div style="height: 60px">
+                                    <h1>Đánh Giá</h1>
+                                </div>
+                                <div class="rating">
+                                    <p><i class="fa fa-user" aria-hidden="true"></i> {{count($rating['count_ra'])}} Đánh Giá</p>
+                                </div>
+                                <div class="rating-process">
+                                    <div class="rating-right-part">
+                                        5<i aria-hidden="true" class="fa fa-star"></i>
+                                        <div class="progress">Có {{$rating['ra_5']}} đánh giá</div>
+                                    </div>
+                                    <div class="rating-right-part">
+                                        4<i aria-hidden="true" class="fa fa-star"></i>
+                                        <div class="progress">Có {{$rating['ra_4']}} đánh giá</div>
 
-													</div>
-												</div>
-												<div role="tabpanel" class="tg-tab-pane tab-pane" id="review">
-													<div class="tg-description">
+                                    </div>
+                                    <div class="rating-right-part">
+                                        3<i aria-hidden="true" class="fa fa-star"></i>
+                                        <div class="progress">Có {{$rating['ra_3']}} đánh giá</div>
 
+                                    </div>
+                                    <div class="rating-right-part">
+                                        2<i aria-hidden="true" class="fa fa-star"></i>
+                                        <div class="progress">Có {{$rating['ra_2']}} đánh giá</div>
+
+                                    </div>
+                                    <div class="rating-right-part">
+                                        1<i aria-hidden="true" class="fa fa-star"></i>
+                                        <div class="progress">Có {{$rating['ra_1']}} đánh giá</div>
+
+                                    </div>
+                                </div>
+                                <div style="clear:both;"></div>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="rating1">
+                            <input type="radio" name="rating" value="5" id="5">
+                            <label for="5">☆</label>
+                            <input type="radio" name="rating" value="4" id="4">
+                            <label for="4">☆</label>
+                            <input type="radio" name="rating" value="3" id="3">
+                            <label for="3">☆</label>
+                            <input type="radio" name="rating" value="2" id="2">
+                            <label for="2">☆</label>
+                            <input type="radio" name="rating" value="1" id="1">
+                            <label for="1">☆</label>
+                        </div>
+                        <center>
+                            <div class="input-group mb-2">
+                                <textarea style="resize: none;height: 80px;" rows="1" cols="100" class="form-control" placeholder="Nội dung đánh giá . . . . ." name="body" required></textarea>
+                            </div>
+                        </center>
+                        <br>
+                        <div class="text-center" style="width: 23% ;margin-left: 560px">
+                            <input type="submit" value="Gửi" class="btn btn-info btn-block">
+                        </div>
+                    </form>
+                    @else
+                   <div class="rating-card">
+                            <div style="height: 60px">
+                                <h1>Đánh Giá</h1>
+                            </div>
+                            <div class="rating">
+                                <p><i class="fa fa-user" aria-hidden="true"></i> {{count($rating['count_ra'])}} Đánh Giá</p>
+                            </div>
+                            <div class="rating-process">
+                                <div class="rating-right-part">
+                                    5<i aria-hidden="true" class="fa fa-star"></i>
+                                    <div class="progress">Có {{$rating['ra_5']}} đánh giá</div>
+                                </div>
+                                <div class="rating-right-part">
+                                    4<i aria-hidden="true" class="fa fa-star"></i>
+                                    <div class="progress">Có {{$rating['ra_4']}} đánh giá</div>
+
+                                </div>
+                                <div class="rating-right-part">
+                                    3<i aria-hidden="true" class="fa fa-star"></i>
+                                    <div class="progress">Có {{$rating['ra_3']}} đánh giá</div>
+
+                                </div>
+                                <div class="rating-right-part">
+                                    2<i aria-hidden="true" class="fa fa-star"></i>
+                                    <div class="progress">Có {{$rating['ra_2']}} đánh giá</div>
+
+                                </div>
+                                <div class="rating-right-part">
+                                    1<i aria-hidden="true" class="fa fa-star"></i>
+                                    <div class="progress">Có {{$rating['ra_1']}} đánh giá</div>
+
+                                </div>
+                            </div>
+                            <div style="clear:both;"></div>
+                        </div>
+                    <br>
+                    <div style="float: left ;color: #000"> Chỉ có thành viên mới có thể nhận xét. Vui lòng <a href="{{ route('login') }}">Đăng nhập</a> hoặc<a href="{{ route('signup') }}"> Đăng Ký</a></div>
+                    @endif
 													</div>
 												</div>
 											</div>
@@ -271,19 +370,19 @@
 												<h2>Đánh Giá</h2>
 											</div>
 											@foreach($rating['ra_date'] as $ra)
-													<?php
-													$ra_show = 0;
-													if ($ra->pivot->ra_number) {
-														$ra_show = $ra->pivot->ra_number;
-													}
-													?>
+											<?php
+											$ra_show = 0;
+											if ($ra->pivot->ra_number) {
+												$ra_show = $ra->pivot->ra_number;
+											}
+											?>
 											<div class="tg-authorbox">
 												<figure class="tg-authorimg">
 													<img src="images/author/imag-24.jpg" alt="image description">
 												</figure>
 
 												<div class="tg-authorinfo">
-													
+
 													<div class="tg-authorhead">
 														<div class="tg-leftarea">
 															<div class="tg-authorname">
@@ -292,20 +391,23 @@
 															</div>
 														</div>
 														<div class="tg-rightarea">
-															@for($i=1; $i<=5; $i++) 
-															<span class="fa fa-star {{$i <= $ra_show ? 'active' : ''}}" style="color:#999"></span>
-															
+															@for($i=1; $i<=5; $i++) <span class="fa fa-star {{$i <= $ra_show ? 'active' : ''}}" style="color:#999"></span>
+
 																@endfor
 														</div>
 													</div>
 													<div class="tg-description">
 														<p> {{$ra->pivot->body}}.</p>
 													</div>
-													
+
 												</div>
 
 											</div>
 											@endforeach
+										</div>
+										<br>
+										<div class="btn-sec">
+											<div class="btn-sec">{{$rating['ra_date']->appends(request()->input())->links('vendor.pagination.bootstrap-4')}}</div>
 										</div>
 									</div>
 									<div class="tg-relatedproducts">
@@ -364,21 +466,13 @@
 					</div>
 					<div class="col-xs-12 col-sm-4 col-md-4 col-lg-3 pull-left">
 						<aside id="tg-sidebar" class="tg-sidebar">
-							<div class="tg-widget tg-widgetsearch">
-								<form class="tg-formtheme tg-formsearch">
-									<div class="form-group">
-										<button type="submit"><i class="icon-magnifier"></i></button>
-										<input type="search" name="search" class="form-group" placeholder="{{ __('Enter keywords') }}">
-									</div>
-								</form>
-							</div>
 							<div class="tg-widget tg-catagories">
 								<div class="tg-widgettitle">
 									<h3>{{ __('catelory') }}</h3>
 								</div>
 								<div class="tg-widgetcontent">
 									<ul>
-										@for($i = 0; $i < count($product_n); $i++) <li><a href="{{ route('product_type', $types_id[$i]) }}"><span>{{ $types_name[$i] }}:</span><span>({{ $product_n[$i] }})</span></a>
+										@for($i = 0; $i < count($product_n); $i++) <li><a href="{{ route('product_type', $types_id[$i]) }}"><span>{{ $types_name[$i] }} </span><span>({{ $product_n[$i] }})</span></a>
 											</li>
 											@endfor
 
@@ -400,7 +494,69 @@
 									</ul>
 								</div>
 							</div>
-
+							<div class="tg-widget tg-widgetinstagram">
+										<div class="tg-widgettitle">
+											<h3>Instagram</h3>
+										</div>
+										<div class="tg-widgetcontent">
+											<ul>
+												<li>
+													<figure>
+														<img src="images/instagram/img-01.jpg" alt="image description">
+														<figcaption><a href="javascript:void(0);"><i class="icon-heart"></i><em>3000</em></a></figcaption>
+													</figure>
+												</li>
+												<li>
+													<figure>
+														<img src="images/instagram/img-02.jpg" alt="image description">
+														<figcaption><a href="javascript:void(0);"><i class="icon-heart"></i><em>3000</em></a></figcaption>
+													</figure>
+												</li>
+												<li>
+													<figure>
+														<img src="images/instagram/img-03.jpg" alt="image description">
+														<figcaption><a href="javascript:void(0);"><i class="icon-heart"></i><em>3000</em></a></figcaption>
+													</figure>
+												</li>
+												<li>
+													<figure>
+														<img src="images/instagram/img-04.jpg" alt="image description">
+														<figcaption><a href="javascript:void(0);"><i class="icon-heart"></i><em>3000</em></a></figcaption>
+													</figure>
+												</li>
+												<li>
+													<figure>
+														<img src="images/instagram/img-05.jpg" alt="image description">
+														<figcaption><a href="javascript:void(0);"><i class="icon-heart"></i><em>3000</em></a></figcaption>
+													</figure>
+												</li>
+												<li>
+													<figure>
+														<img src="images/instagram/img-06.jpg" alt="image description">
+														<figcaption><a href="javascript:void(0);"><i class="icon-heart"></i><em>3000</em></a></figcaption>
+													</figure>
+												</li>
+												<li>
+													<figure>
+														<img src="images/instagram/img-07.jpg" alt="image description">
+														<figcaption><a href="javascript:void(0);"><i class="icon-heart"></i><em>3000</em></a></figcaption>
+													</figure>
+												</li>
+												<li>
+													<figure>
+														<img src="images/instagram/img-08.jpg" alt="image description">
+														<figcaption><a href="javascript:void(0);"><i class="icon-heart"></i><em>3000</em></a></figcaption>
+													</figure>
+												</li>
+												<li>
+													<figure>
+														<img src="images/instagram/img-09.jpg" alt="image description">
+														<figcaption><a href="javascript:void(0);"><i class="icon-heart"></i><em>3000</em></a></figcaption>
+													</figure>
+												</li>
+											</ul>
+										</div>
+									</div>
 						</aside>
 					</div>
 				</div>
@@ -422,13 +578,13 @@
 			responsiveVoice.speak(text, gender, {
 				rate: 1
 			});
+			$("#btPause").removeAttr("disabled");
+			$("#btStop").removeAttr("disabled");
 		});
-		$("#btPause").click(function() {
-			if (responsiveVoice.isPlaying()) {
-				responsiveVoice.pause();
-			} else {
-				responsiveVoice.resume();
-			}
+		$("#btStop").click(function() {
+			responsiveVoice.cancel();
+			$("#btPause").attr("disabled", "disabled");
+			$("#btStop").attr("disabled", "disabled");
 		});
 	});
 </script>

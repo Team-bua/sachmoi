@@ -51,11 +51,13 @@ class PageController extends Controller
         // sách giảm giá 
         $product_new_three = $this->repository->getAllproductNewThree();
         //sách mới 
+        $content_new_four = $this->repository->getContentNewFour();
+        //đổ ra 4 tin tức mới nhất ra trang index
         $product_type = $this->repository->getProductType();
         return view('layout_index.index',compact('product_type', 
                                                 'slide', 'product_sale', 
                                                 'product_new_three',
-                                                'product_hightlights_three'));
+                                                'product_hightlights_three','content_new_four'));
     }
 
     public function getDetail($id)
@@ -107,9 +109,9 @@ class PageController extends Controller
 
     public function AllBook()
     {
-        $product_all = $this->repository->getAllproductbook();
         $product_type = $this->repository->getProductType();
-        return view('layout_index.page.all_book', compact('product_all', 'product_type'));
+        $product_all = $this->repository->getAllproductbook();
+        return view('layout_index.page.all_book', compact('product_type', 'product_all'));
     }
     // xem tất cả cá sách
 
@@ -200,14 +202,21 @@ class PageController extends Controller
     public function postSignup(PageRequest $request)
     {
         $this->repository->createuser($request);
-        return redirect()->back()->with('thongbao', 'Đăng ký thành công');
+        return redirect()->back()->with(['flag' => 'warning', 'message' => 'Yêu cầu xác nhận tài khoản đã được gửi đến gmail của bạn.']);
+    }
+
+    public function postVerifyAccount($id)
+    {
+        $this->repository->VerifyAccount($id);
+        return redirect('signup')->with(['flag' => 'success', 'message' => 'Đăng ký thành công.']);
     }
 
     public function getRead($id)
     {
         $product_detail = $this->repository->getProduct($id);
         $pdf = $this->repository->getRead($id);
-        return view('layout_index.page.Read_book', compact('pdf','product_detail'));
+         $product_type = $this->repository->getProductType();
+        return view('layout_index.page.Read_book', compact('pdf','product_detail','product_type'));
     }
 
     public function getCheckout()
@@ -249,8 +258,8 @@ class PageController extends Controller
     {
         if(Session::get('cart')){
             $this->repository->postCheckout($request);
-            return redirect()->back()->with(['flag' => 'success', 'messege' => 'Đặt hàng thành công']);
-        }else{
+            return redirect()->back()->with(['flag' => 'success', 'messege' => 'Đặt hàng thành công, đơn hàng đã được gửi đến gmail của quý khách!!!']);
+        }else {
             return redirect()->back()->with(['flag' => 'danger', 'messege' => 'Không tồn tại sản phẩm']);
         }
     }

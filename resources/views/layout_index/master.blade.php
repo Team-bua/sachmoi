@@ -21,6 +21,19 @@
   <link rel="stylesheet" href="css/responsive.css">
   <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
   <!--*************************************************************************-->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-187250841-2"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-187250841-2');
+    </script>
+</head>
+<body>
   @include('layout_index.header')
   @yield('content')
   @include('layout_index.footer')
@@ -39,7 +52,6 @@
   <script src="js/main.js"></script>
   <!--*************************************************************************-->
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-  <script src="https://code.responsivevoice.org/responsivevoice.js?key=xPvZGVgP"></script>
   <script src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&#038;version=v2.9"></script>
 @yield('show')
   @yield('speak')
@@ -228,7 +240,7 @@
         type: 'GET',
         success: function(response) {
           $('.quntity').html(response['cart']['totalQty']);
-        $('.total-price').html('('+Number(response['cart']['totalPrice']).toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,') + 'VNĐ)');
+          $('.total-price').html('('+Number(response['cart']['totalPrice']).toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,') + 'VNĐ)');
           Swal.fire({
             icon: 'success',
             title: 'Đã thêm vào giỏ hàng',
@@ -270,6 +282,8 @@
       })
     })
   </script>
+  @yield('script')
+  @yield('speak')
   </body>
 
 </html>

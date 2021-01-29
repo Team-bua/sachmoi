@@ -39,14 +39,17 @@
 									<div class="tg-newsdetail">
 										<ul class="tg-bookscategories">
 										</ul>
-										
-										<div class="tg-description" style="text-align: justify; font-size: 13px">
+										<div class="tg-themetagbox"><span class="tg-themetag">News</span></div>
+										<div class="tg-posttitle">
+											<h3>{{$con->name}}</a></h3>
+										</div>
 										<blockquote>
-												<q>“{!! $con->content !!}”</q>
-												<span class="tg-bookwriter">By: <a href="javascript:void(0);">Angela Gunning</a></span>
-											</blockquote>
+
+										<div class="tg-description" style="text-align: justify; font-size: 20px">
+												<q>{!! $con->content !!}</q>
 										
 										</div>
+										</blockquote>
 									</div>
 								@endforeach
 								</div>
@@ -66,6 +69,28 @@
 										
 											</ul>
 										</div>
+										<div class="tg-widget tg-widgettrending">
+										<div class="tg-widgettitle">
+											<h3>{{ __('newws') }}</h3>
+										</div>
+										<div class="tg-widgetcontent">
+											<ul>
+												 @foreach ($content as $con)
+												<li>
+													<article class="tg-post">
+														<figure>  <a href="{{ route('newsdetail', [$con['id']]) }}"><img src="{{ asset('images/news/' . $con->image) }}" alt="image description"></a></figure>
+														<div class="tg-postcontent">
+															<div class="tg-posttitle">
+																<h3>  <a href="{{ route('newsdetail', [$con['id']]) }}">{{ $con->name }}</a></h3>
+															</div>
+
+														</div>
+													</article>
+												</li>
+												 @endforeach
+											</ul>
+										</div>
+									</div>
 									</div>
 								</aside>
 							</div>

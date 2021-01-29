@@ -19,6 +19,21 @@
   <link rel="stylesheet" href="css/main.css">
   <link rel="stylesheet" href="css/color.css">
   <link rel="stylesheet" href="css/responsive.css">
+  <link rel="shortcut icon" type="image/x-icon" href="\images\icon\logoteambua.png">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-187250841-2"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-187250841-2');
+    </script>
+</head>
+</head>
+<body>
   <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
   <!--*************************************************************************-->
   @include('layout_index.header')

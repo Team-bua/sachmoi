@@ -68,7 +68,7 @@
 							<div class="tg-sectionhead">
 								<div class="tg-booksfromauthor">
 									<div class="tg-sectionhead">
-										<h2>{{ $company_name->name }}</h2>
+										<h1>{{ $company_name->name }}</h1>
 									</div>
 									<div class="row">
 										@foreach ($product_company as $books)

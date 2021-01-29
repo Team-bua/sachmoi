@@ -235,11 +235,10 @@
 												</div>
 												<ul class="tg-productinfo">
 													<li><span>Tác Giả:</span><span>{{ $product_detail->publisher  }}</span></li>
-													<li><span>Phát Hành:</span><span>{{ $product_detail->publisher  }}</span></li>
+													<li><span>Phát Hành:</span><span>{{ $product_detail->productCompany->name  }}</span></li>
 													<li><span>Định Dạng:</span><span>{{ $product_detail->format }}</span></li>
-													<li><span>Ngày Phát Hành:</span><span>{{ $product_detail->releasedate }}</span></li>
 													<li><span>Ngôn Ngữ:</span><span>{{ $product_detail->language }}</span></li>
-													<li><span>Kích Thước:</span><span>&amp;{{ $product_detail->size  }} Cm</span></li>
+													<li><span>Kích Thước:</span><span>{{ $product_detail->size  }} Cm</span></li>
 													<li><span>Số Trang:</span><span>{{ $product_detail->pagenumber  }} Trang</span></li>
 
 												</ul>
@@ -419,6 +418,7 @@
 
 @endsection
 @section('speak')
+<script src="https://code.responsivevoice.org/responsivevoice.js?key=xPvZGVgP"></script>
 <script type="text/javascript">
 	$(document).ready(function() {
 		$("#btPlay").click(function() {

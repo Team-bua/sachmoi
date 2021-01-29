@@ -39,24 +39,16 @@
 									<div class="tg-newsdetail">
 										<ul class="tg-bookscategories">
 										</ul>
-										<div class="tg-themetagbox"><span class="tg-themetag">featured</span></div>
+										<div class="tg-themetagbox"><span class="tg-themetag">News</span></div>
 										<div class="tg-posttitle">
-<<<<<<< HEAD
-											<h3>{{$con->name}}</a></h3>
+											<h2>{{$con->name}}</a></h2>
 										</div>
-										<div class="tg-description" style="text-align: justify; font-size: 13px">
 										<blockquote>
-												<q>“{!! $con->content !!}”</q>
-												<span class="tg-bookwriter">By: <a href="javascript:void(0);">Angela Gunning</a></span>
-											</blockquote>
-										
-=======
-											<h3><a href="javascript:void(0);">Where The Wild Things Are</a></h3>
+										<div class="tg-description" style="text-align: justify; font-size: 20px">
+												<q>{!! $con->content !!}</q>
+												<span class="tg-bookwriter">By: <a href="javascript:void(0);">Angela Gunning</a></span>						
 										</div>
-										<div class="tg-description" style="text-align: justify; font-size: 16px">
-										{!! $con->content !!}
->>>>>>> 228745575022eb456b9a30ecbcc2e04bd46cd083
-										</div>
+										</blockquote>
 									</div>
 								@endforeach
 								</div>
@@ -70,7 +62,7 @@
 										<div class="tg-widgetcontent">
 											<ul>
 											 @for($i = 0; $i < count($product_n); $i++) 
-														   <li><a href="{{ route('product_type', $types_id[$i]) }}"><span>{{ $types_name[$i] }}:</span><span>({{ $product_n[$i] }})</span></a>
+														   <li><a href="{{ route('product_type', $types_id[$i]) }}"><span>{{ $types_name[$i] }} </span><span>({{ $product_n[$i] }})</span></a>
 														   </li>
 														    @endfor
 										

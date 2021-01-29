@@ -2,31 +2,32 @@
 @section('content')
 <style type="text/css">
 	.Out {
-    display: block;
-    position: absolute;
-    top: 108px;
-    padding: 0px 13px;
-    width: 190px;
-    font-size: 20px;
-    color: #FFF;
-    text-align: center;
-    text-transform: uppercase;
-    -moz-transform: rotate(45deg);
-    -webkit-transform: rotate(45deg);
-    -o-transform: rotate(45deg);
-    -ms-transform: rotate(45deg);
-    background-color: #C1272C;
-    z-index: 3;
-    right: 0px;
-    height: 28px;
-    line-height: 30px;
-    box-shadow: 0px 1px 2px #666;
-    -webkit-box-shadow: 0px 1px 2px #666;
-    -moz-box-shadow: 0px 1px 2px #666;
-    font-weight: 700;
-    font-family: 'Source Sans Pro', Arial;
-}
-/*-------------------------------------------------*/
+		display: block;
+		position: absolute;
+		top: 108px;
+		padding: 0px 13px;
+		width: 190px;
+		font-size: 20px;
+		color: #FFF;
+		text-align: center;
+		text-transform: uppercase;
+		-moz-transform: rotate(45deg);
+		-webkit-transform: rotate(45deg);
+		-o-transform: rotate(45deg);
+		-ms-transform: rotate(45deg);
+		background-color: #C1272C;
+		z-index: 3;
+		right: 0px;
+		height: 28px;
+		line-height: 30px;
+		box-shadow: 0px 1px 2px #666;
+		-webkit-box-shadow: 0px 1px 2px #666;
+		-moz-box-shadow: 0px 1px 2px #666;
+		font-weight: 700;
+		font-family: 'Source Sans Pro', Arial;
+	}
+
+	/*-------------------------------------------------*/
 </style>
 <!--************************************
 				Inner Banner Start
@@ -104,8 +105,8 @@
 											<div class="tg-postbookcontent">
 												<div class="tg-themetagbox"><span class="tg-themetag">new</span></div>
 												@if($books->store && $books->store->stored_product == 0)
-                             <div class="Out">Hết Hàng</div>
-                             @endif
+												<div class="Out">Hết Hàng</div>
+												@endif
 												<div class="tg-booktitle">
 													<h3><a href="javascript:void(0);">{{ $books->name }}</a></h3>
 												</div>
@@ -120,13 +121,13 @@
 													@endif
 												</span>
 												<a class="tg-btn tg-btnstyletwo" onclick="AddCart('{{ $books->id }}')">
-												<i class="fa fa-shopping-basket"></i>
-												<em>{{ __('Cart') }}</em>
-											</a>
-											<a class="tg-btn tg-btnstyletwo" href="{{ route('detail', $books->id) }}" style="margin-top: 4px;">
-												<i class="fa fa-info"></i>
-												<em>{{ __('Detail') }}</em>
-											</a>
+													<i class="fa fa-shopping-basket"></i>
+													<em>{{ __('Cart') }}</em>
+												</a>
+												<a class="tg-btn tg-btnstyletwo" href="{{ route('detail', $books->id) }}" style="margin-top: 4px;">
+													<i class="fa fa-info"></i>
+													<em>{{ __('Detail') }}</em>
+												</a>
 											</div>
 										</div>
 									</div>
@@ -140,14 +141,6 @@
 					</div>
 					<div class="col-xs-12 col-sm-4 col-md-4 col-lg-3 pull-left">
 						<aside id="tg-sidebar" class="tg-sidebar">
-							<div class="tg-widget tg-widgetsearch">
-								<form class="tg-formtheme tg-formsearch">
-									<div class="form-group">
-										<button type="submit"><i class="icon-magnifier"></i></button>
-										<input type="search" name="search" class="form-group" placeholder="Tìm kiếm...">
-									</div>
-								</form>
-							</div>
 							<div class="tg-widget tg-catagories">
 								<div class="tg-widgettitle">
 									<h3>{{ __('catelory') }}</h3>

@@ -79,7 +79,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                    <strong class="tg-logo"><a href="{{ route('index') }}"><img src="images/logo.png" alt="image description"></a></strong>
+                    <strong class="tg-logo"><a href="{{ route('index') }}"><img width="220px" src="images/bookstore.jpg" alt="image description"></a></strong>
                     <div class="tg-wishlistandcart">
                         <div class="dropdown tg-themedropdown tg-minicartdropdown">
                             <a href="{{ route('cart') }}" id="tg-minicart" class="tg-btn" aria-haspopup="true" aria-expanded="false">

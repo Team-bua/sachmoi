@@ -34,7 +34,7 @@ class LoginRequest extends FormRequest
             'username.email' => 'Không đúng định dạng email',
             'username.required' => 'Vui lòng nhập tên đăng nhập',
             'password.required' => 'Vui lòng nhập mật khẩu',
-            'username.max' => 'Tên đăng nhập không quá 25 ký tự',
+            'username.max' => 'Tên đăng nhập không quá 60 ký tự',
             'password.max' => 'Mật khẩu không quá 25 ký tự',
         ];
     }

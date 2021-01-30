@@ -17,15 +17,14 @@
 
     <!-- Main content -->
     <section class="content">
-
+        <div class="box-header">
+            @if (session('error'))
+            <div class="alert alert-danger text-center">{{ session('error') }}</div>
+            @endif
+        </div>
         <div class="box box-info">
             <form action="{{ url('book') }}" method="post" enctype="multipart/form-data">
                 @csrf
-                <div class="box-header">
-                    @if (session('error'))
-                    <div class="alert alert-danger text-center">{{ session('error') }}</div>
-                    @endif
-                </div>
                 <div class="box-body">
                     <h4> Tên sách : </h4>
                     <div class="input-group">

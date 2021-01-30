@@ -12,25 +12,27 @@ use App\Models\Role;
 use App\Models\User;
 use App\Repositories\UserRepository;
 use App\Services\GetSession;
+use Exception;
 
 class UserController extends Controller
-{ /**
-    * The MemberRepository instance.
-    *
-    * @var \App\Repositories\UserRepository
-    */
-   protected $repository;
+{
+    /**
+     * The MemberRepository instance.
+     *
+     * @var \App\Repositories\UserRepository
+     */
+    protected $repository;
 
 
-  /**
-   * Create a new PostController instance.
-   *
-   * @param  \App\Repositories\UserRepository $repository
-   */
-  public function __construct(UserRepository $repository)
-  {
-      $this->repository = $repository;
-  }
+    /**
+     * Create a new PostController instance.
+     *
+     * @param  \App\Repositories\UserRepository $repository
+     */
+    public function __construct(UserRepository $repository)
+    {
+        $this->repository = $repository;
+    }
 
     /**
      * Display a listing of the resource.
@@ -43,17 +45,13 @@ class UserController extends Controller
         $username = Auth::user()->username;
         if ($company_id != '' && Auth::user()->id_role == 2) {
             $user = User::where('id_company', $company_id)
-            ->where('username', $username)
-            ->orderBy('created_at', 'desc')->paginate(10);
-        }
-        elseif($company_id != '' && $company_id != 0 && Auth::user()->id_role == 1)
-        {
+                ->where('username', $username)
+                ->orderBy('created_at', 'desc')->paginate(10);
+        } elseif ($company_id != '' && $company_id != 0 && Auth::user()->id_role == 1) {
             $user = User::where('id_company', $company_id)
-            ->orderBy('created_at', 'desc')->paginate(10);     
-        }
-        else
-        {
-        $user = User::where('id_role', 1)->orderBy('created_at', 'desc')->paginate(10);
+                ->orderBy('created_at', 'desc')->paginate(10);
+        } else {
+            $user = User::where('id_role', 1)->orderBy('created_at', 'desc')->paginate(10);
         }
         return view('layout_admin.user.list_users', compact('user'));
     }
@@ -67,7 +65,6 @@ class UserController extends Controller
     {
         $companies = Company::all();
         return view('layout_admin.user.create_users', compact('companies'));
-
     }
 
     /**
@@ -78,7 +75,11 @@ class UserController extends Controller
      */
     public function store(UserRequest $request)
     {
-        return $this->repository->create($request);
+        try {
+            return $this->repository->create($request);
+        } catch (Exception $e) {
+            return back()->withError("Lỗi hệ thống! Chưa chọn nhà xuất bản")->withInput();
+        }
     }
 
     /**
@@ -89,7 +90,7 @@ class UserController extends Controller
      */
     public function show($id)
     {
-       //
+        //
     }
 
     /**
@@ -101,7 +102,7 @@ class UserController extends Controller
     public function edit($id)
     {
         $user = $this->repository->getuser($id);
-        return view('layout_admin.user.proflie',compact('user'));
+        return view('layout_admin.user.proflie', compact('user'));
     }
 
     /**
@@ -133,14 +134,14 @@ class UserController extends Controller
     {
         $all_role = Role::all();
         $user = $this->repository->getuser($id);
-        return view('layout_admin.user.role_users',compact('user','all_role'));
+        return view('layout_admin.user.role_users', compact('user', 'all_role'));
     }
 
-    public function changeRole(Request $request,$id)
+    public function changeRole(Request $request, $id)
     {
         $user = $this->repository->getuser($id);
         $user->id_role = $request->input('cate');
         $user->save();
-        return redirect()->back()->with('thongbao','Cập nhật thành công');
+        return redirect()->back()->with('thongbao', 'Cập nhật thành công');
     }
 }

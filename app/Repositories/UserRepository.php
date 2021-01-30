@@ -36,6 +36,7 @@ class UserRepository
         $user->address = $request->input('address');
         $user->id_company = $request->input('cate');
         $user->id_role = 2;
+        $user->is_verified = 1;
         $user->save();
         return redirect(route('user.index'));
        

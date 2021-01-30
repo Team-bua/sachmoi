@@ -25,7 +25,7 @@ class ProductRequest extends FormRequest
     {
         return [
             'img' => 'mimes:jpg,jpeg,png,gif|max:10048|',
-            'name' => 'required|unique:product|regex:/(^[\pL0-9 ]+$)/u',
+            'name' => 'required|unique:product|max:255|regex:/(^[\pL0-9 ]+$)/u',
             'publisher' => 'required|regex:/(^[\pL0-9 ]+$)/u',
             'unit_price' => 'required|regex:/(^[\pL0-9 ]+$)/u',
             'img' => 'required|mimes:jpg,jpeg,png,gif|max:10048',
@@ -39,6 +39,7 @@ class ProductRequest extends FormRequest
             'name.regex' => 'Tên sách không được phép có ký tự đặc biệt',
             'name.required' => 'Vui lòng nhập tên sách',
             'name.unique' => 'Tên sách đã được sử dụng',
+            'name.max' => 'TKhông vượt quá 255 ký tự',
             'publisher.required' => 'Vui lòng nhập nhà sản xuất',
             'publisher.regex' => 'Tên tác giả không được phép có ký tự đặc biệt',
             'unit_price.required' => 'Vui lòng nhập giá sản phẩm',

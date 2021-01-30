@@ -125,7 +125,7 @@
                                     <a href="{{ route('index') }}">{{ __('hompage') }}</a>
                                 </li>
                                 <li style="font-weight: bold" class="menu-item-has-children">
-                                <a href="">{{ __('catelory') }}</a>
+                                <a href="javascript:void(0)">{{ __('catelory') }}</a>
                                     <ul class="sub-menu" style="width:280px">
                                     @for($i = 0; $i < count($product_n); $i++) <li style="font-weight: bold;font-size: 13px"><a href="{{ route('product_type', $types_id[$i]) }}">{{ $types_name[$i] }} ({{ $product_n[$i] }})</a>
                                 </li>
@@ -143,7 +143,7 @@
                                 </ul>
                             </li>
                             <li style="font-weight: bold" class="menu-item-has-children">
-                                <a href="#"> {{ __('company') }}</a>
+                                <a href="javascript:void(0)"> {{ __('company') }}</a>
                                 <ul class="sub-menu">
                                     @foreach ($company as $com)
                                     <li style="font-weight: bold"><a href="{{ route('product_company', $com->id) }}">{{ $com->name }}</a>

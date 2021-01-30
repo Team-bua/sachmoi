@@ -25,7 +25,7 @@ class CompaniesRequest extends FormRequest
     {
         return [
             'img' => 'mimes:jpg,jpeg,png,gif|max:10048|',
-            'name' => 'required|unique:companies|regex:/(^[\pL0-9 ]+$)/u',
+            'name' => 'required|max:255|unique:companies|regex:/(^[\pL0-9 ]+$)/u',
             'email' => 'required',
             'address' => 'required',
             'phone' => 'required|numeric|digits:10',
@@ -37,6 +37,7 @@ class CompaniesRequest extends FormRequest
             'name.required' => 'Bạn chưa nhập tên',
             'name.unique' => 'Tên nhà xuất bản đã tồn tại',
             'name.regex' => 'Tên nhà xuất bản không được phép có ký tự đặc biệt',
+            'name.max' => 'Không vượt quá 255 ký tự',
             'email.required' => 'Bạn chưa nhập email',
             'address.required' => 'Bạn chưa nhập địa chỉ',
             'phone.required' => 'Bạn chưa nhập số điện thoại',

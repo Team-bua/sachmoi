@@ -106,7 +106,7 @@ class ProductController extends Controller
             [
                 //Kiểm tra đúng file đuôi .jpg,.jpeg,.png.gif và dung lượng không quá 2M
                 'img' => 'mimes:jpg,jpeg,png,gif|max:10048|',
-                'name' => 'required|regex:/(^[\pL0-9 ]+$)/u',
+                'name' => 'required|max:255|regex:/(^[\pL0-9 ]+$)/u',
                 'publisher' => 'required|regex:/(^[\pL0-9 ]+$)/u',
                 'unit_price' => 'required',
 
@@ -118,6 +118,7 @@ class ProductController extends Controller
                 //Tùy chỉnh hiển thị thông báo không thõa điều kiện
                 'name.regex' => 'Tên sách không được phép có ký tự đặc biệt',
                 'name.required' => 'Vui lòng nhập tên sách',
+                'name.max' => 'Không vượt quá 255 ký tự',
 
                 'publisher.required' => 'Vui lòng nhập nhà sản xuất',
                 'publisher.regex' => 'Tên tác giả không được phép có ký tự đặc biệt',

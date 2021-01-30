@@ -467,15 +467,9 @@ class PageRepository
             $request->user()->fill([
                 'password' => Hash::make($request->new_password)
             ])->save();
-            return response()->json([
-                'code' => 200,
-                'message' => 'success',
-            ], 200);
-        }
-        return response()->json([
-            'code' => 500,
-            'message' => 'success',
-        ], 500);
+            return redirect()->back()->with(['flag'=>'success','messege'=>'Đổi mật khẩu thành công']);
+        }   
+        return redirect()->back()->with(['flag'=>'danger','messege'=>'Mật khẩu cũ không đúng']);
     }
 
     public function getBill()

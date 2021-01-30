@@ -18,6 +18,9 @@
         <div class="box box-info">
 
             <div class="box-header">
+                @if (session('error'))
+                <div class="alert alert-danger text-center">{{ session('error') }}</div>
+                @endif
             </div>
             <div class="box-body">
                 <form action="{{ route('user.index') }}" method="post" enctype="multipart/form-data">
@@ -30,11 +33,11 @@
                     @error('fullname')
                     <div style="color: red"> {{ $message }} </div>
                     @enderror
-                    <h4> Nhà phát hành </h4>
+                    <h4> Nhà xuất bản </h4>
                     <div class="input-group input-group">
                         <div class="input-group-btn">
                             <select style=" font-weight:bold;" name="cate" class="form-control">
-                                <option style=" font-weight:bold;" value="-1"> --Chọn nhà phát hành-- </option>
+                                <option style=" font-weight:bold;" value="-1"> --Chọn nhà xuất bản-- </option>
                                 @foreach ($companies as $com)
                                 <option value="{{ $com->id }}">{{ $com->name }}</option>
                                 @endforeach
@@ -70,7 +73,7 @@
                         <div class="input-group-addon">
                             <i class="fa fa-phone"></i>
                         </div>
-                        <input class="form-control" name="phone" id="cc" type="number"placeholder="Số điện thoại. . . . . . . . ." />
+                        <input class="form-control" name="phone" id="cc" type="text" placeholder="Số điện thoại. . . . . . . . ." />
                     </div>
                     @error('phone')
                     <div style="color: red"> {{ $message }} </div>

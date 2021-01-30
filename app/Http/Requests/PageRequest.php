@@ -25,7 +25,7 @@ class PageRequest extends FormRequest
     {
         return [
             'fullname' => 'required|min:5|max:15|regex:/(^[\pL0-9 ]+$)/u',
-            'username' => 'required|email|max:25|unique:users,email',
+            'username' => 'required|email|max:50|unique:users,email',
             'password' => 'required|min:6|max:25',  
             're_password' => 'required|same:password',
             'address' => 'required',
@@ -41,7 +41,7 @@ class PageRequest extends FormRequest
             'fullname.max' => 'Tên không vượt quá 15 ký tự',
             'username.required' => 'Bạn chưa nhập username',
             'username.unique' => 'Username đã tồn tại',
-            'username.max' => 'Tên không vượt quá 25 ký tự',
+            'username.max' => 'Tên không vượt quá 50 ký tự',
             'password.required' => 'Bạn chưa nhập mật khẩu',
             'password.min' => 'Mật khẩu ít nhất 6 ký tự',
             'password.max' => 'Mật khẩu không quá 20 ký tự',

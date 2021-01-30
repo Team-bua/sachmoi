@@ -96,7 +96,7 @@ class CompanyController extends Controller
                 [
                 //Kiểm tra đúng file đuôi .jpg,.jpeg,.png.gif và dung lượng không quá 2M
                 'img' => 'mimes:jpg,jpeg,png,gif|max:10048|',
-                'name' => 'required|regex:/(^[\pL0-9 ]+$)/u',
+                'name' => 'required|max:255|regex:/(^[\pL0-9 ]+$)/u',
                 'email' => 'required',
                 'address' => 'required',
                 'phone' => 'required|numeric|digits:10',
@@ -105,6 +105,7 @@ class CompanyController extends Controller
                 //Tùy chỉnh hiển thị thông báo không thõa điều kiện
                 'name.required' => 'Bạn chưa nhập tên',
                 'name.regex' => 'Tên nhà xuất bản không được phép có ký tự đặc biệt',
+                'name.max' => 'Không vượt quá 255 ký tự',
                 'email.required' => 'Bạn chưa nhập email',
                 'address.required' => 'Bạn chưa nhập địa chỉ',
                 'phone.required' => 'Bạn chưa nhập số điện thoại',

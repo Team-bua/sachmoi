@@ -82,7 +82,7 @@
 													</div>
 													<ul class="tg-postmetadata">
 
-														<li><a href="javascript:void(0);"><i class="fa fa-eye"></i><i>{{ $con->news_view  }} lượt xem</i></a></li>
+													<li><a href="javascript:void(0);"><i class="fa fa-eye"></i><i>{{number_format($con->news_view,0,"",",") }} lượt xem</i></a></li>
 													</ul>
 												</div>
 											</article>

@@ -299,13 +299,13 @@
 								<h3 style=" width:250px;text-overflow: ellipsis;overflow: hidden;white-space: nowrap;">
 									<a href="{{ route('newsdetail', [$four['id']]) }}">{{ $four->name }}</a></h3>
 
-								<p style=" margin-top:10px;display: -webkit-box;width:230px;line-height:20px;overflow: hidden;text-overflow: ellipsis;-webkit-line-clamp:3;-webkit-box-orient: vertical;">
-									{{ $four->name }}
-								</p>
+								<span style=" margin-top:10px;display: -webkit-box;width:230px;line-height:20px;overflow: hidden;text-overflow: ellipsis;-webkit-line-clamp:3;-webkit-box-orient: vertical;">
+									{!! $four->content !!}
+								</span>
 							</div>
 							<ul class="tg-postmetadata">
 								<li><a href="javascript:void(0);">Bởi: Tuấn </a></li>
-								<li><a href="javascript:void(0);"><i class="fa fa-eye"></i><i>{{ $four->news_view  }} lượt xem</i></a></li>
+								<li><a href="javascript:void(0);"><i class="fa fa-eye"></i><i>{{number_format($four->news_view,0,"",",") }} lượt xem</i></a></li>
 							</ul>
 						</div>
 					</article>

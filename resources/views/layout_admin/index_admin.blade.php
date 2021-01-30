@@ -67,7 +67,6 @@
 
         <div class="row">
             <div class="col-md-12">
-                @can('admin')
                 <div class="box">
                     <div class="box-header with-border">
                         <div class="box-tools pull-right">
@@ -83,7 +82,6 @@
 
                         </div>
                     </div><!-- /.box-header -->
-                    @endcan
                     <div class="box-header">
                         <center>
                             <h2 class="box-title"><b>Thống kê lượt truy cập mỗi ngày</b> </h2>

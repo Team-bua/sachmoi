@@ -7,22 +7,22 @@
                                 <li class="tg-devlivery">
                                     <span class="tg-clientserviceicon"><i class="icon-rocket"></i></span>
                                     <div class="tg-titlesubtitle">
-                                        <h3>Free Ship</h3>
-                                        <p>Shipping Worldwide</p>
+                                        <h3>Miễn phí</h3>
+                                        <p>Vận chuyển toàn quốc</p>
                                     </div>
                                 </li>
                                 <li class="tg-discount">
                                     <span class="tg-clientserviceicon"><i class="icon-tag"></i></span>
                                     <div class="tg-titlesubtitle">
-                                        <h3>Open Discount</h3>
-                                        <p>Offering Open Discount</p>
+                                        <h3>Mặt hàng</h3>
+                                        <p>Đa dạng chất lượng</p>
                                     </div>
                                 </li>
                                 <li class="tg-quality">
                                     <span class="tg-clientserviceicon"><i class="icon-leaf"></i></span>
                                     <div class="tg-titlesubtitle">
-                                        <h3>Eyes On Quality</h3>
-                                        <p>Publishing Quality Work</p>
+                                        <h3>Chi nhánh</h3>
+                                        <p>Trên cả nước</p>
                                     </div>
                                 </li>
                                 <li class="tg-support">

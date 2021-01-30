@@ -20,7 +20,7 @@
 						@endif
 						<div class="form-group">
 							<label><b>Tên Đăng Nhập :</b></label>
-							<input style="text-transform: none" type="text" name="username" class="form-control" placeholder="Username . . . . .">
+							<input style="text-transform: none" type="text" name="username" class="form-control" placeholder="Username . . . . ." autocomplete="off">
 							@error('username')
 							<p style="color:red">{{ $message }}</p>
 							@enderror

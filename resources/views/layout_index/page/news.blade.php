@@ -63,7 +63,7 @@
 														</div>
 														<ul class="tg-postmetadata">
 															<li><a href="javascript:void(0);">Bởi:Tuấn </a></li>
-															<li><a href="javascript:void(0);"><i class="fa fa-eye"></i><i>{{ $content_fist->news_view  }} lượt xem</i></a></li>
+															<li><a href="javascript:void(0);"><i class="fa fa-eye"></i><i>{{number_format($content_fist->news_view,0,"",",") }} lượt xem</i></a></li>
 														</ul>
 														<div class="tg-priceandbtn">
 															<a class="tg-btn tg-btnstyletwo tg-active"href="{{ route('newsdetail', [$content_fist['id']]) }}">
@@ -99,7 +99,7 @@
 												
 												<ul class="tg-postmetadata">
 													<li><a href="javascript:void(0);">Bởi:Tuấn </a></li>
-													<li><a href="javascript:void(0);"><i class="fa fa-eye"></i><i>{{ $con->news_view  }} lượt xem</i></a></li>
+													<li><a href="javascript:void(0);"><i class="fa fa-eye"></i><i>{{number_format($con->news_view,0,"",",") }} lượt xem</i></a></li>
 												</ul>
 											</div>
 										</article>

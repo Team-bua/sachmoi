@@ -11,11 +11,8 @@ use Illuminate\Support\Facades\Session;
 use Analytics;
 use App\Http\Requests\ChangePassRequest;
 use App\Models\Bill;
-use App\Models\BillDetail;
 use App\Models\Date;
 use Spatie\Analytics\Period;
-use Exception;
-use App\Models\Rating;
 use App\Models\Store;
 use Illuminate\Support\Facades\DB;
 
@@ -56,10 +53,14 @@ class PageController extends Controller
         $content_new_four = $this->repository->getContentNewFour();
         //đổ ra 4 tin tức mới nhất ra trang index
         $product_type = $this->repository->getProductType();
-        return view('layout_index.index',compact('product_type', 
-                                                'slide', 'product_sale', 
-                                                'product_new_three',
-                                                'product_hightlights_three','content_new_four'));
+        return view('layout_index.index', compact(
+            'product_type',
+            'slide',
+            'product_sale',
+            'product_new_three',
+            'product_hightlights_three',
+            'content_new_four'
+        ));
     }
 
     public function getDetail($id)
@@ -71,14 +72,14 @@ class PageController extends Controller
         $comments = $this->repository->getComment($id);
         $store = $this->repository->store($id);
         $rating = $this->repository->getRating($id);
-        return view('layout_index.page.product_detail', compact('comments', 'product_detail', 'image_detail', 'rating','store','product_related' ));
+        return view('layout_index.page.product_detail', compact('comments', 'product_detail', 'image_detail', 'rating', 'store', 'product_related'));
     }
 
 
     public function getNews()
     {
         $content_fist = $this->repository->getContentFist();
-        
+
         $content = $this->repository->getContent();
         return view('layout_index.page.news', compact('content', 'content_fist'));
     }
@@ -88,7 +89,7 @@ class PageController extends Controller
         $this->repository->NewView($id);
         $content = $this->repository->getContent();
         $content_detail = $this->repository->getContentDetail($id);
-        return view('layout_index.page.news-detail', compact('content_detail', 'content','content_new_four'));
+        return view('layout_index.page.news-detail', compact('content_detail', 'content', 'content_new_four'));
     }
     // tin tức
 
@@ -220,8 +221,8 @@ class PageController extends Controller
     {
         $product_detail = $this->repository->getProduct($id);
         $pdf = $this->repository->getRead($id);
-         $product_type = $this->repository->getProductType();
-        return view('layout_index.page.Read_book', compact('pdf','product_detail','product_type'));
+        $product_type = $this->repository->getProductType();
+        return view('layout_index.page.Read_book', compact('pdf', 'product_detail', 'product_type'));
     }
 
     public function getCheckout()
@@ -261,10 +262,10 @@ class PageController extends Controller
 
     public function postCheckout(Request $request)
     {
-        if(Session::get('cart')){
+        if (Session::get('cart')) {
             $this->repository->postCheckout($request);
             return redirect()->back()->with(['flag' => 'success', 'messege' => 'Đặt hàng thành công, đơn hàng đã được gửi đến gmail của quý khách!!!']);
-        }else {
+        } else {
             return redirect()->back()->with(['flag' => 'danger', 'messege' => 'Không tồn tại sản phẩm']);
         }
     }
@@ -277,13 +278,13 @@ class PageController extends Controller
         $store = $this->repository->getAllstore();
         $company_name = $this->repository->getAllCompany();
         $bill_by_company_id = $this->repository->getBillByCompanyId();
-        $listDay = Date::getListDayInMonth();  
-        $revenueMonthDone = Bill::whereMonth('created_at',date('m'))
+        $listDay = Date::getListDayInMonth();
+        $revenueMonthDone = Bill::whereMonth('created_at', date('m'))
             ->select(DB::raw('sum(total) as totalMoney'), DB::raw('DATE(created_at) day'))
             ->groupBy('day')
             ->get()
             ->toArray();
-        $revenueMonthPending = Bill::whereMonth('created_at',date('m'))
+        $revenueMonthPending = Bill::whereMonth('created_at', date('m'))
             ->select(DB::raw('sum(total) as totalMoney'), DB::raw('DATE(created_at) day'))
             ->groupBy('day')
             ->get()
@@ -291,24 +292,24 @@ class PageController extends Controller
 
         $arrRevenueMonthDone = [];
         $arrRevenueMonthPending = [];
-        foreach($listDay as $day){
+        foreach ($listDay as $day) {
             $total = 0;
             foreach ($revenueMonthDone as $key => $revenue) {
-                if($revenue['day'] == $day){
+                if ($revenue['day'] == $day) {
                     $total = $revenue['totalMoney'];
                     break;
                 }
             }
-            $arrRevenueMonthDone[] = (int)$total;
+            $arrRevenueMonthDone[] = (int) $total;
             $total = 0;
             foreach ($revenueMonthPending as $key => $revenue) {
-                if($revenue['day'] == $day){
+                if ($revenue['day'] == $day) {
                     $total = $revenue['totalMoney'];
                     break;
                 }
             }
-            $arrRevenueMonthPending[] = (int)$total;
-        }     
+            $arrRevenueMonthPending[] = (int) $total;
+        }
         $viewData = [
             'bill_by_company_id'        => $bill_by_company_id,
             'company_name'              => $company_name,
@@ -319,7 +320,7 @@ class PageController extends Controller
             'arrRevenueMonthDone'       => json_encode($arrRevenueMonthDone),
             'arrRevenueMonthPending'    => json_encode($arrRevenueMonthPending)
         ];
-        return view('layout_admin.index_admin',$viewData, $data);
+        return view('layout_admin.index_admin', $viewData, $data);
     }
 
     public function getInfo($id)
@@ -331,14 +332,35 @@ class PageController extends Controller
 
     public function changeInfo(Request $request, $id)
     {
+        $this->validate(
+            $request,
+            [
+                //Kiểm tra đúng file đuôi .jpg,.jpeg,.png.gif và dung lượng không quá 2M
+                'fullname' => 'required|max:255|regex:/(^[\pL0-9 ]+$)/u',
+                'email' => 'required|email',
+                'address' => 'required',
+                'phone' => 'required|numeric|digits:10',
+            ],
+            [
+                //Tùy chỉnh hiển thị thông báo không thõa điều kiện
+                'fullname.required' => 'Bạn chưa nhập tên',
+                'fullname.regex' => 'Tên không được phép có ký tự đặc biệt',
+                'fullname.max' => 'Không vượt quá 255 ký tự',
+                'email.required' => 'Bạn chưa nhập email',
+                'email.email' => 'Không đúng định dạng email',
+                'address.required' => 'Bạn chưa nhập địa chỉ',
+                'phone.required' => 'Bạn chưa nhập số điện thoại',
+                'phone.digits' => 'Điện thoại chỉ có 10 số',
+                'phone.numeric' => 'Điện thoại chỉ được nhập số',
+            ]
+        );
         $this->repository->changeInfo($request, $id);
         return redirect()->back()->with('thongbao', 'Cập nhật thông tin thành công');
     }
 
-    public function updatePassword(Request $request, $id)
+    public function updatePassword(ChangePassRequest $request, $id)
     {
         return $this->repository->updatePassword($request, $id);
-       
     }
 
     public function changeLanguage($language)

@@ -39,6 +39,9 @@
                     <div class="col-xs-12 col-sm-8 col-md-8 col-lg-9 pull-right">
                         <div id="tg-content" class="tg-content">
                             <div class="tg-products">
+                                @if(Session::has('thongbao'))
+                                <div class="alert alert-success">{{Session::get('thongbao')}}</div>
+                                @endif
                                 <div class="tg-sectionhead">
                                     <h2>{{ __("Information") }}</h2>
                                 </div>
@@ -47,18 +50,30 @@
                                     <div class="form-group">
                                         <label>Họ tên:</label>
                                         <input type="text" name="fullname" class="form-control" value="{{$customer->full_name}}" />
+                                        @error('fullname')
+                                        <p style="color:red">{{ $message }}</p>
+                                        @enderror
                                     </div>
                                     <div class="form-group">
                                         <label>Số điện thoại:</label>
                                         <input type="text" name="phone" class="form-control" data-inputmask="'mask': '999-999-9999'" value="{{$customer->phone}}" />
+                                        @error('phone')
+                                        <p style="color:red">{{ $message }}</p>
+                                        @enderror
                                     </div>
                                     <div class="form-group">
                                         <label>Địa chỉ:</label>
                                         <input type="text" name="address" class="form-control" value="{{$customer->address}}" />
+                                        @error('address')
+                                        <p style="color:red">{{ $message }}</p>
+                                        @enderror
                                     </div>
                                     <div class="form-group">
                                         <label>Email:</label>
                                         <input style="text-transform :none; " type="text" name="email" class="form-control" value="{{$customer->email}}" />
+                                        @error('email')
+                                        <p style="color:red">{{ $message }}</p>
+                                        @enderror
                                     </div>
                                     <div class="col-3">
                                         <button class="btn black">Cập nhật thông tin </button>
@@ -68,32 +83,38 @@
                             <br>
                             <br>
                             <div class="tg-products">
+
+                                <br>
                                 <div class="tg-sectionhead">
+                                    @if(Session::has('flag'))
+                                    <div class="alert alert-{{Session::get('flag')}}">{{Session::get('messege')}}</div>
+                                    @endif
                                 </div>
+
                                 <div class="col-sm-4">
                                     <form method="post" action="{{ route('updatePassword',Auth::user()->id)}}">
                                         @csrf
                                         <label>Mật Khẩu Cũ</label>
                                         <div class="form-group pass_show">
                                             <input type="password" name="password" class="form-control" placeholder="Mật Khẩu Cũ">
+                                            @error('password')
+                                            <p style="color:red">{{ $message }}</p>
+                                            @enderror
                                         </div>
-                                        @error('password')
-                                        <p style="color:red">{{ $message }}</p>
-                                        @enderror
                                         <label>Mật Khẩu Mới</label>
                                         <div class="form-group pass_show">
                                             <input type="password" name="new_password" class="form-control" placeholder="Mật Khẩu Mới">
+                                            @error('new_password')
+                                            <p style="color:red">{{ $message }}</p>
+                                            @enderror
                                         </div>
-                                        @error('new_password')
-                                        <p style="color:red">{{ $message }}</p>
-                                        @enderror
                                         <label>Nhập Lại Mật Khẩu</label>
                                         <div class="form-group pass_show">
                                             <input type="password" name="re_password" class="form-control" placeholder="Nhập Lại Mật Khẩu">
+                                            @error('re_password')
+                                            <p style="color:red">{{ $message }}</p>
+                                            @enderror
                                         </div>
-                                        @error('re_password')
-                                        <p style="color:red">{{ $message }}</p>
-                                        @enderror
                                         <div class="col-3">
                                             <button class="btn black">Cập nhật thông tin </button>
                                         </div>
@@ -269,28 +290,4 @@
         $('#myModal').modal('show'); // calling the bootstrap modal
     });
 </script>
-<script>
-    function AddCart(id) {
-      $.ajax({
-        url: "{{url('updatePassword')}}" + '/' + id,
-        type: 'GET',
-        success: function(response) {
-          Swal.fire({
-            icon: 'success',
-            title: 'Thay đổi mật khẩu thành công',
-            showConfirmButton: false,
-            timer: 1500
-          })
-        },
-        error: function(response) {
-          Swal.fire({
-            icon: 'error',
-            title: 'Sách đã hết hàng',
-            showConfirmButton: false,
-            timer: 1500
-          })
-        }
-      })
-    }
-  </script>
 @stop

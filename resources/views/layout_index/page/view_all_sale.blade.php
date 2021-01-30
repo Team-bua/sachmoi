@@ -154,104 +154,53 @@
 					</div>
 					<div class="col-xs-12 col-sm-4 col-md-4 col-lg-3 pull-left">
 						<aside id="tg-sidebar" class="tg-sidebar">
+							<div class="tg-widget tg-widgetsearch">
+								<form class="tg-formtheme tg-formsearch">
+									<div class="form-group">
+										<button type="submit"><i class="icon-magnifier"></i></button>
+										<input type="search" name="search" class="form-group" placeholder="Tìm kiếm...">
+									</div>
+								</form>
+							</div>
 							<div class="tg-widget tg-catagories">
 								<div class="tg-widgettitle">
 									<h3>{{ __('catelory') }}</h3>
 								</div>
 								<div class="tg-widgetcontent">
 									<ul>
-										@for($i = 0; $i < count($product_n); $i++) <li><a href="{{ route('product_type', $types_id[$i]) }}"><span>{{ $types_name[$i] }}:</span><span>({{ $product_n[$i] }})</span></a>
+										@for ($i = 0; $i < count($product_n); $i++) <li><a href="{{ route('product_type', $types_id[$i]) }}"><span>{{ $types_name[$i] }} </span><span>({{ $product_n[$i] }})</span></a>
 											</li>
 											@endfor
 
-                                                        <span class="tg-bookprice">
-                                                            @if ($books->promotion_price == 0)
-                                                                <ins style="margin-bottom: 20px">{{ number_format($books->unit_price, 0, '', ',') }}
-                                                                    VNĐ</ins>
-                                                            @else
-                                                                <del>{{ number_format($books->unit_price, 0, '', ',') }}
-                                                                    VNĐ</del>
-                                                                <ins>{{ number_format($books->promotion_price, 0, '', ',') }}
-                                                                    VNĐ</ins>
-                                                            @endif
-                                                        </span>
-                                                        <a class="tg-btn tg-btnstyletwo"
-                                                            onclick="AddCart('{{ $books->id }}')">
-                                                            <i class="fa fa-shopping-basket"></i>
-                                                            <em>{{ __('Cart') }}</em>
-                                                        </a>
-                                                        <a class="tg-btn tg-btnstyletwo"
-                                                            href="{{ route('detail', $books->id) }}"
-                                                            style="margin-top: 4px;">
-                                                            <i class="fa fa-info"></i>
-                                                            <em>{{ __('Detail') }}</em>
-                                                        </a>
-                                                    </div>
-                                                </div>
+									</ul>
+								</div>
+							</div>
+							<div class="tg-widget tg-catagories">
+								<div class="tg-widgettitle">
+									<h3>{{ __('company') }}</h3>
+								</div>
+								<div class="tg-widgetcontent">
+									<ul>
+										@foreach ($company as $com)
+										<li>
+											<a href="{{ route('product_company', $com->id) }}">{{ $com->name }}</a>
+										</li>
+										@endforeach
 
-                                            </div>
-                                        @endforeach
-                                    </div>
-                                    <div class="row">
-                                        <div class="btn-sec">
-                                            {{ $product_sale->appends(request()->input())->links('vendor.pagination.bootstrap-4') }}
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-                        <div class="col-xs-12 col-sm-4 col-md-4 col-lg-3 pull-left">
-                            <aside id="tg-sidebar" class="tg-sidebar">
-                                <div class="tg-widget tg-widgetsearch">
-                                    <form class="tg-formtheme tg-formsearch">
-                                        <div class="form-group">
-                                            <button type="submit"><i class="icon-magnifier"></i></button>
-                                            <input type="search" name="search" class="form-group" placeholder="Tìm kiếm...">
-                                        </div>
-                                    </form>
-                                </div>
-                                <div class="tg-widget tg-catagories">
-                                    <div class="tg-widgettitle">
-                                        <h3>{{ __('catelory') }}</h3>
-                                    </div>
-                                    <div class="tg-widgetcontent">
-                                        <ul>
-                                            @for ($i = 0; $i < count($product_n); $i++)
-                                                <li><a
-                                                        href="{{ route('product_type', $types_id[$i]) }}"><span>{{ $types_name[$i] }}:</span><span>({{ $product_n[$i] }})</span></a>
-                                                </li>
-                                            @endfor
-
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="tg-widget tg-catagories">
-                                    <div class="tg-widgettitle">
-                                        <h3>{{ __('company') }}</h3>
-                                    </div>
-                                    <div class="tg-widgetcontent">
-                                        <ul>
-                                            @foreach ($company as $com)
-                                                <li>
-                                                    <a href="{{ route('product_company', $com->id) }}">{{ $com->name }}</a>
-                                                </li>
-                                            @endforeach
-
-                                        </ul>
-                                    </div>
-                                </div>
-                            </aside>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!--************************************
+									</ul>
+								</div>
+							</div>
+						</aside>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--************************************
          News Grid End
        *************************************-->
-    </main>
-    <!--************************************
+</main>
+<!--************************************
         Main End
       *************************************-->
 @endsection

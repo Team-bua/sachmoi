@@ -11,7 +11,7 @@
             width: 900px;
             height: auto;
             background-color: aliceblue;
-            
+
         }
 
         .logo {
@@ -135,10 +135,14 @@
                         <td><img class="logo" src="{{$message->embed(public_path('images/product/'. $image_products[$i]))}}" alt=""></td>
                         <td>{{$name_products[$i]}}</td>
                         <td>{{$quantity_products[$i]}}</td>
-                        <td>{{$price[$i]}}</td>
+                        <td>{{number_format($price[$i])}} VNĐ</td>
                         </tr>
                         @endfor
                         @endif
+                        <tr>
+                            <td colspan="3" class="hidden-xs"></td>
+                            <td><strong style="font-size: 30px">Tổng tiền :@if(Session::has('cart')) {{number_format($cart->totalPrice)}} VNĐ@endif</strong></td>
+                        </tr>
                 </tbody>
             </table>
 

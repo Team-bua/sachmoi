@@ -32,6 +32,13 @@
                                     <th>Tùy chọn</th>
                                 </tr>
                             </thead>
+                            @php
+                            $disabled = '';
+                            if(Auth::user()->id_role == 1)
+                            {
+                            $disabled = 'disabled';
+                            }
+                            @endphp
                             <tbody>
                                 @foreach ($stores as $st)
                                 <tr>
@@ -42,10 +49,10 @@
                                     <td>
                                         <div class="btn-toolbar" role="toolbar">
                                             <div class="btn-group mr-2" role="group">
-                                                <button style="float:right" class="btn btn-warning btn-sm" id="edit-{{ $st->id }}" onclick="editStore(this)"><i class="fa fa-pencil"></i></button>
+                                                <button style="float:right" {{$disabled}} class="btn btn-warning btn-sm" id="edit-{{ $st->id }}" onclick="editStore(this)"><i class="fa fa-pencil"></i></button>
                                             </div>
                                             <div class="btn-group mr-2" role="group">
-                                                <button class="btn btn-danger delStore btn-sm   " data-url="{{route('store_del',$st->id)}}"> Xóa </button>
+                                                <button class="btn btn-danger delStore btn-sm" {{$disabled}} data-url="{{route('store_del',$st->id)}}"> Xóa </button>
                                             </div>
                                         </div>
                                     </td>
@@ -86,103 +93,103 @@
         </div>
     </section><!-- /.content -->
 </div>
-    @endsection
-    @section('js')
-    <!-- SlimScroll -->
+@endsection
+@section('js')
+<!-- SlimScroll -->
 
-    <script type="text/javascript">
-        $('#example1').dataTable({
-            "bPaginate": true,
-            "bLengthChange": true,
-            "bFilter": true,
-            "bSort": true,
-            "order": [],
-            "bInfo": false,
-            "bAutoWidth": true
-        });
-    </script>
-    <script>
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+<script type="text/javascript">
+    $('#example1').dataTable({
+        "bPaginate": true,
+        "bLengthChange": true,
+        "bFilter": true,
+        "bSort": true,
+        "order": [],
+        "bInfo": false,
+        "bAutoWidth": true
+    });
+</script>
+<script>
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+
+    function editStore(edit) {
+        $('#bookeditmodal').modal('show');
+        var [x, store_all] = edit.id.split('-')
+        $.ajax({
+            url: "{{ route('store_edit') }}",
+            type: "POST",
+            data: {
+                id: store_all
+            },
+            success: function(response) {
+                let store = JSON.parse(response)['store'];
+                $('#total').val(store['all_product_in_store']);
+                $('#id').val(store['id']);
             }
         });
-
-        function editStore(edit) {
-            $('#bookeditmodal').modal('show');
-            var [x, store_all] = edit.id.split('-')
-            $.ajax({
-                url: "{{ route('store_edit') }}",
-                type: "POST",
-                data: {
-                    id: store_all
-                },
-                success: function(response) {
-                    let store = JSON.parse(response)['store'];
-                    $('#total').val(store['all_product_in_store']);
-                    $('#id').val(store['id']);
-                }
-            });
-        }
-        $('#bookEditForm').submit(function(e) {
-            e.preventDefault();
-            let id = $("#id").val();
-            let total = $("#total").val();
-            $.ajax({
-                url: "{{ route('store_update') }}",
-                type: "POST",
-                data: {
-                    id: id,
-                    total: total,
-                },
-                success: function(response) {
-                    let store_update = JSON.parse(response)['store'];
-                    $("#bookeditmodal").modal('hide');
-                    $("#total-" + store_update['id']).html(store_update['all_product_in_store']);
-                    $("#qtyTon-" + store_update['id']).html(store_update['stored_product']);
-                    Swal.fire({
-                        icon: 'success',
-                        title: 'Cập nhật thành công',
-                        showConfirmButton: false,
-                        timer: 1500
-                    })
-                }
-            });
+    }
+    $('#bookEditForm').submit(function(e) {
+        e.preventDefault();
+        let id = $("#id").val();
+        let total = $("#total").val();
+        $.ajax({
+            url: "{{ route('store_update') }}",
+            type: "POST",
+            data: {
+                id: id,
+                total: total,
+            },
+            success: function(response) {
+                let store_update = JSON.parse(response)['store'];
+                $("#bookeditmodal").modal('hide');
+                $("#total-" + store_update['id']).html(store_update['all_product_in_store']);
+                $("#qtyTon-" + store_update['id']).html(store_update['stored_product']);
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Cập nhật thành công',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
+            }
         });
-        $(document).on('click', '.delStore', DelProduct);
+    });
+    $(document).on('click', '.delStore', DelProduct);
 
-        function DelProduct(e) {
-            e.preventDefault();
-            let urlRequest = $(this).data('url');
-            let that = $(this);
-            Swal.fire({
-                title: 'Xóa sản phẩm',
-                text: "Bạn có muốn xóa không!",
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'Có, muốn xóa!',
-                cancelButtonText: 'Không xóa',
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    $.ajax({
-                        url: urlRequest,
-                        type: 'GET',
-                        success: function(data) {
-                            if (data.code == 200) {
-                                that.parent().parent().parent().parent().remove();
-                                Swal.fire(
-                                    'Xóa!',
-                                    'Xóa thành công.',
-                                    'success'
-                                )
-                            }
+    function DelProduct(e) {
+        e.preventDefault();
+        let urlRequest = $(this).data('url');
+        let that = $(this);
+        Swal.fire({
+            title: 'Xóa sản phẩm',
+            text: "Bạn có muốn xóa không!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Có, muốn xóa!',
+            cancelButtonText: 'Không xóa',
+        }).then((result) => {
+            if (result.isConfirmed) {
+                $.ajax({
+                    url: urlRequest,
+                    type: 'GET',
+                    success: function(data) {
+                        if (data.code == 200) {
+                            that.parent().parent().parent().parent().remove();
+                            Swal.fire(
+                                'Xóa!',
+                                'Xóa thành công.',
+                                'success'
+                            )
                         }
-                    });
-                }
-            });
-        }
-    </script>
+                    }
+                });
+            }
+        });
+    }
+</script>
 
-    @stop
+@stop

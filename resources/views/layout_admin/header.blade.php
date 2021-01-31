@@ -58,7 +58,7 @@
                     </a>
                     <ul class="dropdown-menu" style="padding-top: 7px;">
                         <!-- User image -->
-                        <li style="background-color: #8b7b61" class="user-header">
+                        <li style="background-color: #77b748" class="user-header">
                             <img style="background-color: #ffffff" src="{{ asset('images/icon/admin.png')  }}" class="img-circle" alt="User Image" />
                             <p style="color: #ffffff">
                                 {{ Auth::user()->full_name }} ({{ Auth::user()->role->display_name }})
@@ -150,7 +150,7 @@
             <!-- Thống kê -->
             <li class="treeview">
                 <a href="{{ url('admin') }}">
-                    <i style="color:#8b7b61" class="fa fa-pie-chart fa-lg text-warning"></i>
+                    <i style="color:#77b748" class="fa fa-pie-chart fa-lg text-warning"></i>
                     <span style="font-size:16px ;">{{ __('dashboard') }}</span>
                 </a>
             </li>
@@ -162,7 +162,7 @@
             <!-- CRUD  nhà cung cấp -->
             <li class=" treeview">
                 <a href="{{ route('companies.index') }}">
-                    <i style="color:#8b7b61" class="fa fa-briefcase fa-lg text-warning"></i>
+                    <i style="color:#77b748" class="fa fa-briefcase fa-lg text-warning"></i>
                     <span style="font-size:16px ;">{{ __('companies') }}</span>
                 </a>
             </li>
@@ -171,7 +171,7 @@
             @if($company_id != '' && $company_id != '0')
             <li class=" treeview">
                 <a href="{{ route('book.index') }}">
-                    <i style="color:#8b7b61" class="fa fa-book fa-lg text-warning"></i>
+                    <i style="color:#77b748" class="fa fa-book fa-lg text-warning"></i>
                     <span style="font-size:16px ;"> {{ __('listbook') }}</span>
                 </a>
 
@@ -180,7 +180,7 @@
             <!-- CRUD thể loại sách -->
             <li class="treeview">
                 <a href="{{ route('book_type.index') }}">
-                    <i style="color:#8b7b61" class="fa fa-edit  fa-lg text-warning"></i>
+                    <i style="color:#77b748" class="fa fa-edit  fa-lg text-warning"></i>
                     <span style="font-size:16px ;"> {{ __('listtype') }}</span>
                 </a>
             </li>
@@ -191,14 +191,14 @@
             <!-- Đơn hàng -->
             <li class="treeview">
                 <a href="{{ route('bill.index') }}">
-                    <i style="color:#8b7b61" class="fa fa-inbox fa-lg text-warning"></i>
+                    <i style="color:#77b748" class="fa fa-inbox fa-lg text-warning"></i>
                     <span style="font-size:16px ;">{{ __('bills') }}</span>
                 </a>
             </li>
             <!-- Quản lý kho hàng -->
             <li class="treeview">
                 <a>
-                    <i style="color:#8b7b61" class="fa fa-archive  fa-lg text-warning"></i>
+                    <i style="color:#77b748" class="fa fa-archive  fa-lg text-warning"></i>
                     <span style="font-size:16px ;"> {{ __('store') }}</span>
                     <i class="fa fa-angle-left pull-right"></i>
                 </a>
@@ -213,14 +213,14 @@
             <!-- Quản lý slide -->
             <li class="treeview">
                 <a href="{{ route('slide.index') }}">
-                    <i style="color:#8b7b61" class="fa fa-list-alt  fa-lg text-warning"></i>
+                    <i style="color:#77b748" class="fa fa-list-alt  fa-lg text-warning"></i>
                     <span>{{ __('banner') }}</span>
                 </a>
 
 
             <li class="treeview">
                 <a href="{{ route('thenews.index') }}">
-                    <i style="color:#8b7b61" class="fa fa-thumbs-o-up  fa-lg text-warning"></i>
+                    <i style="color:#77b748" class="fa fa-thumbs-o-up  fa-lg text-warning"></i>
                     <span>{{ __('news') }}</span>
                 </a>
             @endcan
@@ -228,17 +228,18 @@
             <li class="header ">
                 <span style="font-size:20px ;color:rgb(238, 238, 238)"> PHÂN QUYỀN </span>
             </li>
-            @can('admin')
+
             <li class="treeview">
                 <a href="{{ route('user.index') }}">
-                    <i style="color:#8b7b61" class="fa fa-desktop  fa-lg"></i>
+                    <i style="color:#77b748" class="fa fa-desktop  fa-lg"></i>
                     <span style="font-size:16px ;"> {{ __('acc') }}</span>
 
                 </a>
             </li>
+            @can('admin')
             <li class="treeview">
                 <a href="{{ route('member.index') }}">
-                    <i style="color:#8b7b61" class="fa fa-user  fa-lg"></i>
+                    <i style="color:#77b748" class="fa fa-user  fa-lg"></i>
                     <span style="font-size:16px ;"> {{ __('user') }}</span>
 
                 </a>
@@ -246,7 +247,7 @@
             @endcan
             <li class="treeview">
                 <a href="{{ url('logout') }}">
-                    <i style="color:#8b7b61" class="fa fa-sign-out  fa-lg text-warning"></i>
+                    <i style="color:#77b748" class="fa fa-sign-out  fa-lg text-warning"></i>
                     <span style="font-size:16px ;">{{ __('exit') }}</span>
 
                 </a>

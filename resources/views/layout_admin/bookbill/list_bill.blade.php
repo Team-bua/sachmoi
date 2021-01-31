@@ -30,15 +30,15 @@
                 <div class="box box-solid ">
                     <div class="btn-group" style="margin-top:10px;margin-left:5px">
 
-                    
+
                         <button type="button" class="btn bg-purple dropdown-toggle" data-toggle="dropdown">
                             Đơn hàng <span class="caret"></span></button>
-                            <ul style="background-color: white" class="dropdown-menu" role="menu">
-                                <li><a href="{{route('notreceiving')}}">Đơn hàng đang xử lý</a></li>
-                                <li><a href="{{route('receiving')}}">Đơn hàng đã tiếp nhận</a></li>
-                                <li><a href="{{route('completereceiving')}}">Đang hàng đã giao</a></li>
-                                <li><a href="{{route('fails')}}">Đang hàng thất bại</a></li>
-                            </ul>
+                        <ul style="background-color: white" class="dropdown-menu" role="menu">
+                            <li><a href="{{route('notreceiving')}}">Đơn hàng đang xử lý</a></li>
+                            <li><a href="{{route('receiving')}}">Đơn hàng đã tiếp nhận</a></li>
+                            <li><a href="{{route('completereceiving')}}">Đang hàng đã giao</a></li>
+                            <li><a href="{{route('fails')}}">Đang hàng thất bại</a></li>
+                        </ul>
                     </div>
                     <div class="box-body ">
                         <!-- ShowModal -->
@@ -89,9 +89,16 @@
                                     <td>{{number_format($bills->total,0,"",",")}} </td>
                                     <td>{{$bills->payment}}</td>
                                     <td>
+                                        @php
+                                        $disabled = '';
+                                        if(Auth::user()->id_role == 1)
+                                        {
+                                            $disabled = 'disabled';
+                                        }                                      
+                                        @endphp
                                         <div class="btn-group">
                                             @if($bills->status == 0)
-                                            <button type="button" class="btn btn-default ad dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Đang xử lý</button>
+                                            <button type="button" class="btn btn-default ad dropdown-toggle" {{$disabled}} data-toggle="dropdown" aria-expanded="false">Đang xử lý</button>
                                             <ul style="background-color: white" class="dropdown-menu" role="menu">
                                                 <a href="{{route('bill_receiving',[$bills['id']])}}" class="btn btn-primary ad">
                                                     <li>Tiếp nhận</li>
@@ -105,8 +112,8 @@
                                             </ul>
                                             @endif
                                             @if($bills->status == 1)
-                                            <button type="button" class="btn btn-primary ad dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Tiếp nhận</button>
-                                            <ul   style="background-color: white" class="dropdown-menu" role="menu" style="width:105px">
+                                            <button type="button" class="btn btn-primary ad dropdown-toggle" {{$disabled}} data-toggle="dropdown" aria-expanded="false">Tiếp nhận</button>
+                                            <ul style="background-color: white" class="dropdown-menu" role="menu" style="width:105px">
                                                 <a href="{{route('bill_processing',[$bills['id']])}}" class="btn btn-default ad">
                                                     <li>Đang xử lý</li>
                                                 </a>
@@ -119,7 +126,7 @@
                                             </ul>
                                             @endif
                                             @if($bills->status == 2)
-                                            <button type="button" class="btn btn-success ad dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Đã giao</button>
+                                            <button type="button" class="btn btn-success ad dropdown-toggle" {{$disabled}} data-toggle="dropdown" aria-expanded="false">Đã giao</button>
                                             <ul style="background-color: white" class="dropdown-menu" role="menu">
                                                 <a href="{{route('bill_processing',[$bills['id']])}}" class="btn btn-default ad">
                                                     <li>Đang xử lý</li>
@@ -134,8 +141,8 @@
                                             @endif
 
                                             @if($bills->status == 3)
-                                            <button type="button" class="btn btn-danger ad dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Thất bại</button>
-                                            <ul  style="background-color: white" class="dropdown-menu" role="menu">
+                                            <button type="button" class="btn btn-danger ad dropdown-toggle" {{$disabled}} data-toggle="dropdown" aria-expanded="false">Thất bại</button>
+                                            <ul style="background-color: white" class="dropdown-menu" role="menu">
                                                 <a href="{{route('bill_processing',[$bills['id']])}}" class="btn btn-default ad">
                                                     <li>Đang xử lý</li>
                                                 </a>
@@ -158,7 +165,7 @@
                 </div>
             </div>
         </div>
-        
+
         <!-- Modal -->
         <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
             <div class="modal-dialog" role="document">
@@ -173,7 +180,7 @@
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
                     </div>
-                    
+
                 </div>
             </div>
         </div>
@@ -200,7 +207,7 @@
             // adding a more info button at the end
             "targets": -1,
             "data": null,
-            "defaultContent": "<button class='btn btn-info btn1' ><i class='fa fa-eye'></i></button>",                               
+            "defaultContent": "<button class='btn btn-info btn1' ><i class='fa fa-eye'></i></button>",
         }]
     });
 
@@ -221,8 +228,8 @@
 
 @section('in')
 <script type="text/javascript">
-  function myFunction() {
-    window.print();
-}
+    function myFunction() {
+        window.print();
+    }
 </script>
 @endsection

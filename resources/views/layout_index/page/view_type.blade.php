@@ -135,10 +135,10 @@
 											</div>
 										</div>
 										@endforeach
+										</div>
 									<div class="row">
 										<div class="btn-sec">{{$product_types->appends(request()->input())->links('vendor.pagination.bootstrap-4')}}</div>
-									</div>
-								</div>
+									</div>						
 							</div>
 						</div>
 					</div>

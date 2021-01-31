@@ -201,9 +201,9 @@
 											@for($i=1; $i<=5; $i++) <span class="fa fa-star {{$i <= $product_ra ? 'active' : ''}}" style="color:#999"></span>
 												@endfor
 												@endif
-													<ul class="tg-postmetadata">
-										<li><a href="javascript:void(0);"><i class="fa fa-eye"></i><i style="font-size: 18px">{{$product_detail->product_view}} Lượt Xem</i></a></li>
-									</ul>
+												<ul class="tg-postmetadata">
+													<li><a href="javascript:void(0);"><i class="fa fa-eye"></i><i style="font-size: 18px">{{$product_detail->product_view}} Lượt Xem</i></a></li>
+												</ul>
 												<div class="tg-share">
 													<span>Trạng Thái:</span>
 													<ul class="tg-socialicons">
@@ -215,7 +215,7 @@
 
 													</ul>
 												</div>
-											
+
 												<div class="tg-description">
 													<textarea class="area" type="text" rows="25" cols="62" id="text" disabled style="height: 200px;">
                						 				{!! $product_detail->description !!}
@@ -251,114 +251,114 @@
 											<div class="tg-sectionhead">
 											</div>
 											<ul class="tg-themetabs" role="tablist">
-										<li role="presentation" class="active"><a href="#description" data-toggle="tab">Đánh Giá</a></li>
+												<li role="presentation" class="active"><a href="#description" data-toggle="tab">Đánh Giá</a></li>
 											</ul>
 											<div class="tg-tab-content tab-content">
 												<div role="tabpanel" class="tg-tab-pane tab-pane active" id="description">
 													<div class="tg-description">
-														 @if(Auth::check())
-                    <form action="{{route('rating',$product_detail->id)}}" method="post">
-                        @csrf
-                        @method('put')
-                        <div class="cpt_product_description ">
-                            <div class="rating-card">
-                                <div style="height: 60px">
-                                    <h1>Đánh Giá</h1>
-                                </div>
-                                <div class="rating">
-                                    <p><i class="fa fa-user" aria-hidden="true"></i> {{count($rating['count_ra'])}} Đánh Giá</p>
-                                </div>
-                                <div class="rating-process">
-                                    <div class="rating-right-part">
-                                        5<i aria-hidden="true" class="fa fa-star"></i>
-                                        <div class="progress">Có {{$rating['ra_5']}} đánh giá</div>
-                                    </div>
-                                    <div class="rating-right-part">
-                                        4<i aria-hidden="true" class="fa fa-star"></i>
-                                        <div class="progress">Có {{$rating['ra_4']}} đánh giá</div>
+														@if(Auth::check())
+														<form action="{{route('rating',$product_detail->id)}}" method="post">
+															@csrf
+															@method('put')
+															<div class="cpt_product_description ">
+																<div class="rating-card">
+																	<div style="height: 60px">
+																		<h1>Đánh Giá</h1>
+																	</div>
+																	<div class="rating">
+																		<p><i class="fa fa-user" aria-hidden="true"></i> {{count($rating['count_ra'])}} Đánh Giá</p>
+																	</div>
+																	<div class="rating-process">
+																		<div class="rating-right-part">
+																			5<i aria-hidden="true" class="fa fa-star"></i>
+																			<div class="progress">Có {{$rating['ra_5']}} đánh giá</div>
+																		</div>
+																		<div class="rating-right-part">
+																			4<i aria-hidden="true" class="fa fa-star"></i>
+																			<div class="progress">Có {{$rating['ra_4']}} đánh giá</div>
 
-                                    </div>
-                                    <div class="rating-right-part">
-                                        3<i aria-hidden="true" class="fa fa-star"></i>
-                                        <div class="progress">Có {{$rating['ra_3']}} đánh giá</div>
+																		</div>
+																		<div class="rating-right-part">
+																			3<i aria-hidden="true" class="fa fa-star"></i>
+																			<div class="progress">Có {{$rating['ra_3']}} đánh giá</div>
 
-                                    </div>
-                                    <div class="rating-right-part">
-                                        2<i aria-hidden="true" class="fa fa-star"></i>
-                                        <div class="progress">Có {{$rating['ra_2']}} đánh giá</div>
+																		</div>
+																		<div class="rating-right-part">
+																			2<i aria-hidden="true" class="fa fa-star"></i>
+																			<div class="progress">Có {{$rating['ra_2']}} đánh giá</div>
 
-                                    </div>
-                                    <div class="rating-right-part">
-                                        1<i aria-hidden="true" class="fa fa-star"></i>
-                                        <div class="progress">Có {{$rating['ra_1']}} đánh giá</div>
+																		</div>
+																		<div class="rating-right-part">
+																			1<i aria-hidden="true" class="fa fa-star"></i>
+																			<div class="progress">Có {{$rating['ra_1']}} đánh giá</div>
 
-                                    </div>
-                                </div>
-                                <div style="clear:both;"></div>
-                            </div>
-                        </div>
-                        <br>
-                        <div class="rating1">
-                            <input type="radio" name="rating" value="5" id="5">
-                            <label for="5">☆</label>
-                            <input type="radio" name="rating" value="4" id="4">
-                            <label for="4">☆</label>
-                            <input type="radio" name="rating" value="3" id="3">
-                            <label for="3">☆</label>
-                            <input type="radio" name="rating" value="2" id="2">
-                            <label for="2">☆</label>
-                            <input type="radio" name="rating" value="1" id="1">
-                            <label for="1">☆</label>
-                        </div>
-                        <center>
-                            <div class="input-group mb-2">
-                                <textarea style="resize: none;height: 80px;" rows="1" cols="100" class="form-control" placeholder="Nội dung đánh giá . . . . ." name="body" required></textarea>
-                            </div>
-                        </center>
-                        <br>
-                        <div class="text-center" style="width: 23% ;margin-left: 560px">
-                            <input type="submit" value="Gửi" class="btn btn-info btn-block">
-                        </div>
-                    </form>
-                    @else
-                   <div class="rating-card">
-                            <div style="height: 60px">
-                                <h1>Đánh Giá</h1>
-                            </div>
-                            <div class="rating">
-                                <p><i class="fa fa-user" aria-hidden="true"></i> {{count($rating['count_ra'])}} Đánh Giá</p>
-                            </div>
-                            <div class="rating-process">
-                                <div class="rating-right-part">
-                                    5<i aria-hidden="true" class="fa fa-star"></i>
-                                    <div class="progress">Có {{$rating['ra_5']}} đánh giá</div>
-                                </div>
-                                <div class="rating-right-part">
-                                    4<i aria-hidden="true" class="fa fa-star"></i>
-                                    <div class="progress">Có {{$rating['ra_4']}} đánh giá</div>
+																		</div>
+																	</div>
+																	<div style="clear:both;"></div>
+																</div>
+															</div>
+															<br>
+															<div class="rating1">
+																<input type="radio" name="rating" value="5" id="5">
+																<label for="5">☆</label>
+																<input type="radio" name="rating" value="4" id="4">
+																<label for="4">☆</label>
+																<input type="radio" name="rating" value="3" id="3">
+																<label for="3">☆</label>
+																<input type="radio" name="rating" value="2" id="2">
+																<label for="2">☆</label>
+																<input type="radio" name="rating" value="1" id="1">
+																<label for="1">☆</label>
+															</div>
+															<center>
+																<div class="input-group mb-2">
+																	<textarea style="resize: none;height: 80px;" rows="1" cols="100" class="form-control" placeholder="Nội dung đánh giá . . . . ." name="body" required></textarea>
+																</div>
+															</center>
+															<br>
+															<div class="text-center" style="width: 23% ;margin-left: 560px">
+																<input type="submit" value="Gửi" class="btn btn-info btn-block">
+															</div>
+														</form>
+														@else
+														<div class="rating-card">
+															<div style="height: 60px">
+																<h1>Đánh Giá</h1>
+															</div>
+															<div class="rating">
+																<p><i class="fa fa-user" aria-hidden="true"></i> {{count($rating['count_ra'])}} Đánh Giá</p>
+															</div>
+															<div class="rating-process">
+																<div class="rating-right-part">
+																	5<i aria-hidden="true" class="fa fa-star"></i>
+																	<div class="progress">Có {{$rating['ra_5']}} đánh giá</div>
+																</div>
+																<div class="rating-right-part">
+																	4<i aria-hidden="true" class="fa fa-star"></i>
+																	<div class="progress">Có {{$rating['ra_4']}} đánh giá</div>
 
-                                </div>
-                                <div class="rating-right-part">
-                                    3<i aria-hidden="true" class="fa fa-star"></i>
-                                    <div class="progress">Có {{$rating['ra_3']}} đánh giá</div>
+																</div>
+																<div class="rating-right-part">
+																	3<i aria-hidden="true" class="fa fa-star"></i>
+																	<div class="progress">Có {{$rating['ra_3']}} đánh giá</div>
 
-                                </div>
-                                <div class="rating-right-part">
-                                    2<i aria-hidden="true" class="fa fa-star"></i>
-                                    <div class="progress">Có {{$rating['ra_2']}} đánh giá</div>
+																</div>
+																<div class="rating-right-part">
+																	2<i aria-hidden="true" class="fa fa-star"></i>
+																	<div class="progress">Có {{$rating['ra_2']}} đánh giá</div>
 
-                                </div>
-                                <div class="rating-right-part">
-                                    1<i aria-hidden="true" class="fa fa-star"></i>
-                                    <div class="progress">Có {{$rating['ra_1']}} đánh giá</div>
+																</div>
+																<div class="rating-right-part">
+																	1<i aria-hidden="true" class="fa fa-star"></i>
+																	<div class="progress">Có {{$rating['ra_1']}} đánh giá</div>
 
-                                </div>
-                            </div>
-                            <div style="clear:both;"></div>
-                        </div>
-                    <br>
-                    <div style="float: left ;color: #000"> Chỉ có thành viên mới có thể nhận xét. Vui lòng <a href="{{ route('login') }}">Đăng nhập</a> hoặc<a href="{{ route('signup') }}"> Đăng Ký</a></div>
-                    @endif
+																</div>
+															</div>
+															<div style="clear:both;"></div>
+														</div>
+														<br>
+														<div style="float: left ;color: #000"> Chỉ có thành viên mới có thể nhận xét. Vui lòng <a href="{{ route('login') }}">Đăng nhập</a> hoặc<a href="{{ route('signup') }}"> Đăng Ký</a></div>
+														@endif
 													</div>
 												</div>
 											</div>
@@ -495,68 +495,68 @@
 								</div>
 							</div>
 							<div class="tg-widget tg-widgetinstagram">
-										<div class="tg-widgettitle">
-											<h3>Instagram</h3>
-										</div>
-										<div class="tg-widgetcontent">
-											<ul>
-												<li>
-													<figure>
-														<img src="images/instagram/img-01.jpg" alt="image description">
-														<figcaption><a href="javascript:void(0);"><i class="icon-heart"></i><em>3000</em></a></figcaption>
-													</figure>
-												</li>
-												<li>
-													<figure>
-														<img src="images/instagram/img-02.jpg" alt="image description">
-														<figcaption><a href="javascript:void(0);"><i class="icon-heart"></i><em>3000</em></a></figcaption>
-													</figure>
-												</li>
-												<li>
-													<figure>
-														<img src="images/instagram/img-03.jpg" alt="image description">
-														<figcaption><a href="javascript:void(0);"><i class="icon-heart"></i><em>3000</em></a></figcaption>
-													</figure>
-												</li>
-												<li>
-													<figure>
-														<img src="images/instagram/img-04.jpg" alt="image description">
-														<figcaption><a href="javascript:void(0);"><i class="icon-heart"></i><em>3000</em></a></figcaption>
-													</figure>
-												</li>
-												<li>
-													<figure>
-														<img src="images/instagram/img-05.jpg" alt="image description">
-														<figcaption><a href="javascript:void(0);"><i class="icon-heart"></i><em>3000</em></a></figcaption>
-													</figure>
-												</li>
-												<li>
-													<figure>
-														<img src="images/instagram/img-06.jpg" alt="image description">
-														<figcaption><a href="javascript:void(0);"><i class="icon-heart"></i><em>3000</em></a></figcaption>
-													</figure>
-												</li>
-												<li>
-													<figure>
-														<img src="images/instagram/img-07.jpg" alt="image description">
-														<figcaption><a href="javascript:void(0);"><i class="icon-heart"></i><em>3000</em></a></figcaption>
-													</figure>
-												</li>
-												<li>
-													<figure>
-														<img src="images/instagram/img-08.jpg" alt="image description">
-														<figcaption><a href="javascript:void(0);"><i class="icon-heart"></i><em>3000</em></a></figcaption>
-													</figure>
-												</li>
-												<li>
-													<figure>
-														<img src="images/instagram/img-09.jpg" alt="image description">
-														<figcaption><a href="javascript:void(0);"><i class="icon-heart"></i><em>3000</em></a></figcaption>
-													</figure>
-												</li>
-											</ul>
-										</div>
-									</div>
+								<div class="tg-widgettitle">
+									<h3>Instagram</h3>
+								</div>
+								<div class="tg-widgetcontent">
+									<ul>
+										<li>
+											<figure>
+												<img src="images/instagram/img-01.jpg" alt="image description">
+												<figcaption><a href="javascript:void(0);"><i class="icon-heart"></i><em>3000</em></a></figcaption>
+											</figure>
+										</li>
+										<li>
+											<figure>
+												<img src="images/instagram/img-02.jpg" alt="image description">
+												<figcaption><a href="javascript:void(0);"><i class="icon-heart"></i><em>3000</em></a></figcaption>
+											</figure>
+										</li>
+										<li>
+											<figure>
+												<img src="images/instagram/img-03.jpg" alt="image description">
+												<figcaption><a href="javascript:void(0);"><i class="icon-heart"></i><em>3000</em></a></figcaption>
+											</figure>
+										</li>
+										<li>
+											<figure>
+												<img src="images/instagram/img-04.jpg" alt="image description">
+												<figcaption><a href="javascript:void(0);"><i class="icon-heart"></i><em>3000</em></a></figcaption>
+											</figure>
+										</li>
+										<li>
+											<figure>
+												<img src="images/instagram/img-05.jpg" alt="image description">
+												<figcaption><a href="javascript:void(0);"><i class="icon-heart"></i><em>3000</em></a></figcaption>
+											</figure>
+										</li>
+										<li>
+											<figure>
+												<img src="images/instagram/img-06.jpg" alt="image description">
+												<figcaption><a href="javascript:void(0);"><i class="icon-heart"></i><em>3000</em></a></figcaption>
+											</figure>
+										</li>
+										<li>
+											<figure>
+												<img src="images/instagram/img-07.jpg" alt="image description">
+												<figcaption><a href="javascript:void(0);"><i class="icon-heart"></i><em>3000</em></a></figcaption>
+											</figure>
+										</li>
+										<li>
+											<figure>
+												<img src="images/instagram/img-08.jpg" alt="image description">
+												<figcaption><a href="javascript:void(0);"><i class="icon-heart"></i><em>3000</em></a></figcaption>
+											</figure>
+										</li>
+										<li>
+											<figure>
+												<img src="images/instagram/img-09.jpg" alt="image description">
+												<figcaption><a href="javascript:void(0);"><i class="icon-heart"></i><em>3000</em></a></figcaption>
+											</figure>
+										</li>
+									</ul>
+								</div>
+							</div>
 						</aside>
 					</div>
 				</div>
@@ -579,12 +579,10 @@
 			responsiveVoice.speak(text, gender, {
 				rate: 1
 			});
-			$("#btPause").removeAttr("disabled");
 			$("#btStop").removeAttr("disabled");
 		});
 		$("#btStop").click(function() {
 			responsiveVoice.cancel();
-			$("#btPause").attr("disabled", "disabled");
 			$("#btStop").attr("disabled", "disabled");
 		});
 	});
